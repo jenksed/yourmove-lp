@@ -58,6 +58,7 @@ with sync_playwright() as p:
             page.add_style_tag(content=(R/'brand-refresh.css').read_text())
             page.add_style_tag(content=(R/'hero.css').read_text())
             page.add_style_tag(content=(R/'application-handoff.css').read_text())
+            page.add_style_tag(content=(R/'process-journey.css').read_text())
             if route=='get-started':
                 page.add_style_tag(content=(R/'get-started.css').read_text())
             if route=='support':
@@ -75,8 +76,11 @@ with sync_playwright() as p:
                 assert page.locator('h1#hero-title').evaluate('(el) => {const s=getComputedStyle(el);const r=el.getBoundingClientRect();return s.visibility==="visible" && s.display!=="none" && r.width>200 && r.height>35}')
                 assert page.locator('.hero-real__copy').evaluate('(el) => getComputedStyle(el).position!=="absolute"')
                 assert page.locator('.hero-real__scene').get_attribute('aria-hidden')=='true'
-                assert page.locator('.ym2-three article').count()==3
-                assert page.locator('.ym2-keeps img').is_visible()
+                assert page.locator('.ym-process-stages > li').count()==3
+                assert page.locator('.ym-keeps-ledger article').count()==4
+                assert page.locator('.ym-agency-commitments > div').count()==3
+                assert page.locator('.ym-support-invite__link').get_attribute('href') == '/support/'
+                assert page.locator('.ym2-download-button').get_attribute('href') == '/get-started/'
                 page.locator('[data-compare-state="blank"]').click()
                 assert 'empty box' in page.locator('[data-compare-summary]').inner_text()
                 assert page.locator('[data-compare-state="blank"]').get_attribute('aria-pressed')=='true'
@@ -131,6 +135,7 @@ with sync_playwright() as p:
     pg.add_style_tag(content=(R/'brand-refresh.css').read_text())
     pg.add_style_tag(content=(R/'hero.css').read_text())
     pg.add_style_tag(content=(R/'application-handoff.css').read_text())
+    pg.add_style_tag(content=(R/'process-journey.css').read_text())
     assert pg.locator('.site-nav').is_visible(), 'mobile nav hidden without JS'
     pg.close()
     b.close()
