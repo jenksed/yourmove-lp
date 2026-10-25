@@ -115,12 +115,3 @@ a,button{font-family:var(--font)}
 .ym2-keeps .ym2-rail{border-color:#a4b9a8;color:#456953}
 .ym2-keeps .ym2-rail .ym2-sq{background:#086241}
 .ym2-keeps-list,.ym2-keeps-list span{border-color:#a9c0b0;color:#254534}
-
-/* Fit the integrated Help link at intermediate widths without hiding navigation prematurely. */
-@media (min-width:761px) and (max-width:1020px) {
-  .nav-inner { gap:14px }
-  .site-logo { width:145px }
-  .site-nav { gap:15px }
-  .site-nav>a { font-size:13px }
-  .site-nav>.nav-cta { padding:12px 14px;gap:14px }
-}
