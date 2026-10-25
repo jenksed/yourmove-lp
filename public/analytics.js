@@ -148,4 +148,120 @@
     });
   }
   window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Marketing decision signals. All values are fixed, bounded categories; no form values.
+  const version = 'marketing_v2';
+  const safeCategory = (value) => /^[a-z0-9_-]{1,48}$/i.test(value || '') ? value.toLowerCase() : 'unknown';
+  const getCampaign = () => {
+    const params = new URLSearchParams(location.search);
+    return ['utm_source','utm_medium','utm_campaign','utm_content'].reduce((out,key) => {
+      const value=params.get(key);
+      // Retain only authored marketing tokens, never arbitrary URL input.
+      if (value && /^[a-z0-9_-]{1,64}$/i.test(value)) out[key]=value.toLowerCase();
+      return out;
+    },{});
+  };
+  const device = matchMedia('(max-width: 760px)').matches ? 'mobile' : 'desktop';
+  const campaign=getCampaign();
+  // Measured page visits, including repeat sessions; this is not an identity link.
+  capture('ym_marketing_landing', { version, device, ...campaign });
+  const activeTime={ms:0,start:document.visibilityState === 'visible' ? Date.now():null};
+  const engagementMarks=new Set();
+  function elapsedActive() {
+    if(activeTime.start !== null){activeTime.ms += Math.max(0,Date.now()-activeTime.start); activeTime.start=null;}
+    [15,45,90].forEach(t=>{if(activeTime.ms>=t*1000&&!engagementMarks.has(t)){engagementMarks.add(t);capture('ym_engagement_milestone',{seconds:t,version,device});}});
+  }
+  document.addEventListener('visibilitychange',()=>{
+    if(document.visibilityState === 'hidden') elapsedActive();
+    else if(activeTime.start === null) activeTime.start=Date.now();
+  });
+  window.addEventListener('pagehide',elapsedActive);
+  setInterval(()=>{if(document.visibilityState==='visible'){elapsedActive();activeTime.start=Date.now();}},5000);
+
+  const exposedCtas=new WeakSet();
+  const sectionTimes=new WeakMap();
+  const seenFeatures=new Set();
+  const featureLabels={
+    experience:'less_repetition',workflow:'workflow',career_records:'career_evidence',
+    control:'applicant_control',final_cta:'getting_started',
+    installation_paths:'installation',mac_build:'source_build',
+    browser_run:'browser_setup',installation_faq:'installation_objections'
+  };
+  const observerSupported= 'IntersectionObserver' in window;
+  if(observerSupported){
+    const intentObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        const el=entry.target;
+        if(el.matches('a[data-analytics-cta]')){
+          if(entry.isIntersecting&&!exposedCtas.has(el)){
+            exposedCtas.add(el);
+            capture('ym_cta_viewed',{cta:safeCategory(el.dataset.analyticsCta),placement:safeCategory(el.dataset.analyticsPlacement||'content'),version,device});
+          }
+          return;
+        }
+        if(!el.matches('[data-analytics-section]'))return;
+        if(entry.isIntersecting){
+          if(!sectionTimes.has(el))sectionTimes.set(el,{since:Date.now(),spent:0,reported:false});
+        } else {
+          const record=sectionTimes.get(el);
+          if(record&&record.since){record.spent+=Math.max(0,Date.now()-record.since);record.since=null;}
+        }
+      });
+    },{threshold:0.5});
+    document.querySelectorAll('a[data-analytics-cta], [data-analytics-section]').forEach(el=>intentObserver.observe(el));
+    const featureObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting)return;
+        const feature=featureLabels[entry.target.dataset.analyticsSection];
+        if(feature&&!seenFeatures.has(feature)){
+          seenFeatures.add(feature);
+          capture('ym_feature_interest',{feature,signal:'section_exposure',version,device});
+        }
+        featureObserver.unobserve(entry.target);
+      });
+    },{threshold:0.6});
+    document.querySelectorAll('[data-analytics-section]').forEach(el=>featureObserver.observe(el));
+  }
+  function flushSectionEngagement(){
+    if(document.visibilityState!=='visible')return;
+    document.querySelectorAll('[data-analytics-section]').forEach(el=>{
+      const record=sectionTimes.get(el);
+      if(!record||record.reported)return;
+      const ms=record.spent+(record.since?Date.now()-record.since:0);
+      if(ms<8000)return;
+      record.reported=true;
+      capture('ym_content_engaged',{section:safeCategory(el.dataset.analyticsSection),threshold_seconds:8,version,device});
+    });
+  }
+  setInterval(flushSectionEngagement,2000);
+  document.addEventListener('click',ev=>{
+    const target=ev.target instanceof Element?ev.target:null;
+    if(!target)return;
+    const button=target.closest('[data-flow],[data-evidence-stage],[data-compare-state]');
+    if(button){
+      const family=button.hasAttribute('data-flow')?'workflow':button.hasAttribute('data-evidence-stage')?'career_evidence':'comparison';
+      const group=family==='workflow'?'[data-flow]':family==='career_evidence'?'[data-evidence-stage]':'[data-compare-state]';
+      const items=[...document.querySelectorAll(group)];
+      const step=items.indexOf(button)+1;
+      if(step===items.length)capture('ym_demo_completed',{demo:family,steps:items.length,version,device});
+      capture('ym_feature_interest',{feature:family,signal:'interaction',version,device});
+    }
+    const anchor=target.closest('a[href]');
+    if(anchor){
+      const href=anchor.getAttribute('href')||'';
+      if(href.startsWith('http')){
+        try{
+          const url=new URL(href,location.href);
+          if(url.origin===location.origin)return;
+          const category=url.hostname==='github.com'?'github':url.hostname.endsWith('posthog.com')?'posthog':'other';
+          capture('ym_external_link_clicked',{destination:category,placement:safeCategory(anchor.dataset.analyticsPlacement||'content'),version,device});
+        }catch(_){}
+      }
+    }
+    const install=target.closest('[data-analytics-cta]');
+    if(install&&/^(check_releases|build_on_mac|download_source)$/.test(install.dataset.analyticsCta||'')){
+      capture('ym_install_path_selected',{path:install.dataset.analyticsCta,version,device});
+    }
+  },true);
+
 })();
