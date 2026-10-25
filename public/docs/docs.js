@@ -7,7 +7,7 @@
     }
   };
   const pages={"/docs/":"home","/docs/first-application/":"first_application","/docs/troubleshooting/":"troubleshooting","/docs/availability/":"availability"};
-  const path="/"+location.pathname.replace(/^\\/+|\\/+$/g,"")+"/";
+  const path="/"+location.pathname.split("/").filter(Boolean).join("/")+"/";
   const page=pages[path];
   if(page)analytics("ym_docs_article_viewed",{article_id:page,topic:page==="troubleshooting"?"recovery":page==="availability"?"distribution":"onboarding",version_scope:"preview"});
   const journey=document.querySelector("[data-doc-journey]");
@@ -49,7 +49,7 @@
     const cards=[...document.querySelectorAll("[data-doc-guide]")];
     const none=document.querySelector("[data-doc-no-results]");
     const status=document.querySelector("[data-doc-result-status]");
-    const tokens=(str)=>str.normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLowerCase().trim().split(/\\s+/).filter(Boolean);
+    const tokens=(str)=>str.toLowerCase().normalize("NFD").replaceAll("\u0301","").trim().split(" ").filter(Boolean);
     function filter(){
       const words=tokens(input.value);
       let count=0;
