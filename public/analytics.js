@@ -105,16 +105,7 @@
         }
       } catch (_) { /* Invalid href is a site issue, not an analytics blocker. */ }
     }
-    const cmp = ev.target.closest('[data-compare-state]');
-    if (cmp) {
-      const mode = cmp.dataset.compareState === 'blank' ? 'starting_over' : 'with_yourmove';
-      capture('ym_comparison_changed', { mode });
-      comparisonSeen.add(mode);
-      if (!comparisonCompleted && comparisonSeen.size === 2) {
-        comparisonCompleted = true;
-        capture('ym_comparison_both_states_seen', { demo:'application_handoff' });
-      }
-    }
+
     const workflow = ev.target.closest('[data-flow]');
     if (workflow) {
       const tabs = [...workflow.closest('[data-workflow]').querySelectorAll('[data-flow]')];
@@ -129,6 +120,17 @@
     if (menu) capture('ym_mobile_menu_toggled', { state: menu.getAttribute('aria-expanded') === 'true' ? 'open' : 'closed' });
     const copy = ev.target.closest('[data-copy-text]');
     if (copy) capture('ym_install_command_copy_clicked', { command_group: copy.closest('.gs-console') ? 'mac_build' : 'browser_run' });
+  });
+
+  document.addEventListener('ym:comparison-changed', (ev) => {
+    const mode=ev.detail?.mode;
+    if(mode!=='starting_over'&&mode!=='with_yourmove')return;
+    capture('ym_comparison_changed',{mode});
+    comparisonSeen.add(mode);
+    if(!comparisonCompleted&&comparisonSeen.size===2){
+      comparisonCompleted=true;
+      capture('ym_comparison_both_states_seen',{demo:'application_handoff'});
+    }
   });
 
   document.addEventListener('ym:copy-command', (ev) => {
