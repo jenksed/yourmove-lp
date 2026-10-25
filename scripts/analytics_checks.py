@@ -112,6 +112,33 @@ with sync_playwright() as p:
     page.locator('.menu-button').click()
     assert events(page,'ym_mobile_menu_toggled')[-1]['properties']['state']=='open'
     page.close()
+    # The opt-out must run before SDK initialization and persist on this origin.
+    context = browser.new_context()
+    context.route('https://www.yourmove.run/**', lambda route: route.fulfill(
+        status=200, content_type='text/html', body='<!doctype html><html><body></body></html>'))
+    owner = context.new_page()
+    for suffix, should_track in [
+        ('?ym_analytics=off', False),
+        ('', False),
+        ('?ym_analytics=on', True),
+        ('', True),
+    ]:
+        owner.goto('https://www.yourmove.run/' + suffix)
+        owner.evaluate('''() => {
+            window.__events = [];
+            window.__init = null;
+            window.posthog = {
+                __SV: 1,
+                init(token, options) { window.__init = { token, options }; },
+                capture(event, properties) { window.__events.push({ event, properties }); }
+            };
+            window.YOURMOVE_POSTHOG = { projectToken:'phc_TESTONLY123', apiHost:'https://us.i.posthog.com' };
+        }''')
+        owner.add_script_tag(content=(ROOT / 'analytics.js').read_text())
+        assert (owner.evaluate('window.__init !== null') is should_track), suffix
+        assert (len(events(owner, '$pageview')) == (1 if should_track else 0)), suffix
+    assert owner.evaluate('localStorage.getItem("yourmove:analytics:disabled")') is None
+    context.close()
     browser.close()
     assert not errors, errors
 print(json.dumps({'status':'PASS','routes':len(ROUTES),'inactive_and_active_pageviews':12,

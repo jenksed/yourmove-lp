@@ -23,6 +23,17 @@
 
 With an empty token, analytics remains disabled. To prevent test traffic from polluting analytics, the integration does not initialize on `localhost` or `127.0.0.1`. The `vercel.app` preview deployment is *not* automatically excluded: test visits there are counted once a token is set.
 
+## Excluding your own browser from analytics
+
+Open **https://www.yourmove.run/?ym_analytics=off** once in every browser profile/device you use to test the production site. The opt-out is saved in that origin's `localStorage` under `yourmove:analytics:disabled`. When set, `public/analytics.js` returns **before initializing PostHog or sending the first pageview**. Normal visitors remain tracked.
+
+- Visit **https://www.yourmove.run/?ym_analytics=on** to resume tracking in that browser.
+- The preference applies to `www.yourmove.run` only; a different hostname, browser profile, or device needs its own opt-out.
+- Clearing website data removes the preference. If storage is blocked (for example, certain private browsing environments), the `off` URL suppresses only that page load; repeat it for each visit.
+- Don't distribute the `off` URL in ads, social posts, or documentation links intended for visitors. Anyone opening it opts their own browser out.
+- The preference is stored by YourMove's page code, **not by PostHog**. The existing cookieless SDK configuration remains unchanged.
+- This does **not** remove previously ingested events. Cookieless server-side daily IDs cannot reliably identify historical owner visits, so do not delete or filter past users without independent attribution evidence.
+
 ## Tracking plan
 
 | Event | Trigger | Important properties |
