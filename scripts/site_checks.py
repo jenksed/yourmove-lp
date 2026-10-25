@@ -57,6 +57,8 @@ with sync_playwright() as p:
             page.add_style_tag(content=(R/'focused.css').read_text())
             page.add_style_tag(content=(R/'brand-refresh.css').read_text())
             page.add_style_tag(content=(R/'hero.css').read_text())
+            if route=='get-started':
+                page.add_style_tag(content=(R/'get-started.css').read_text())
             page.add_script_tag(content=(R/'app.js').read_text())
             scroll=page.evaluate('''() => ({client:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth})''')
             assert scroll['scroll']<=scroll['client']+1,(width,route,'overflow',scroll)
@@ -79,6 +81,19 @@ with sync_playwright() as p:
                 assert 'ready to review' in page.locator('[data-answer-meta]').inner_text().lower()
                 assert page.locator('[data-compare-state="saved"]').get_attribute('aria-pressed')=='true'
             if route=='get-started':
+                assert 'CHECK' in page.locator('.gs-path-release h3').inner_text()
+                assert 'RELEASES' in page.locator('.gs-path-release h3').inner_text()
+                cards=page.locator('.gs-path')
+                assert cards.count()==2
+                for card in cards.all():
+                    # Text and actions must stay inside their own card even with long labels.
+                    assert card.evaluate('(el) => el.scrollWidth <= el.clientWidth + 1'), (width,'card overflow')
+                    assert card.locator('h3').evaluate('(el) => el.scrollWidth <= el.clientWidth + 1'), (width,'heading overflow')
+                positions=[card.bounding_box() for card in cards.all()]
+                if width<=1000:
+                    assert positions[1]['y']>positions[0]['y'] + 20, (width,'cards not stacked')
+                else:
+                    assert abs(positions[0]['y']-positions[1]['y'])<2, (width,'cards not paired')
                 assert page.locator('a[href="https://github.com/jenksed/yourmove-go/releases"]').count()>=1
                 assert page.locator('a[href$="/archive/refs/heads/main.zip"]').count()==1
                 assert page.locator('.gs-console button[data-copy-text]').count()==1
