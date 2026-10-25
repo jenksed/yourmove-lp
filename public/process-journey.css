@@ -1,0 +1,168 @@
+/* YourMove homepage / Process 02 — connected stages, no duplicate application UI. */
+.ym2-steps.ym-process {
+  background: #143b2b;
+  color: #f9faf6;
+  padding: clamp(78px, 8vw, 120px) 0 clamp(78px, 8.5vw, 126px);
+}
+.ym-process .ym2-rail-dark { border-color: #66816e; color: #bdd0c0; }
+.ym-process .ym2-rail-dark .ym2-sq { background: #b5e4b8; }
+.ym-process-lead {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(230px, .56fr);
+  align-items: end;
+  gap: clamp(32px, 5vw, 84px);
+  padding: clamp(42px, 4.6vw, 68px) 0 clamp(40px, 5vw, 70px);
+}
+.ym2-steps.ym-process .ym-process-lead h2 {
+  font-size: clamp(51px, 6.2vw, 92px);
+  font-weight: 800;
+  line-height: 1.035;
+  letter-spacing: -.017em;
+  margin: 0;
+}
+.ym-process-lead h2 span { display: block; color: #b5e4b8; }
+.ym-process-lead p {
+  color: #d4e4d6;
+  font-size: clamp(17px, 1.45vw, 20px);
+  line-height: 1.5;
+  max-width: 340px;
+  margin: 0 0 8px;
+}
+.ym-process-route {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 24px);
+  border-top: 1px solid #66816e;
+  padding: 24px 0 27px;
+  min-width: 0;
+}
+.ym-process-route-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 31px;
+  padding: 7px 11px 6px;
+  border: 1px solid #81a08a;
+  border-radius: 3px;
+  color: #d7e9d9;
+  font-size: 10px;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: .065em;
+  white-space: nowrap;
+}
+.ym-process-route-label:last-child { background: #b5e4b8; border-color: #b5e4b8; color: #123b27; }
+.ym-process-route-line { flex: 1 1 0; min-width: 12px; height: 1px; background: #7da68a; }
+.ym-process-route-arrow { color: #b5e4b8; font-size: 22px; line-height: 1; transform: translateY(-1px); }
+.ym-process-stages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #66816e;
+}
+.ym-process-stage {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 294px;
+  padding: 23px clamp(22px, 2.4vw, 36px) 0 0;
+}
+.ym-process-stage + .ym-process-stage {
+  border-left: 1px solid #66816e;
+  padding-left: clamp(22px, 2.4vw, 36px);
+}
+.ym-process-stage-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; color: #b5e4b8; }
+.ym-process-stage-number { font-size: 12px; font-weight: 800; letter-spacing: .07em; font-variant-numeric: tabular-nums; }
+.ym-process-stage-symbol { font-size: 23px; font-weight: 500; line-height: 1; }
+.ym2-steps.ym-process .ym-process-stage h3 {
+  color: #fff;
+  font-size: clamp(39px, 4vw, 57px);
+  line-height: 1.12;
+  font-weight: 750;
+  letter-spacing: -.012em;
+  margin: clamp(32px, 4.3vw, 56px) 0 12px;
+}
+.ym-process-stage p {
+  color: #d1e0d3;
+  font-size: 16px;
+  line-height: 1.53;
+  max-width: 310px;
+  margin: 0 0 30px;
+}
+.ym-process-stage-end {
+  display: block;
+  color: #b7cbbc;
+  border-top: 1px solid #4b6b56;
+  margin-top: auto;
+  padding: 17px 0 16px;
+  font-size: 10px;
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: .065em;
+}
+.ym-process-bridge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-top: 1px solid #4b6b56;
+  padding: 23px 0 0;
+  margin-top: 21px;
+  color: #b5e4b8;
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 650;
+  letter-spacing: .025em;
+  text-decoration: none;
+}
+.ym-process-bridge .ym-process-bridge-arrow { font-size: 25px; line-height: 1; transition: transform .2s ease; }
+.ym-process-bridge:hover .ym-process-bridge-arrow { transform: translateY(5px); }
+.ym-process-bridge:focus-visible { outline: 2px solid #b5e4b8; outline-offset: 7px; }
+@media (max-width: 1020px) {
+  .ym-process-lead { grid-template-columns: minmax(0, 1fr) minmax(235px, .65fr); gap: 30px; }
+  .ym2-steps.ym-process .ym-process-lead h2 { font-size: clamp(48px, 6.4vw, 72px); }
+  .ym-process-stage { min-height: 310px; }
+}
+@media (max-width: 760px) {
+  .ym2-steps.ym-process { padding: 75px 0 80px; }
+  .ym-process-lead { grid-template-columns: minmax(0, 1fr); gap: 22px; padding: 38px 0 36px; }
+  .ym2-steps.ym-process .ym-process-lead h2 { font-size: clamp(37px, 8.2vw, 62px); line-height: 1.07; }
+  .ym-process-lead p { font-size: 17px; max-width: 500px; margin: 0; }
+  .ym-process-route { display: none; }
+  .ym-process-stages { display: block; position: relative; border-top: 1px solid #66816e; padding-top: 8px; }
+  .ym-process-stages::before { content: ''; position: absolute; left: 17px; top: 33px; bottom: 62px; width: 1px; background: #668d72; }
+  .ym-process-stage, .ym-process-stage + .ym-process-stage {
+    min-height: 0;
+    display: flex;
+    position: relative;
+    border: 0;
+    padding: 23px 0 23px 62px;
+  }
+  .ym-process-stage-top {
+    position: absolute;
+    top: 24px;
+    left: 0;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #92ba9a;
+    border-radius: 50%;
+    background: #143b2b;
+    z-index: 1;
+  }
+  .ym-process-stage-number { font-size: 10px; }
+  .ym-process-stage-symbol { display: none; }
+  .ym2-steps.ym-process .ym-process-stage h3 { font-size: clamp(36px, 8vw, 51px); margin: 0 0 9px; }
+  .ym-process-stage p { max-width: 520px; margin-bottom: 22px; font-size: 16px; }
+  .ym-process-stage-end { margin-top: 0; padding: 13px 0 0; }
+  .ym-process-bridge { margin-top: 13px; padding-top: 22px; font-size: 11px; }
+}
+@media (max-width: 370px) {
+  .ym2-steps.ym-process .ym-process-lead h2 { font-size: clamp(32px, 8.6vw, 38px); }
+  .ym-process-stage, .ym-process-stage + .ym-process-stage { padding-left: 52px; }
+  .ym-process-bridge { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ym-process-bridge .ym-process-bridge-arrow { transition: none; }
+}
