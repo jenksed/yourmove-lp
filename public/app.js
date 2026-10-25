@@ -110,7 +110,9 @@
         const t=document.createElement('textarea');t.value=value;t.style.position='fixed';t.style.left='-9999px';document.body.appendChild(t);t.select();const success=document.execCommand('copy');t.remove();if(!success)throw Error('Copy denied');
       }
       btn.textContent='Copied ✓';
-    }catch(_){btn.textContent='Select text manually';}
+      document.dispatchEvent(new CustomEvent('ym:copy-command',{detail:{group:btn.closest('.gs-console')?'mac_build':'browser_run',result:'success'}}));
+    }catch(_){btn.textContent='Select text manually';
+      document.dispatchEvent(new CustomEvent('ym:copy-command',{detail:{group:btn.closest('.gs-console')?'mac_build':'browser_run',result:'failure'}}));}
     setTimeout(()=>btn.textContent=original,1800);
   }));
 })();

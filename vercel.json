@@ -3,22 +3,64 @@
   "framework": null,
   "outputDirectory": "public",
   "rewrites": [
-    { "source": "/get-started", "destination": "/get-started/index.html" },
-    { "source": "/get-started/", "destination": "/get-started/index.html" },
-    { "source": "/how-it-works", "destination": "/how-it-works/index.html" },
-    { "source": "/how-it-works/", "destination": "/how-it-works/index.html" },
-    { "source": "/evidence", "destination": "/evidence/index.html" },
-    { "source": "/evidence/", "destination": "/evidence/index.html" },
-    { "source": "/manifesto", "destination": "/manifesto/index.html" },
-    { "source": "/manifesto/", "destination": "/manifesto/index.html" },
-    { "source": "/review", "destination": "/review/index.html" },
-    { "source": "/review/", "destination": "/review/index.html" }
+    {
+      "source": "/get-started",
+      "destination": "/get-started/index.html"
+    },
+    {
+      "source": "/get-started/",
+      "destination": "/get-started/index.html"
+    },
+    {
+      "source": "/how-it-works",
+      "destination": "/how-it-works/index.html"
+    },
+    {
+      "source": "/how-it-works/",
+      "destination": "/how-it-works/index.html"
+    },
+    {
+      "source": "/evidence",
+      "destination": "/evidence/index.html"
+    },
+    {
+      "source": "/evidence/",
+      "destination": "/evidence/index.html"
+    },
+    {
+      "source": "/manifesto",
+      "destination": "/manifesto/index.html"
+    },
+    {
+      "source": "/manifesto/",
+      "destination": "/manifesto/index.html"
+    },
+    {
+      "source": "/review",
+      "destination": "/review/index.html"
+    },
+    {
+      "source": "/review/",
+      "destination": "/review/index.html"
+    }
   ],
   "headers": [
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/analytics-config.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     }
   ]

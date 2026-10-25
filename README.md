@@ -11,7 +11,11 @@ cd public
 python3 -m http.server 8765
 ```
 
-Open <http://localhost:8765>. No Node, bundler, build command, or environment variables are needed.
+Open <http://localhost:8765>. No Node, bundler, build command, or environment variables are needed. PostHog analytics is disabled until you add your public project token to `public/analytics-config.js`.
+
+## PostHog analytics (optional)
+
+All pageviews, meaningful calls to action, GitHub/download exits, workflow interactions, FAQs, copy-command outcomes and engagement milestones are instrumented. To enable analytics, edit just `public/analytics-config.js` with your `phc_` project token and PostHog US/EU host, then enable the PostHog cookieless server hash project setting. See [ANALYTICS.md](ANALYTICS.md) for the full setup, privacy boundaries, event dictionary and suggested funnels. With the key blank, no PostHog SDK is loaded.
 
 ## Create the GitHub repository
 
@@ -49,7 +53,10 @@ Open Graph image metadata in the HTML currently references `https://yourmove.run
 - `public/{get-started,how-it-works,evidence,manifesto,review}/index.html`: supporting pages.
 - `public/hero.css`: full-background photographic hero; headline, supporting copy and CTAs are HTML elements, **not embedded in the image**.
 - `public/styles.css`, `public/campaign.css`, `public/focused.css`, `public/brand-refresh.css`: shared and section styles.
-- `public/app.js`: mobile menu and interactive examples.
+- `public/app.js`: mobile menu, interactive examples, and command-copy outcome events.
+- `public/analytics-config.js`: **only file you edit to enable PostHog**.
+- `public/analytics.js`: explicit, cookieless PostHog instrumentation (no build tool).
+- `ANALYTICS.md`: setup steps, tracked events, funnels, privacy/validation notes.
 - `public/assets/`: only images referenced by the published site.
 - `scripts/site_checks.py`: optional browser/structural QA (requires Python packages `playwright` and `beautifulsoup4`, plus a Chromium binary).
 
