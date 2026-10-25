@@ -4,6 +4,21 @@
  */
 (() => {
   'use strict';
+  // Opt out before the PostHog SDK initializes. This is a browser-local preference;
+  // PostHog's cookieless visitor identity cannot persist a per-user exclusion.
+  const analyticsPreferenceKey = 'yourmove:analytics:disabled';
+  const analyticsPreference = new URLSearchParams(location.search).get('ym_analytics');
+  if (analyticsPreference === 'off' || analyticsPreference === 'on') {
+    try {
+      if (analyticsPreference === 'off') localStorage.setItem(analyticsPreferenceKey, '1');
+      else localStorage.removeItem(analyticsPreferenceKey);
+    } catch (_) { /* The URL switch still applies for this page if storage is blocked. */ }
+  }
+  if (analyticsPreference === 'off') return;
+  try {
+    if (localStorage.getItem(analyticsPreferenceKey) === '1') return;
+  } catch (_) { /* Storage-disabled browsers need the URL switch on each visit. */ }
+
   const settings = window.YOURMOVE_POSTHOG || {};
   const token = String(settings.projectToken || '').trim();
   const host = String(settings.apiHost || 'https://us.i.posthog.com').replace(/\/$/, '');
