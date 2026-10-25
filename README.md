@@ -67,3 +67,7 @@ The static HTML files are the source of truth for this deployment. Do not use `b
 The landing page is separate from the [YourMove application](https://github.com/jenksed/yourmove-go). The marketing artwork illustrates a product concept; it is not a verified screenshot, and platform logos do not independently establish qualified support. Do not imply automatic application submission. The Get Started page currently links to the application's source and release page rather than distributing a standalone installer.
 
 Content and artwork licensing are **not specified** by this repository. Do not assume the app's GPL-3.0-only license automatically covers the marketing files or third-party branding depicted in artwork.
+
+## Compact release countdown
+
+A reusable release announcement is configured in **`public/release-config.js`**. Set `enabled: false` to restore the normal announcement everywhere, or change the date and copy to promote a future release. See [RELEASE_BANNER.md](RELEASE_BANNER.md) for details and browser checks.
