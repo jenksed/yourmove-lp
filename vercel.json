@@ -42,6 +42,38 @@
     {
       "source": "/review/",
       "destination": "/review/index.html"
+    },
+    {
+      "source": "/docs",
+      "destination": "/docs/index.html"
+    },
+    {
+      "source": "/docs/",
+      "destination": "/docs/index.html"
+    },
+    {
+      "source": "/docs/first-application",
+      "destination": "/docs/first-application/index.html"
+    },
+    {
+      "source": "/docs/first-application/",
+      "destination": "/docs/first-application/index.html"
+    },
+    {
+      "source": "/docs/troubleshooting",
+      "destination": "/docs/troubleshooting/index.html"
+    },
+    {
+      "source": "/docs/troubleshooting/",
+      "destination": "/docs/troubleshooting/index.html"
+    },
+    {
+      "source": "/docs/availability",
+      "destination": "/docs/availability/index.html"
+    },
+    {
+      "source": "/docs/availability/",
+      "destination": "/docs/availability/index.html"
     }
   ],
   "headers": [
