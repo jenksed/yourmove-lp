@@ -43,6 +43,7 @@ Open **https://www.yourmove.run/?ym_analytics=off** once in every browser profil
 | `ym_navigation_clicked` | Header and footer navigation links | `location`, `destination`, `page` |
 | `ym_github_outbound_clicked` | Link to YourMove application GitHub repo | `action` (`repository`, `releases`, `source_zip`, `mac_build_docs`, `local_run_docs`, `report_issue`), `placement` |
 | `ym_comparison_changed` | Homepage starting-over/with-YourMove toggle | `mode` |
+| `ym_comparison_both_states_seen` | Visitor switches from the default With YourMove demo into Starting Over (once per page load) | `demo = application_handoff` |
 | `ym_workflow_step_selected` | How It Works interactive tab | `step` |
 | `ym_evidence_stage_selected` | Career evidence example tab | `stage` |
 | `ym_section_viewed` | One-time intersection of marked homepage / Get Started sections | `section` |
@@ -73,7 +74,7 @@ Event names and properties are stable, authored enums/IDs rather than text scrap
 
 - Count/unique estimate by page via `$pageview`.
 - `ym_section_viewed` by `section` to see where visitors reach.
-- `ym_comparison_changed` and `ym_scroll_depth_reached` to measure product explanation engagement.
+- `ym_comparison_changed`, `ym_comparison_both_states_seen`, and `ym_scroll_depth_reached` to measure product explanation engagement.
 - `ym_cta_clicked` broken down by `placement` to compare hero versus final CTA.
 - `ym_github_outbound_clicked` by `action` to understand interest in releases, source downloads, and build instructions.
 
