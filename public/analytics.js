@@ -61,7 +61,7 @@
   });
 
   const page = ({'/':'home','/get-started/':'get_started','/how-it-works/':'how_it_works',
-    '/evidence/':'career_evidence','/manifesto/':'manifesto','/review/':'design_review'})[normalize(location.pathname)] || 'other';
+    '/evidence/':'career_evidence','/manifesto/':'manifesto','/review/':'design_review','/support/':'support'})[normalize(location.pathname)] || 'other';
 
   function normalize(path) {
     if (path === '/') return '/';
