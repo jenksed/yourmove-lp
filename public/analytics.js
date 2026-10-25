@@ -103,6 +103,9 @@
           else if (target.hash.includes('build-the-macos')) action = 'mac_build_docs';
           capture('ym_github_outbound_clicked', { action, placement: anchor.dataset.analyticsPlacement || 'content' });
         }
+        if (target.hostname === 'ko-fi.com' && /^\/yourmove\/?$/.test(target.pathname)) {
+          capture('ym_support_checkout_clicked', { provider: 'kofi', placement: anchor.dataset.analyticsPlacement || 'content' });
+        }
       } catch (_) { /* Invalid href is a site issue, not an analytics blocker. */ }
     }
 
