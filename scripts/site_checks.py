@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 import base64, mimetypes, re, json
 R=Path(__file__).resolve().parents[1] / "public"
-ROUTES=['','how-it-works','evidence','get-started','manifesto','review']
+ROUTES=['','how-it-works','evidence','get-started','manifesto','review','support']
 WIDTHS=[320,375,390,768,1024,1440]
 
 def source(route):
@@ -60,6 +60,8 @@ with sync_playwright() as p:
             page.add_style_tag(content=(R/'application-handoff.css').read_text())
             if route=='get-started':
                 page.add_style_tag(content=(R/'get-started.css').read_text())
+            if route=='support':
+                page.add_style_tag(content=(R/'support.css').read_text())
             page.add_script_tag(content=(R/'app.js').read_text())
             scroll=page.evaluate('''() => ({client:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth})''')
             assert scroll['scroll']<=scroll['client']+1,(width,route,'overflow',scroll)

@@ -74,6 +74,14 @@
     {
       "source": "/docs/availability/",
       "destination": "/docs/availability/index.html"
+    },
+    {
+      "source": "/support",
+      "destination": "/support/index.html"
+    },
+    {
+      "source": "/support/",
+      "destination": "/support/index.html"
     }
   ],
   "headers": [

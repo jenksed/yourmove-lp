@@ -34,6 +34,10 @@ Open **https://www.yourmove.run/?ym_analytics=off** once in every browser profil
 - The preference is stored by YourMove's page code, **not by PostHog**. The existing cookieless SDK configuration remains unchanged.
 - This does **not** remove previously ingested events. Cookieless server-side daily IDs cannot reliably identify historical owner visits, so do not delete or filter past users without independent attribution evidence.
 
+## Support page tracking
+
+The support page uses existing explicit `ym_cta_clicked` events (`support_kofi`, `support_page`, and proof links) and adds `ym_support_checkout_clicked` when a visitor opens the Ko-fi link. This tracks an outbound click, **not a completed contribution**. Actual contributions belong in Ko-fi reporting. The event never includes payer details, amounts, or information from the external checkout.
+
 ## Tracking plan
 
 | Event | Trigger | Important properties |
