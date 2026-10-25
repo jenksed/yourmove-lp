@@ -87,7 +87,7 @@
       if (cta) capture('ym_cta_clicked', { cta, placement: anchor.dataset.analyticsPlacement || 'content' });
       if (anchor.closest('.site-nav') || anchor.closest('.footer-col')) {
         const h = anchor.getAttribute('href') || '';
-        const destination = h.startsWith('/get-started') ? 'get_started' : h.startsWith('/#') ? 'home_section' : h === '/' ? 'home' : h.startsWith('https://github.com/') ? 'github' : 'other';
+        const destination = h.startsWith('/docs/') ? 'docs' : h.startsWith('/get-started') ? 'get_started' : h.startsWith('/#') ? 'home_section' : h === '/' ? 'home' : h.startsWith('https://github.com/') ? 'github' : 'other';
         capture('ym_navigation_clicked', { location: anchor.closest('.site-nav') ? 'header' : 'footer', destination });
       }
       try {
