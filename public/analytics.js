@@ -76,6 +76,9 @@
   // A single pageview per document; no query strings or full URLs in our custom payload.
   capture('$pageview', { $pathname: normalize(location.pathname), $current_url: location.origin + normalize(location.pathname) });
 
+  const comparisonSeen = new Set(['with_yourmove']);
+  let comparisonCompleted = false;
+
   // Conversion events. IDs are authored in markup; text from DOM is never collected.
   document.addEventListener('click', (ev) => {
     const anchor = ev.target.closest('a[href]');
@@ -103,7 +106,15 @@
       } catch (_) { /* Invalid href is a site issue, not an analytics blocker. */ }
     }
     const cmp = ev.target.closest('[data-compare-state]');
-    if (cmp) capture('ym_comparison_changed', { mode: cmp.dataset.compareState === 'blank' ? 'starting_over' : 'with_yourmove' });
+    if (cmp) {
+      const mode = cmp.dataset.compareState === 'blank' ? 'starting_over' : 'with_yourmove';
+      capture('ym_comparison_changed', { mode });
+      comparisonSeen.add(mode);
+      if (!comparisonCompleted && comparisonSeen.size === 2) {
+        comparisonCompleted = true;
+        capture('ym_comparison_both_states_seen', { demo:'application_handoff' });
+      }
+    }
     const workflow = ev.target.closest('[data-flow]');
     if (workflow) {
       const tabs = [...workflow.closest('[data-workflow]').querySelectorAll('[data-flow]')];
@@ -258,7 +269,7 @@
       const group=family==='workflow'?'[data-flow]':family==='career_evidence'?'[data-evidence-stage]':'[data-compare-state]';
       const items=[...document.querySelectorAll(group)];
       const step=items.indexOf(button)+1;
-      if(step===items.length)capture('ym_demo_completed',{demo:family,steps:items.length,version,device});
+      if(step===items.length&&family!=='comparison')capture('ym_demo_completed',{demo:family,steps:items.length,version,device});
       capture('ym_feature_interest',{feature:family,signal:'interaction',version,device});
     }
     const anchor=target.closest('a[href]');
