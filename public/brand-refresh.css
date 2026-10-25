@@ -1,0 +1,117 @@
+/* YourMove / Jost editorial campaign system, 2026.
+   The dedicated hero.css now comes after this stylesheet; it corrects the cramped headline tracking in the
+   earlier marketing styles while preserving existing page content and interactions. */
+:root {
+  --font: "Jost", "Avenir Next", "Century Gothic", system-ui, sans-serif;
+  --display: "Jost", "Avenir Next", "Century Gothic", system-ui, sans-serif;
+  --paper: #f9f8f3;
+  --ink: #101715;
+  --green: #075b40;
+  --line: #dce2d9;
+  --ym-paper: #f9f8f3;
+  --ym-forest: #085c41;
+  --ym-ink: #111a17;
+}
+html{scroll-padding-top:22px}
+body{font-family:var(--font);font-weight:400;letter-spacing:0;line-height:1.5;background:var(--paper)}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.025em;overflow-wrap:normal;line-height:1.06;font-kerning:normal}
+p{line-height:1.55;letter-spacing:0}
+a,button{font-family:var(--font)}
+.site-logo{width:163px}.site-logo img{width:100%;height:auto}
+.footer-logo img{height:auto}
+.nav-inner{height:80px}
+.nav-annotation{font-size:11px;letter-spacing:.055em;line-height:1.4;font-weight:600}
+.site-nav>a{font-size:15px;font-weight:600;letter-spacing:0}
+.site-nav>.nav-cta{font-weight:700;padding:14px 22px}
+.announcement .shell{font-size:11px;letter-spacing:.035em;min-height:32px}
+.announcement a{font-weight:600}
+/* Fine-tune the rest of the site toward the supplied visual language: less
+   industrial type compression, softer paper, calmer ink, clearer vertical rhythm. */
+.ym2-proof,.ym2-agency{background:#f9f8f3}
+.ym2-steps{background:#143b2b}
+.ym2-keeps-content{background:#f2f3ec}
+.ym2-proof-intro h2,.ym2-steps h2,.ym2-keeps h2,.ym2-agency h2,.ym2-finish h2{
+  font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:1.035;
+}
+.ym2-proof-intro h2{font-size:clamp(45px,6.2vw,86px)}
+.ym2-steps h2{font-size:clamp(48px,5.5vw,83px)}
+.ym2-keeps h2{font-size:clamp(49px,5.1vw,78px)}
+.ym2-agency h2{font-size:clamp(52px,5.3vw,82px)}
+.ym2-finish h2{font-size:clamp(60px,8vw,122px)}
+.ym2-proof-intro p,.ym2-steps-lead p,.ym2-keeps-content>p,.ym2-agency-grid>div>p,.ym2-finish-grid p{line-height:1.55;letter-spacing:0;font-weight:400}
+.ym2-form h3,.ym2-context-title,.ym2-three h3{font-family:var(--display);font-weight:700;letter-spacing:-.028em;line-height:1.13}
+.ym2-three h3{font-size:clamp(37px,4vw,57px)}
+.ym2-form-status,.ym2-context-top,.ym2-step-end,.ym2-rail,.ym2-keeps-list,.ym2-facts,.ym2-photo-badge{letter-spacing:.045em}
+.ym2-compare{border-radius:5px;overflow:hidden;box-shadow:10px 12px 0 #e4e9df}
+.ym2-switch button{font-family:var(--font);letter-spacing:0;font-size:12px;font-weight:700}
+.ym2-keeps-photo img{filter:saturate(.93)}
+.ym2-finish{background:#096442}
+.ym2-download-button,.gs-light-button,.gs-dark-button,.gs-green-button{font-family:var(--font);font-weight:700;letter-spacing:0}
+/* Get started and supporting pages receive the same Jost typography. */
+.gs-hero h1,.gs-choose h2,.gs-path h3,.gs-build-copy h2,.gs-browser h2,.gs-details h2,.gs-end-words,
+.subhero h1,.manifesto-intro h2,.manifesto-lower h2,.ev-story-copy h2,.ev-transform h3{font-family:var(--display);letter-spacing:-.037em;line-height:1.04;font-weight:800}
+.gs-hero h1{font-size:clamp(57px,8.2vw,112px)}
+.gs-choose h2{font-size:clamp(54px,6vw,92px)}
+.gs-path h3{font-size:clamp(50px,5.3vw,82px)}
+.gs-build-copy h2{font-size:clamp(49px,5.25vw,78px)}
+.gs-browser h2{font-size:clamp(48px,5vw,77px)}
+.gs-details h2{font-size:clamp(53px,5.4vw,83px)}
+.gs-end-words{font-size:clamp(68px,10vw,143px)}
+.gs-path p,.gs-browser p,.gs-build-copy>p,.gs-hero-side p{letter-spacing:0;line-height:1.56}
+.gs-path{border-radius:5px}
+.gs-console pre,.gs-mini-console pre{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.subhero h1{letter-spacing:-.04em;line-height:1.0}
+/* Supporting page adjustments for smaller viewports. */
+@media(max-width:900px){
+ .ym2-proof-intro h2,.ym2-steps h2,.ym2-keeps h2,.ym2-agency h2,.ym2-finish h2{letter-spacing:-.035em;line-height:1.05}
+ .gs-path h3{font-size:clamp(52px,8vw,72px)}
+}
+@media(max-width:760px){
+ .nav-inner{height:74px}.site-logo{width:145px}
+ .nav-annotation{display:none}
+ .ym2-proof-intro h2{font-size:clamp(45px,9.8vw,65px)}
+ .ym2-steps h2{font-size:clamp(44px,9.4vw,66px)}
+ .ym2-keeps h2{font-size:clamp(45px,9.2vw,65px)}
+ .ym2-agency h2{font-size:clamp(44px,9vw,68px)}
+ .ym2-finish h2{font-size:clamp(58px,12vw,86px)}
+ .gs-hero h1{font-size:clamp(49px,9.3vw,79px)}
+ .gs-choose h2{font-size:clamp(47px,10vw,69px)}
+ .gs-build-copy h2{font-size:clamp(47px,9vw,72px)}
+ .gs-browser h2{font-size:clamp(46px,9vw,68px)}
+ .gs-details h2{font-size:clamp(51px,9vw,71px)}
+ .gs-end-words{font-size:clamp(62px,12vw,90px)}
+}
+@media(max-width:430px){
+ .ym2-keeps h2{font-size:clamp(40px,9.8vw,49px)}
+ .ym2-agency h2{font-size:clamp(42px,10vw,54px)}
+ .ym2-finish h2{font-size:clamp(58px,13vw,74px)}
+ .gs-path h3{font-size:clamp(41px,11.5vw,52px)}
+ .gs-build-copy h2{font-size:clamp(43px,10.9vw,53px)}
+}
+@media(prefers-reduced-motion:reduce){}
+/* Supporting pages: fit actual words instead of compensating with -0.08em tracking. */
+@media(max-width:760px){
+  .ev-story-grid{grid-template-columns:minmax(0,1fr)}
+  .ev-story-grid>*{min-width:0}
+  .ev-story-copy h2{font-size:clamp(39px,9.2vw,57px);letter-spacing:-.035em;line-height:1.05}
+  .ev-transform{min-width:0}
+  .ev-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .ev-tabs button{overflow-wrap:anywhere}
+  .subhero h1{font-size:clamp(48px,10vw,71px);letter-spacing:-.037em;line-height:1.03}
+}
+
+/* Text readability takes precedence over aggressive editorial tracking. */
+.ym2-proof-intro h2,.ym2-steps h2,.ym2-keeps h2,.ym2-agency h2,.ym2-finish h2,
+.gs-hero h1,.gs-choose h2,.gs-path h3,.gs-build-copy h2,.gs-browser h2,
+.gs-details h2,.gs-end-words,.subhero h1,.ev-story-copy h2 {letter-spacing:-.017em;line-height:1.075}
+.ym2-form h3,.ym2-context-title,.ym2-three h3{letter-spacing:-.012em;line-height:1.16}
+@media(max-width:760px){.ev-story-copy h2{letter-spacing:-.012em}.subhero h1{letter-spacing:-.016em}}
+@media(max-width:430px){.gs-path h3{font-size:clamp(36px,10.8vw,46px)}}
+/* The archive chapter changes from cobalt to paper: update foreground tokens too. */
+.ym2-keeps-content{background:#f2f3ec;color:#13291d}
+.ym2-keeps-content h2{color:#14251b}
+.ym2-keeps-content h2 span{color:#086241}
+.ym2-keeps-content>p{color:#45594d}
+.ym2-keeps .ym2-rail{border-color:#a4b9a8;color:#456953}
+.ym2-keeps .ym2-rail .ym2-sq{background:#086241}
+.ym2-keeps-list,.ym2-keeps-list span{border-color:#a9c0b0;color:#254534}

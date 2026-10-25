@@ -1,0 +1,217 @@
+/* YourMove hero rebuilt as a true full-background scene.
+   The workspace image is decorative. All marketing copy and CTAs remain live HTML. */
+.hero-real {
+  --hero-ink:#101815;
+  --hero-copy:#2e3b35;
+  --hero-green:#1d674b;
+  --hero-mint:#2a845c;
+  --hero-paper:#f5f6f2;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:#e8ebe5;
+  color:var(--hero-ink);
+}
+.hero-real__scene {
+  position:absolute;
+  inset:0;
+  z-index:-3;
+  background-image:url('/assets/hero-background-warm.webp');
+  background-position:66% center;
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+.hero-real__shade {
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background:
+    linear-gradient(90deg, rgba(245,246,242,.95) 0%, rgba(245,246,242,.92) 24%, rgba(245,246,242,.82) 39%, rgba(245,246,242,.56) 52%, rgba(245,246,242,.24) 63%, rgba(245,246,242,.08) 74%, rgba(245,246,242,.02) 86%),
+    linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 26%, rgba(10,18,15,.08) 100%);
+}
+.hero-real__layout {
+  position:relative;
+  min-height:740px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  padding-top:88px;
+  padding-bottom:118px;
+}
+.hero-real__copy {
+  width:min(100%, 640px);
+  flex:0 0 auto;
+  position:relative;
+  z-index:1;
+}
+.hero-real__eyebrow {
+  display:flex;
+  gap:13px;
+  align-items:center;
+  color:var(--hero-green);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.12em;
+  line-height:1.4;
+  margin:0 0 28px;
+  text-transform:uppercase;
+}
+.hero-real__eyebrow-mark {
+  width:28px;
+  height:2px;
+  background:var(--hero-green);
+  display:inline-block;
+  flex:none;
+}
+.hero-real h1 {
+  font-family:var(--display);
+  font-weight:800;
+  color:var(--hero-ink);
+  font-size:clamp(68px, 7vw, 102px);
+  letter-spacing:-.03em;
+  line-height:.96;
+  margin:0 0 24px;
+  max-width:700px;
+  text-wrap:balance;
+}
+.hero-real h1 span {display:block}
+.hero-real h1 .hero-real__accent {color:var(--hero-green)}
+.hero-real__intro {
+  margin:0;
+  max-width:540px;
+  color:var(--hero-copy);
+  font-size:clamp(18px, 1.5vw, 22px);
+  line-height:1.52;
+  font-weight:400;
+}
+.hero-real__actions {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin:34px 0 18px;
+}
+.hero-real__button,
+.hero-real__secondary {
+  font-family:var(--font);
+  font-size:15px;
+  font-weight:700;
+  min-height:56px;
+  padding:15px 20px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  text-decoration:none;
+  transition:transform .18s, background-color .18s, border-color .18s, color .18s;
+}
+.hero-real__button {
+  background:var(--hero-green);
+  color:#fff;
+}
+.hero-real__button:hover {
+  background:#144f38;
+  transform:translateY(-2px);
+}
+.hero-real__secondary {
+  border:1px solid rgba(16,24,21,.24);
+  background:rgba(255,255,255,.55);
+  color:var(--hero-ink);
+  backdrop-filter:blur(10px);
+}
+.hero-real__secondary:hover {
+  background:rgba(255,255,255,.82);
+  border-color:rgba(16,24,21,.45);
+  transform:translateY(-2px);
+}
+.hero-real__button:focus-visible,
+.hero-real__secondary:focus-visible {
+  outline:3px solid #fff;
+  outline-offset:4px;
+}
+.hero-real__availability {
+  color:#5b6862;
+  font-size:13px;
+  line-height:1.45;
+  margin:0;
+  max-width:560px;
+}
+.hero-real__visual-marker {
+  position:absolute;
+  right:0;
+  bottom:86px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:9px;
+  color:#24322d;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  text-shadow:0 1px 1px rgba(255,255,255,.35);
+}
+.hero-real__marker-rule {
+  height:3px;
+  width:42px;
+  background:var(--hero-green);
+}
+.hero-real__foot {
+  position:relative;
+  border-top:1px solid rgba(16,24,21,.12);
+  background:rgba(245,246,242,.82);
+  backdrop-filter:blur(8px);
+}
+.hero-real__foot-inner {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:22px;
+  padding-block:13px;
+  color:#44514b;
+  font-size:10px;
+  line-height:1.45;
+  font-weight:700;
+  letter-spacing:.09em;
+}
+.hero-real__foot-inner span:last-child {
+  text-align:right;
+  color:#5f6c66;
+  letter-spacing:.02em;
+  font-weight:500;
+}
+@media(max-width:1150px) {
+  .hero-real__layout {min-height:700px; padding-top:80px; padding-bottom:104px;}
+  .hero-real__copy {width:min(100%, 600px)}
+  .hero-real h1 {font-size:clamp(60px, 6.8vw, 88px)}
+  .hero-real__scene {background-position:70% center;}
+}
+@media(max-width:900px) {
+  .hero-real__layout {min-height:0; padding-top:70px; padding-bottom:92px;}
+  .hero-real__copy {width:min(100%, 580px)}
+  .hero-real__scene {background-position:74% center;}
+  .hero-real__shade {
+    background:
+      linear-gradient(180deg, rgba(245,246,242,.93) 0%, rgba(245,246,242,.89) 34%, rgba(245,246,242,.64) 54%, rgba(245,246,242,.30) 72%, rgba(245,246,242,.10) 100%),
+      linear-gradient(90deg, rgba(245,246,242,.92) 0%, rgba(245,246,242,.48) 36%, rgba(245,246,242,.18) 62%, rgba(245,246,242,.05) 100%);
+  }
+  .hero-real__visual-marker {display:none}
+}
+@media(max-width:640px) {
+  .hero-real__layout {padding-top:48px; padding-bottom:66px;}
+  .hero-real__eyebrow {font-size:10px; letter-spacing:.085em; margin-bottom:18px; gap:10px;}
+  .hero-real__eyebrow-mark {width:20px;}
+  .hero-real h1 {font-size:clamp(44px, 11.1vw, 62px); letter-spacing:-.025em; line-height:.98; margin-bottom:18px;}
+  .hero-real__intro {font-size:17px; line-height:1.5; max-width:460px;}
+  .hero-real__actions {display:grid; grid-template-columns:1fr; gap:10px; margin-top:26px; margin-bottom:17px; max-width:360px;}
+  .hero-real__button,
+  .hero-real__secondary {width:100%; min-height:52px; padding:13px 16px;}
+  .hero-real__availability {font-size:12px;}
+  .hero-real__scene {background-position:77% center;}
+  .hero-real__foot-inner {flex-direction:column; align-items:flex-start; gap:4px; font-size:9px;}
+  .hero-real__foot-inner span:last-child {text-align:left;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .hero-real__button,
+  .hero-real__secondary {transition:none}
+}
