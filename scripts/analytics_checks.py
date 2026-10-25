@@ -26,7 +26,7 @@ def source(route):
 
 def start(page, route, enable):
     page.set_content(source(route), wait_until='domcontentloaded')
-    for name in ['styles.css', 'campaign.css', 'focused.css', 'brand-refresh.css', 'hero.css']:
+    for name in ['styles.css', 'campaign.css', 'focused.css', 'brand-refresh.css', 'hero.css', 'application-handoff.css']:
         page.add_style_tag(content=(ROOT / name).read_text())
     page.add_script_tag(content=(ROOT / 'app.js').read_text())
     page.evaluate('''() => {
@@ -76,6 +76,11 @@ with sync_playwright() as p:
             assert events(page,'ym_comparison_changed')[-1]['properties']['mode']=='starting_over'
             page.locator('[data-compare-state="saved"]').click()
             assert events(page,'ym_comparison_changed')[-1]['properties']['mode']=='with_yourmove'
+            seen=events(page,'ym_comparison_both_states_seen')
+            assert len(seen)==1 and seen[0]['properties']['demo']=='application_handoff'
+            page.locator('[data-compare-state="blank"]').click()
+            page.locator('[data-compare-state="saved"]').click()
+            assert len(events(page,'ym_comparison_both_states_seen'))==1
             page.locator('.ym2-download-button').click()
             assert events(page,'ym_cta_clicked')[-1]['properties']['placement']=='final_section'
             assert events(page,'ym_section_viewed'), 'no sections observed'

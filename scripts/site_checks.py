@@ -57,6 +57,7 @@ with sync_playwright() as p:
             page.add_style_tag(content=(R/'focused.css').read_text())
             page.add_style_tag(content=(R/'brand-refresh.css').read_text())
             page.add_style_tag(content=(R/'hero.css').read_text())
+            page.add_style_tag(content=(R/'application-handoff.css').read_text())
             if route=='get-started':
                 page.add_style_tag(content=(R/'get-started.css').read_text())
             page.add_script_tag(content=(R/'app.js').read_text())
@@ -80,6 +81,14 @@ with sync_playwright() as p:
                 page.locator('[data-compare-state="saved"]').click()
                 assert 'ready to review' in page.locator('[data-answer-meta]').inner_text().lower()
                 assert page.locator('[data-compare-state="saved"]').get_attribute('aria-pressed')=='true'
+                assert page.locator('[data-demo-name]').inner_text()=='Taylor Kim'
+                assert 'Taylor_Kim_Resume.pdf' in page.locator('[data-demo-resume]').inner_text()
+                page.locator('[data-compare-state="blank"]').click()
+                assert page.locator('[data-demo-name]').inner_text()=='—'
+                assert 'No résumé selected' in page.locator('[data-demo-resume]').inner_text()
+                assert 'Another blank application' in page.locator('[data-context-title]').inner_text()
+                page.locator('[data-compare-state="saved"]').click()
+                assert 'From your saved work' in page.locator('[data-answer-badge]').inner_text()
             if route=='get-started':
                 assert 'CHECK' in page.locator('.gs-path-release h3').inner_text()
                 assert 'RELEASES' in page.locator('.gs-path-release h3').inner_text()
@@ -119,6 +128,7 @@ with sync_playwright() as p:
     pg.add_style_tag(content=(R/'focused.css').read_text())
     pg.add_style_tag(content=(R/'brand-refresh.css').read_text())
     pg.add_style_tag(content=(R/'hero.css').read_text())
+    pg.add_style_tag(content=(R/'application-handoff.css').read_text())
     assert pg.locator('.site-nav').is_visible(), 'mobile nav hidden without JS'
     pg.close()
     b.close()
