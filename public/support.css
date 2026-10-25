@@ -85,7 +85,7 @@ body[data-page="support"] h1,body[data-page="support"] h2,body[data-page="suppor
 /* Conversion details: real demonstration route, qualified beta, and share feedback. */
 .ys-example-link{display:inline-flex;align-items:center;justify-content:space-between;gap:15px;margin-top:16px;padding:12px 0;border-bottom:1px solid #4b689e;color:#203f75;font-size:13px;font-weight:800;text-decoration:none;letter-spacing:0}
 .ys-example-link:hover{color:#122e65;border-color:#122e65}
-.ys-milestone{margin-top:27px!important;padding:20px 0 0;border-top:1px solid #5c7566;font-size:14px!important;line-height:1.6!important;color:#c5d7c9!important}
+.ys-milestone{grid-column:1/-1;margin-top:27px!important;padding:20px 0 0;border-top:1px solid #5c7566;font-size:14px!important;line-height:1.6!important;color:#c5d7c9!important}
 .ys-milestone strong{color:#fff}
 .ys-milestone a{text-decoration:underline;text-underline-offset:4px;color:#e4f2e6}
 .ys-milestone a:hover{color:#fff}
