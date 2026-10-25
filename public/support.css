@@ -81,3 +81,15 @@ body[data-page="support"] h1,body[data-page="support"] h2,body[data-page="suppor
 @media(max-width:760px){.ys-rail{font-size:9px}.ys-rail span:last-child{display:none}.ys-hero-grid{padding:65px 0 85px}.ys-hero-copy h1{font-size:clamp(51px,11.2vw,86px);margin-bottom:33px}.ys-hero-copy .ys-lead{font-size:20px}.ys-card-main{padding:30px}.ys-origin,.ys-work,.ys-purpose,.ys-last{padding:75px 0 88px}.ys-origin-grid{padding-top:38px}.ys-origin h2,.ys-work-head h2,.ys-purpose h2,.ys-last h2{font-size:clamp(51px,10.5vw,78px)}.ys-origin-copy p{font-size:17px}.ys-form-art{padding:14px;transform:none;box-shadow:8px 8px 0 #dae2dc}.ys-form-paper{padding:22px}.ys-work-head{display:block;padding:35px 0}.ys-work-head p{font-size:17px;margin-top:23px}.ys-proof-grid{grid-template-columns:1fr}.ys-proof{min-height:220px}.ys-proof-index{margin-bottom:25px}.ys-proof strong{font-size:37px}.ys-purpose-grid,.ys-last-grid{grid-template-columns:1fr;gap:35px;padding-top:42px}.ys-purpose-items>div{grid-template-columns:32px 1fr}.ys-last-actions{max-width:580px}.ys-card-index{padding:17px;font-size:9px}.ys-card-fine{padding:16px 20px}}
 @media(max-width:370px){.ys-hero-copy h1{font-size:clamp(44px,10.9vw,51px)}.ys-origin h2,.ys-work-head h2,.ys-purpose h2,.ys-last h2{font-size:46px}.ys-form-top{font-size:8px}.ys-form-paper h3{font-size:29px}}
 @media(prefers-reduced-motion:reduce){.ys-proof{transition:none}}
+
+/* Conversion details: real demonstration route, qualified beta, and share feedback. */
+.ys-example-link{display:inline-flex;align-items:center;justify-content:space-between;gap:15px;margin-top:16px;padding:12px 0;border-bottom:1px solid #4b689e;color:#203f75;font-size:13px;font-weight:800;text-decoration:none;letter-spacing:0}
+.ys-example-link:hover{color:#122e65;border-color:#122e65}
+.ys-milestone{grid-column:1/-1;margin-top:27px!important;padding:20px 0 0;border-top:1px solid #5c7566;font-size:14px!important;line-height:1.6!important;color:#c5d7c9!important}
+.ys-milestone strong{color:#fff}
+.ys-milestone a{text-decoration:underline;text-underline-offset:4px;color:#e4f2e6}
+.ys-milestone a:hover{color:#fff}
+.ys-share-status{font-size:13px;color:#315e40;min-height:1em}
+.ys-last-share{color:#1b4a9a;font-weight:750}
+.ys-last-share:hover{color:#0d2e70}
+@media(max-width:760px){.ys-milestone{font-size:13px!important}.ys-example-link{font-size:12px;line-height:1.4}.ys-last h2{font-size:clamp(45px,9vw,66px)}}
