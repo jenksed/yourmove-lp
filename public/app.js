@@ -68,6 +68,7 @@
     ];
     function show(mode){
       const active=mode==='saved';
+      const previous=comparison.dataset.mode;
       comparison.dataset.mode=active?'saved':'blank';
       choices.forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.compareState===mode)));
       name.textContent=active?'Taylor Kim':'—';
@@ -91,6 +92,9 @@
       summary.textContent=active
         ?'A relevant saved answer and selected records are available to adapt and review.'
         :'A familiar question begins with an empty box. Again.';
+      if(previous!==comparison.dataset.mode){
+        document.dispatchEvent(new CustomEvent('ym:comparison-changed',{detail:{mode:active?'with_yourmove':'starting_over'}}));
+      }
     }
     choices.forEach((button,index)=>{
       button.addEventListener('click',()=>show(button.dataset.compareState));
