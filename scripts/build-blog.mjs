@@ -31,12 +31,13 @@ const dateDisplay = iso => new Intl.DateTimeFormat('en-US', {
 const imageURL = value => {
   if (typeof value !== 'string' || !value.trim()) return '';
   // Keep featured images on the site's own asset path.
-  return /^\/assets\/blog\/[a-zA-Z0-9_./%-]+\.(?:png|jpg|jpeg|webp|gif|avif)$/i.test(value) && !value.includes('..') ? value : '';
+  return /^\/assets\/blog\/[a-zA-Z0-9_./%-]+\.(?:png|jpg|jpeg|webp|gif|avif)$/i.test(value) && !value.includes('..') &&
+    fs.existsSync(path.join(root, 'public', value.slice(1))) ? value : '';
 };
-const base = (title, description, canonical, ogType, image) => '<!doctype html><html lang="en"><head>' +
+const base = (title, description, canonical, ogType, image, opts = {}) => '<!doctype html><html lang="en"><head>' +
   '<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
   '<meta name="theme-color" content="#f5f6f2">' +
-  '<title>' + esc(title) + ' · YourMove</title>' +
+  '<title>' + esc(opts.seoTitle || title) + ' · YourMove</title>' +
   '<meta name="description" content="' + esc(description) + '">' +
   '<link rel="canonical" href="' + esc(canonical) + '">' +
   '<meta property="og:type" content="' + esc(ogType) + '">' +
@@ -45,7 +46,12 @@ const base = (title, description, canonical, ogType, image) => '<!doctype html><
   '<meta property="og:description" content="' + esc(description) + '">' +
   '<meta property="og:url" content="' + esc(canonical) + '">' +
   '<meta property="og:image" content="https://yourmove.run' + esc(image || '/assets/og-platforms.webp') + '">' +
+  '<meta property="og:image:alt" content="' + esc(image ? opts.imageAlt || title : 'YourMove') + '">' +
+  (opts.date ? '<meta property="article:published_time" content="' + esc(opts.date) + '">' : '') +
   '<meta name="twitter:card" content="summary_large_image">' +
+  '<meta name="twitter:title" content="' + esc(title) + ' · YourMove">' +
+  '<meta name="twitter:description" content="' + esc(description) + '">' +
+  '<meta name="twitter:image" content="https://yourmove.run' + esc(image || '/assets/og-platforms.webp') + '">' +
   '<link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261025">' +
   '<link rel="preconnect" href="https://fonts.googleapis.com">' +
   '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
@@ -68,6 +74,8 @@ const posts = fs.readdirSync(contentDir).filter(f => f.endsWith('.md')).map(file
   const date = dateISO(data.date);
   if (!date) throw new Error('Invalid publication date in ' + file);
   return { slug, title: data.title.trim(), description: data.description.trim(), date,
+    seoTitle: typeof data.seo_title === 'string' ? data.seo_title.trim() : '',
+    imageAlt: typeof data.image_alt === 'string' ? data.image_alt.trim() : '',
     image: imageURL(data.image), body: item.content };
 }).filter(Boolean).sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
 
@@ -94,8 +102,18 @@ const index = base('The blog', 'Stories, product updates, and engineering notes 
 fs.writeFileSync(path.join(outputDir, 'index.html'), index);
 for (const p of posts) {
   const url = 'https://yourmove.run/blog/' + p.slug + '/';
-  const cover = p.image ? '<img class="ym-blog-cover" src="' + esc(p.image) + '" alt="">' : '';
-  const article = base(p.title, p.description, url, 'article', p.image) +
+  const cover = p.image ? '<img class="ym-blog-cover" src="' + esc(p.image) + '" alt="' + esc(p.imageAlt || p.title) + '">' : '';
+  const schema = {
+    '@context': 'https://schema.org', '@type': 'BlogPosting',
+    headline: p.title, description: p.description, datePublished: p.date,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    image: 'https://yourmove.run' + (p.image || '/assets/og-platforms.webp'),
+    author: { '@type': 'Person', name: 'Joshua Jenks' },
+    publisher: { '@type': 'Organization', name: 'YourMove', url: 'https://yourmove.run/' }
+  };
+  const article = base(p.title, p.description, url, 'article', p.image,
+    { seoTitle: p.seoTitle, imageAlt: p.imageAlt, date: p.date }) +
+    '<script type="application/ld+json">' + JSON.stringify(schema).replace(/</g, '\\u003c') + '</script>' +
     '<main id="main" class="ym-blog"><section class="ym-blog-article-head"><div class="shell">' +
     '<a class="ym-blog-back" href="/blog/">← All articles</a>' +
     '<div class="ym-post-date"><time datetime="' + esc(p.date) + '">' + esc(dateDisplay(p.date)) + '</time> · Joshua Jenks</div>' +
@@ -110,3 +128,28 @@ for (const p of posts) {
 }
 console.log('Blog built: ' + posts.length + ' published article(s), ' +
   fs.readdirSync(contentDir).filter(f => f.endsWith('.md')).length + ' total.');
+
+const sitemapEntries = [];
+function collectPublicPages(directory, route = '') {
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const fullPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) collectPublicPages(fullPath, route + '/' + entry.name);
+    else if (entry.isFile() && entry.name === 'index.html') {
+      const urlPath = (route || '') + '/';
+      const post = posts.find(p => urlPath === '/blog/' + p.slug + '/');
+      sitemapEntries.push({
+        loc: 'https://yourmove.run' + urlPath,
+        lastmod: post?.date
+      });
+    }
+  }
+}
+collectPublicPages(path.join(root, 'public'));
+const xml = '<?xml version="1.0" encoding="UTF-8"?>\\n' +
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\\n' +
+  sitemapEntries.sort((a, b) => a.loc.localeCompare(b.loc)).map(item =>
+    '  <url><loc>' + esc(item.loc) + '</loc>' +
+    (item.lastmod ? '<lastmod>' + item.lastmod + '</lastmod>' : '') + '</url>'
+  ).join('\\n') + '\\n</urlset>\\n';
+fs.writeFileSync(path.join(root, 'public/sitemap.xml'), xml);
+console.log('Sitemap generated: ' + sitemapEntries.length + ' URLs.');
