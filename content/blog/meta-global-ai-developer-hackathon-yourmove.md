@@ -7,6 +7,8 @@ description: I was accepted into Meta's 2026 Global AI Developer Hackathon.
 date: 2026-10-26
 published: true
 image: /assets/blog/yourmove-meta-hackathon-featured.webp
+image_alt: "*Ten days, a global AI hackathon, and a job application tool I'm
+  building because I got tired of applying for jobs.*"
 ---
 *Ten days, a global AI hackathon, and a job application tool I'm building because I got tired of applying for jobs.*
 
