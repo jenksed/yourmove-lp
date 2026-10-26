@@ -248,3 +248,29 @@ body[data-page="docs"] .doc-site-header .nav-annotation{display:none}
  .doc-avail-requirements{padding:22px}
 }
 @media(prefers-reduced-motion:reduce){.doc-choice,.doc-guide-card,.doc-symptoms summary b{transition:none}}
+
+
+/* Help-center answer discovery: answers stay beside the search that found them. */
+.doc-popular{display:flex;flex-wrap:wrap;align-items:center;gap:9px 12px;margin-top:16px}
+.doc-popular>span{font-size:12px;font-weight:650;color:#cfe9d3;flex-basis:100%}
+.doc-popular a{font-size:13px;line-height:1.35;color:#f0fff1;border:1px solid #82ab8c;border-radius:30px;padding:8px 11px;text-decoration:none}
+.doc-popular a:hover,.doc-popular a:focus-visible{background:#27583c;border-color:#b5e4b8}
+.doc-search-panel{margin-top:13px;background:#fffefa;color:#14271b;border:1px solid #acc9b1;border-radius:8px;box-shadow:0 12px 27px #061b1129;overflow:hidden}
+.doc-search-panel[hidden]{display:none}
+.doc-search-panel>p{margin:0;padding:13px 17px;font-size:13px;line-height:1.45;color:#46624e;background:#e9f2e7;border-bottom:1px solid #d3e1d1}
+.doc-search-panel ul{padding:5px 0;margin:0;list-style:none;max-height:295px;overflow-y:auto}
+.doc-search-panel li+li{border-top:1px solid #e5ebe2}
+.doc-search-panel li a{display:flex;flex-direction:column;gap:3px;padding:11px 17px;color:#133d2a}
+.doc-search-panel li a:hover,.doc-search-panel li a:focus-visible{background:#edf5eb}
+.doc-search-panel li span{font-size:10px;color:#376d4c;letter-spacing:.055em;font-weight:700;text-transform:uppercase}
+.doc-search-panel li strong{font-size:15px;line-height:1.3;font-weight:700}
+.doc-fix-heading>p{font-size:17px;max-width:800px;color:#4d6252;line-height:1.55}
+.doc-popular a:focus-visible,.doc-search-panel a:focus-visible,.doc-symptoms summary:focus-visible,.doc-footer a:focus-visible{outline:3px solid #62ae77;outline-offset:3px}
+.doc-note a{color:#075b40;text-decoration:underline}
+@media(max-width:640px){
+ .doc-popular a{font-size:12px;padding:7px 10px}
+ .doc-search-panel ul{max-height:245px}
+}
+
+.doc-symptom-answer .doc-resolution{margin-top:18px;padding:13px 16px;background:#eaf2e7;border-left:3px solid #207553;color:#254934}
+.doc-symptom-answer .doc-resolution strong{font-weight:750}
