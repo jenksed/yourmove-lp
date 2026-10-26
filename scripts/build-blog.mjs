@@ -115,7 +115,7 @@ const closer = '<section class="ym-journal-end" aria-labelledby="ym-journal-end-
   '<div class="ym-journal-end-links"><a class="ym-primary" href="/how-it-works/" data-analytics-cta="see_how_it_works" data-analytics-placement="blog_end">See how YourMove works <span aria-hidden="true">↗</span></a>' +
   '<a class="ym-secondary" href="/get-started/" data-analytics-cta="get_started" data-analytics-placement="blog_end">Get started</a></div></div></div></section>';
 const index = pageHead({
-  title:'YourMove Journal | Job Search, Product & Engineering',
+  title:'Job Search, Product & Engineering — The Journal',
   description:'Notes from behind YourMove: the job search, the engineering, product decisions, and what it takes to build a better application experience.',
   canonical:urlFor(''),
   schema:{"@context":"https://schema.org","@type":"Blog",name:"The YourMove Journal",url:urlFor(''),
