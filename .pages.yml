@@ -49,5 +49,4 @@ content:
         required: true
         options:
           format: markdown
-          media: true
           switcher: true
