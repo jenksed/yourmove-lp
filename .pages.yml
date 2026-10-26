@@ -23,6 +23,10 @@ content:
         label: Title
         type: string
         required: true
+      - name: seo_title
+        label: Search / social title (optional)
+        type: string
+        description: Overrides the page title in search and social previews.
       - name: description
         label: Summary / SEO description
         type: text
@@ -43,6 +47,9 @@ content:
       - name: image
         label: Featured image (optional)
         type: image
+      - name: image_alt
+        label: Featured image accessibility text
+        type: string
       - name: body
         label: Article
         type: rich-text
