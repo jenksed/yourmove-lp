@@ -68,7 +68,7 @@
       {title:"Find official releases and system requirements",kind:"Availability",href:"/docs/availability/",tags:"download install mac macos windows linux arm64 releases compatibility availability"}
     ];
     const stop=new Set(["a","an","and","are","at","can","cant","didnt","do","does","doesnt","for","how","i","im","in","is","isnt","it","me","my","not","of","on","or","the","to","was","what","where","why","will","wont","you"]);
-    const normalize=value=>value.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g,"");
+    const normalize=value=>value.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g,"").replace(/\b(didn't|doesn't|can't|won't|isn't|don't)\b/g," ");
     const words=value=>normalize(value).replace(/[^a-z0-9]+/g," ").trim().split(/\s+/).filter(term=>term.length>1&&!stop.has(term));
     const searchable=answers.map(answer=>({...answer,titleWords:words(answer.title),hay:words(answer.title+" "+answer.kind+" "+answer.tags).join(" ")}));
     let current=[];
@@ -113,6 +113,17 @@
       else list.querySelector("a")?.focus();
     });
   }
+  // A deep link to a troubleshooting symptom should reveal the answer itself.
+  function revealSymptom(){
+    const id=decodeURIComponent(location.hash.slice(1));
+    const target=id?document.getElementById(id):null;
+    if(target&&target.matches(".doc-symptoms details")){
+      target.open=true;
+      target.scrollIntoView({block:"start"});
+    }
+  }
+  window.addEventListener("hashchange",revealSymptom);
+  if(location.hash)revealSymptom();
   document.addEventListener("click",event=>{
     const anchor=event.target.closest("a[href]");
     if(!anchor)return;
