@@ -1,11 +1,13 @@
 ---
-title: "I Got Into the Meta Global AI Developer Hackathon. I'm Bringing YourMove."
+title: I Got Into the Meta Global AI Developer Hackathon. I'm Bringing YourMove.
 seo_title: "Meta Global AI Developer Hackathon: I'm Bringing YourMove"
-description: "I was accepted into Meta's 2026 Global AI Developer Hackathon. Here's how I'm exploring AI that helps job seekers capture and reuse real career evidence."
+description: I was accepted into Meta's 2026 Global AI Developer Hackathon.
+  Here's how I'm exploring AI that helps job seekers capture and reuse real
+  career evidence.
 date: 2026-10-26
 published: true
+image: /assets/blog/yourmove-meta-hackathon-featured.webp
 ---
-
 *Ten days, a global AI hackathon, and a job application tool I'm building because I got tired of applying for jobs.*
 
 I was accepted into the Indie Developer track of the **2026 Meta Global AI Developer Hackathon**, hosted by Meta and Cerebral Valley.
