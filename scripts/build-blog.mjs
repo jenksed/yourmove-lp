@@ -128,7 +128,7 @@ console.log('Blog built: ' + posts.length + ' published article(s), ' +
 // Crawlable sitemap for the static marketing pages and all published posts.
 const staticPaths = ['/', '/get-started/', '/how-it-works/', '/evidence/', '/manifesto/', '/review/', '/docs/', '/docs/first-application/', '/docs/troubleshooting/', '/docs/availability/', '/support/', '/blog/'];
 const urls = [...staticPaths.map(urlPath => ({ urlPath })), ...posts.map(p => ({ urlPath: '/blog/' + p.slug + '/', lastmod: p.date }))];
-const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\\n' +
-  urls.map(({urlPath,lastmod}) => '  <url><loc>https://yourmove.run' + urlPath + '</loc>' + (lastmod ? '<lastmod>' + lastmod + '</lastmod>' : '') + '</url>').join('\\n') + '\\n</urlset>\\n';
+const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+  urls.map(({urlPath,lastmod}) => '  <url><loc>https://yourmove.run' + urlPath + '</loc>' + (lastmod ? '<lastmod>' + lastmod + '</lastmod>' : '') + '</url>').join('\n') + '\n</urlset>\n';
 fs.writeFileSync(path.join(root, 'public/sitemap.xml'), sitemap);
-fs.writeFileSync(path.join(root, 'public/robots.txt'), 'User-agent: *\\nAllow: /\\nSitemap: https://yourmove.run/sitemap.xml\\n');
+fs.writeFileSync(path.join(root, 'public/robots.txt'), 'User-agent: *\nAllow: /\nSitemap: https://yourmove.run/sitemap.xml\n');
