@@ -1,0 +1,52 @@
+media:
+  input: public/assets/blog
+  output: /assets/blog
+  rename: safe
+  categories: [image]
+
+content:
+  - name: blog
+    label: Blog posts
+    type: collection
+    path: content/blog
+    format: yaml-frontmatter
+    filename: "{title}.md"
+    view:
+      fields: [title, published, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: description
+        label: Summary / SEO description
+        type: text
+        required: true
+        options:
+          maxlength: 240
+      - name: date
+        label: Publication date
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: published
+        label: Published on website
+        type: boolean
+        default: false
+        description: Leave unchecked to keep the article off the public site.
+      - name: image
+        label: Featured image (optional)
+        type: image
+      - name: body
+        label: Article
+        type: rich-text
+        required: true
+        options:
+          format: markdown
+          switcher: true

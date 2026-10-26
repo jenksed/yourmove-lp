@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "yourmove-marketing",
+  "version": "1.0.0",
+  "description": "Static YourMove site and build-time Markdown blog",
+  "scripts": {
+    "build": "node scripts/build-blog.mjs",
+    "check:blog": "node scripts/build-blog.mjs --check"
+  },
+  "dependencies": {
+    "gray-matter": "4.0.3",
+    "markdown-it": "14.1.0"
+  }
+}

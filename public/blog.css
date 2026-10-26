@@ -1,0 +1,46 @@
+/* YourMove blog: editorial styles scoped to blog pages. */
+.ym-blog{background:#f5f6f2;color:#18291e;min-height:65vh}
+.ym-blog a{color:inherit}
+.ym-blog-hero{background:#14241b;color:#f5f6f2;padding:clamp(64px,10vw,145px) 0 clamp(60px,8vw,110px);overflow:hidden;position:relative}
+.ym-blog-hero:after{content:"";position:absolute;width:45vw;height:45vw;right:-18vw;bottom:-30vw;border:1px solid rgba(133,185,141,.24);border-radius:50%;box-shadow:0 0 0 5vw rgba(113,163,118,.045),0 0 0 10vw rgba(113,163,118,.035);pointer-events:none}
+.ym-blog-hero .shell{position:relative;z-index:1}
+.ym-blog-hero h1{font-family:var(--display,"Jost",sans-serif);font-size:clamp(50px,7.4vw,105px);line-height:1.035;letter-spacing:-.045em;font-weight:800;max-width:1060px;margin:0}
+.ym-blog-hero h1 em{color:#91d9aa;font-style:normal}
+.ym-blog-hero p{font-size:clamp(18px,2vw,23px);line-height:1.55;color:#d4ded4;max-width:700px;margin:30px 0 0}
+.ym-blog-body{padding:clamp(50px,7vw,102px) 0 110px}
+.ym-blog-feature{border-top:2px solid #173f2a;padding-top:18px}
+.ym-blog-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:24px}
+.ym-post-card{min-width:0;border:1px solid #cbd6cb;background:#fff;text-decoration:none;display:flex;flex-direction:column;transition:transform .18s ease,border-color .18s ease}
+.ym-post-card:hover,.ym-post-card:focus-visible{transform:translateY(-3px);border-color:#24764d}
+.ym-post-cover{display:block;width:100%;aspect-ratio:16/8;object-fit:cover;background:#dde8dc}
+.ym-post-no-cover{aspect-ratio:16/8;background:linear-gradient(135deg,#0f3427,#207247);display:flex;align-items:flex-end;padding:26px;color:#d8f9df;font-size:clamp(26px,4vw,54px);line-height:1;font-weight:800;letter-spacing:-.05em}
+.ym-post-card-copy{padding:clamp(24px,3vw,38px);flex:1;display:flex;flex-direction:column;align-items:start}
+.ym-post-date{font-size:13px;letter-spacing:.025em;color:#53705c;font-weight:700}
+.ym-post-card h2{font-size:clamp(25px,3vw,39px);line-height:1.17;letter-spacing:-.02em;margin:14px 0 12px;color:#132d1d}
+.ym-post-card p{font-size:17px;line-height:1.58;color:#4b6252;margin:0 0 28px}
+.ym-read-link{margin-top:auto;font-weight:800;color:#096843}
+.ym-blog-empty{font-size:19px;color:#4b6252;padding:26px 0}
+.ym-blog-article-head{padding:clamp(58px,8vw,100px) 0 clamp(40px,5vw,65px);background:#14241b;color:#fff}
+.ym-blog-article-head .shell{max-width:1100px}
+.ym-blog-back{font-weight:700;color:#a7d9b8!important;text-decoration:none;display:inline-block;margin-bottom:42px}
+.ym-blog-article-head h1{font-size:clamp(45px,7vw,88px);line-height:1.08;letter-spacing:-.036em;max-width:1050px;margin:18px 0 26px;font-weight:800}
+.ym-blog-article-head .ym-blog-deck{font-size:clamp(19px,2.2vw,25px);line-height:1.5;max-width:800px;color:#d5e3d8;margin:0}
+.ym-blog-article-head .ym-post-date{color:#afd1ba}
+.ym-blog-article{max-width:800px;margin:0 auto;padding:clamp(48px,6vw,86px) 24px 100px}
+.ym-blog-article .ym-blog-cover{width:100%;height:auto;max-height:500px;object-fit:cover;margin:0 0 42px}
+.ym-prose{font-size:clamp(18px,1.6vw,20px);line-height:1.78;color:#23372b;overflow-wrap:break-word}
+.ym-prose p,.ym-prose ul,.ym-prose ol,.ym-prose blockquote{margin:0 0 1.45em}
+.ym-prose h2,.ym-prose h3{font-family:var(--display,"Jost",sans-serif);line-height:1.15;color:#173d29;letter-spacing:-.022em;margin:2em 0 .7em}
+.ym-prose h2{font-size:clamp(29px,3.6vw,40px)}
+.ym-prose h3{font-size:clamp(24px,3vw,31px)}
+.ym-prose a{color:#087249;text-decoration-thickness:1px;text-underline-offset:4px}
+.ym-prose blockquote{padding:4px 0 4px 26px;border-left:4px solid #399665;color:#3b5846}
+.ym-prose img{max-width:100%;height:auto}
+.ym-prose pre{max-width:100%;overflow:auto;background:#17251c;color:#eef7f0;padding:22px;font-size:15px;line-height:1.6}
+.ym-prose code{font-size:.86em;overflow-wrap:anywhere}
+.ym-prose :not(pre)>code{background:#e4eae3;padding:2px 4px}
+.ym-prose hr{border:0;border-top:1px solid #b7cbbd;margin:35px 0}
+.ym-blog-article-foot{border-top:1px solid #bfd0c2;padding-top:30px;margin-top:50px;font-weight:700}
+.ym-blog-article-foot a{color:#096843;text-decoration:none}
+@media(max-width:720px){.ym-blog-list{grid-template-columns:1fr}.ym-blog-body{padding-bottom:65px}.ym-blog-hero h1{font-size:clamp(43px,10vw,68px)}.ym-blog-article-head h1{font-size:clamp(42px,9vw,68px)}.ym-blog-hero{padding:70px 0}.ym-post-no-cover{aspect-ratio:16/7}}
+@media(prefers-reduced-motion:reduce){.ym-post-card{transition:none}}
