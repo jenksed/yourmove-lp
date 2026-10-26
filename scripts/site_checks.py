@@ -61,6 +61,8 @@ with sync_playwright() as p:
             page.add_style_tag(content=(R/'process-journey.css').read_text())
             if route=='get-started':
                 page.add_style_tag(content=(R/'get-started.css').read_text())
+            if route=='how-it-works':
+                page.add_style_tag(content=(R/'how-it-works.css').read_text())
             if route=='support':
                 page.add_style_tag(content=(R/'support.css').read_text())
             page.add_script_tag(content=(R/'app.js').read_text())
