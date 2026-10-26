@@ -46,32 +46,71 @@
   const search=document.querySelector("[data-doc-search]");
   if(search){
     const input=search.querySelector("input[type=search]");
-    const cards=[...document.querySelectorAll("[data-doc-guide]")];
-    const none=document.querySelector("[data-doc-no-results]");
-    const status=document.querySelector("[data-doc-result-status]");
-    const tokens=(str)=>str.toLowerCase().normalize("NFD").replaceAll("\u0301","").trim().split(" ").filter(Boolean);
-    function filter(){
-      const words=tokens(input.value);
-      let count=0;
-      cards.forEach(card=>{
-        const hay=tokens(card.textContent+" "+(card.dataset.docTags||"")).join(" ");
-        const show=words.every(w=>hay.includes(w));
-        card.hidden=!show;if(show)count++;
+    const panel=document.querySelector("[data-doc-search-panel]");
+    const list=panel.querySelector("[data-doc-search-results]");
+    const status=panel.querySelector("[data-doc-search-status]");
+    // Indexed answer destinations, not a search service. Query text stays in the browser.
+    const answers=[
+      {title:"My résumé didn't attach",kind:"Troubleshooting",href:"/docs/troubleshooting/#resume",tags:"resume cv attach attachment document upload pdf file missing failed"},
+      {title:"A field is blank",kind:"Troubleshooting",href:"/docs/troubleshooting/#field",tags:"blank empty missing answer transfer form autofill fill fields"},
+      {title:"My employer browser session closed",kind:"Troubleshooting",href:"/docs/troubleshooting/#session",tags:"session browser closed lost restart recover continue progress"},
+      {title:"The job details are wrong or missing",kind:"Troubleshooting",href:"/docs/troubleshooting/#posting",tags:"job posting company title URL metadata import information wrong"},
+      {title:"My contact details won't fill",kind:"Troubleshooting",href:"/docs/troubleshooting/#profile",tags:"profile approve candidate name email phone contact facts"},
+      {title:"YourMove can't fill this employer form",kind:"Troubleshooting",href:"/docs/troubleshooting/#unsupported",tags:"unsupported ATS website application platform not working automate"},
+      {title:"Did my application actually submit?",kind:"Troubleshooting",href:"/docs/troubleshooting/#confirmation",tags:"submitted confirmation accepted receipt email sent finished duplicate applied"},
+      {title:"Walk through your first application",kind:"First application",href:"/docs/first-application/",tags:"start beginner getting started first steps tutorial learn"},
+      {title:"Save or import job links",kind:"First application",href:"/docs/first-application/#job-links",tags:"import urls batch multiple 50 opportunity add job posting"},
+      {title:"Choose the right résumé",kind:"First application",href:"/docs/first-application/#resume",tags:"document pdf docx choose select save resume upload"},
+      {title:"Prepare your candidate profile and answers",kind:"First application",href:"/docs/first-application/#profile",tags:"profile answers experience approval facts cover letter"},
+      {title:"Inspect and fill an employer application",kind:"First application",href:"/docs/first-application/#form",tags:"browser inspect fill prepare transfer review employer"},
+      {title:"Submit the application yourself",kind:"First application",href:"/docs/first-application/#finish",tags:"submit finish employer final say confirmation review autosubmit automatically"},
+      {title:"Record a completed application",kind:"First application",href:"/docs/first-application/#record",tags:"history completed outcome local record submitted status"},
+      {title:"Find official releases and system requirements",kind:"Availability",href:"/docs/availability/",tags:"download install mac macos windows linux arm64 releases compatibility availability"}
+    ];
+    const stop=new Set(["a","an","and","are","at","can","cant","didnt","do","does","doesnt","for","how","i","im","in","is","isnt","it","me","my","not","of","on","or","the","to","was","what","where","why","will","wont","you"]);
+    const normalize=value=>value.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g,"");
+    const words=value=>normalize(value).replace(/[^a-z0-9]+/g," ").trim().split(/\s+/).filter(term=>term.length>1&&!stop.has(term));
+    const searchable=answers.map(answer=>({...answer,titleWords:words(answer.title),hay:words(answer.title+" "+answer.kind+" "+answer.tags).join(" ")}));
+    let current=[];
+    function render(){
+      const query=input.value.trim();
+      const terms=words(query);
+      current=query&&terms.length?searchable.map(answer=>{
+        if(!terms.every(term=>answer.hay.includes(term)))return {answer,score:0};
+        const score=terms.filter(term=>answer.titleWords.some(w=>w.includes(term))).length*3+1;
+        return {answer,score};
+      }).filter(item=>item.score>0).sort((a,b)=>b.score-a.score).slice(0,6):[];
+      panel.hidden=!query;
+      input.setAttribute("aria-expanded",String(Boolean(query)));
+      list.replaceChildren();
+      if(!query){status.textContent="";return;}
+      status.textContent=current.length?current.length+" suggested "+(current.length===1?"answer":"answers")+" · Choose one to go straight to the relevant step.":"No direct match. Try a shorter phrase or use troubleshooting below.";
+      current.forEach(({answer})=>{
+        const li=document.createElement("li"),a=document.createElement("a");
+        a.href=answer.href;
+        a.dataset.docSearchResult=answer.kind.toLowerCase().replaceAll(" ","_");
+        const kind=document.createElement("span"),title=document.createElement("strong");
+        kind.textContent=answer.kind;title.textContent=answer.title;
+        a.append(kind,title);li.append(a);list.append(li);
       });
-      if(none)none.hidden=count!==0;
-      if(status)status.textContent=count+" "+(count===1?"guide":"guides");
-      return count;
+      if(!current.length){
+        const li=document.createElement("li"),a=document.createElement("a");
+        a.href="/docs/troubleshooting/#report";a.textContent="How to report a problem";
+        li.append(a);list.append(li);
+      }
     }
-    input.addEventListener("input",filter);
-    input.addEventListener("change",()=>{
-      const count=filter();
-      const bucket=count===0?"zero":count===1?"one":count<=3?"two_three":"four_plus";
-      analytics("ym_docs_search_used",{result_bucket:bucket,category:"all"});
+    input.addEventListener("input",render);
+    input.addEventListener("keydown",event=>{
+      if(event.key==="Escape"&&!panel.hidden){input.value="";render();}
+      else if(event.key==="ArrowDown"&&!panel.hidden){event.preventDefault();list.querySelector("a")?.focus();}
     });
-    search.addEventListener("submit",e=>{
-      e.preventDefault();filter();
-      const first=cards.find(card=>!card.hidden);
-      if(first)first.focus();else if(none)none.scrollIntoView({block:"nearest"});
+    search.addEventListener("submit",event=>{
+      event.preventDefault();render();
+      const bucket=current.length===0?"zero":current.length===1?"one":current.length<=3?"two_three":"four_plus";
+      analytics("ym_docs_search_used",{result_bucket:bucket,category:"all"});
+      if(current.length)location.assign(current[0].answer.href);
+      else if(!input.value.trim())document.querySelector("#doc-results")?.scrollIntoView({block:"start"});
+      else list.querySelector("a")?.focus();
     });
   }
   document.addEventListener("click",event=>{
@@ -79,6 +118,7 @@
     if(!anchor)return;
     const guide=anchor.closest("[data-doc-guide]");
     if(guide)analytics("ym_docs_task_next_clicked",{destination_kind:"guide",article_id:guide.getAttribute("href").split("/").filter(Boolean).pop()||"unknown"});
+    if(anchor.matches("[data-doc-search-result]"))analytics("ym_docs_task_next_clicked",{destination_kind:"search_result",article_id:anchor.dataset.docSearchResult});
     if(anchor.href.startsWith("mailto:support@yourmove.run"))analytics("ym_docs_support_clicked",{issue_category:"general",article_id:page||"unknown"});
   });
 })();
