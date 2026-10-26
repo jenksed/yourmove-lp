@@ -75,7 +75,7 @@ with sync_playwright() as pw:
     page=context.new_page()
     page.set_content(local_html('index.html'), wait_until='load')
     assert page.locator('.announcement.ym-release-announcement').count() == 0
-    assert 'MADE FOR THE REAL WORK OF APPLYING.' in page.locator('.announcement').inner_text()
+    assert 'OPEN SOURCE · BUILT FOR JOB SEEKERS' in page.locator('.announcement').inner_text()
     context.close()
     print('PASS Nov 5, release day and automatic expiry Nov 7.')
     context = setup_context(browser, datetime(2026, 10, 25, 16, 0, tzinfo=timezone.utc))
@@ -83,7 +83,7 @@ with sync_playwright() as pw:
     disabled = local_html('index.html').replace('enabled: true,', 'enabled: false,')
     page.set_content(disabled, wait_until='load')
     assert page.locator('.announcement.ym-release-announcement').count() == 0
-    assert 'MADE FOR THE REAL WORK OF APPLYING.' in page.locator('.announcement').inner_text()
+    assert 'OPEN SOURCE · BUILT FOR JOB SEEKERS' in page.locator('.announcement').inner_text()
     context.close()
     print('PASS disabling release config restores the original announcement.')
     browser.close()
