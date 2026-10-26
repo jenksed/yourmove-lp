@@ -63,11 +63,11 @@
       {title:"Choose the right résumé",kind:"First application",href:"/docs/first-application/#resume",tags:"document pdf docx choose select save resume upload"},
       {title:"Prepare your candidate profile and answers",kind:"First application",href:"/docs/first-application/#profile",tags:"profile answers experience approval facts cover letter"},
       {title:"Inspect and fill an employer application",kind:"First application",href:"/docs/first-application/#form",tags:"browser inspect fill prepare transfer review employer"},
-      {title:"Submit the application yourself",kind:"First application",href:"/docs/first-application/#finish",tags:"submit finish employer final say confirmation review autosubmit automatically"},
+      {title:"Submit the application yourself",kind:"First application",href:"/docs/first-application/#finish",tags:"job submit finish employer final say confirmation review autosubmit automatically"},
       {title:"Record a completed application",kind:"First application",href:"/docs/first-application/#record",tags:"history completed outcome local record submitted status"},
       {title:"Find official releases and system requirements",kind:"Availability",href:"/docs/availability/",tags:"today ready now use supported download install mac macos windows linux arm64 releases compatibility availability"}
     ];
-    const stop=new Set(["yourmove","app","a","an","and","are","at","can","cant","didnt","do","does","doesnt","for","how","i","im","in","is","isnt","it","me","my","not","of","on","or","the","to","was","what","where","why","will","wont","you"]);
+    const stop=new Set(["yourmove","app","need","want","please","help","with","using","trying","try","a","an","and","are","at","can","cant","didnt","do","does","doesnt","for","how","i","im","in","is","isnt","it","me","my","not","of","on","or","the","to","was","what","where","why","will","wont","you"]);
     const normalize=value=>value.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g,"").replace(/\b(didn't|doesn't|can't|won't|isn't|don't)\b/g," ");
     const words=value=>normalize(value).replace(/[^a-z0-9]+/g," ").trim().split(/\s+/).filter(term=>term.length>1&&!stop.has(term));
     const searchable=answers.map(answer=>({...answer,titleWords:words(answer.title),hay:words(answer.title+" "+answer.kind+" "+answer.tags).join(" ")}));
