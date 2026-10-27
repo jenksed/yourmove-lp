@@ -3,6 +3,8 @@ title: "Why I'm building YourMove"
 description: "The job application process kept asking me to repeat work I'd already done. This is why I'm building a different approach."
 date: 2026-10-26
 published: true
+featured: true
+pull_quote: "The effort doesn’t carry over. The next application starts from scratch."
 ---
 
 I'm building YourMove because looking for work has a strange way of becoming its own full-time job.
@@ -17,9 +19,9 @@ I've spent years working in technical support, web operations, and software proj
 
 YourMove is meant to give that work a place to live.
 
-Keep track of opportunities. Keep the documents and answers that matter. Build a record of actual experience that you can return to instead of inventing a new version of yourself for every application.
+Keep track of opportunities. Keep the documents and answers that matter. Build a [record of actual experience](/evidence/) that you can return to instead of inventing a new version of yourself for every application.
 
-When an employer form is supported, YourMove can help prepare it. You still review the information, correct what needs correcting, and submit the application yourself.
+When an employer form is supported, [YourMove can help prepare it](/how-it-works/). You still review the information, correct what needs correcting, and submit the application yourself.
 
 I'm not trying to build a tool that fires off hundreds of applications without reading them. I'm trying to make the applications you choose less wasteful.
 

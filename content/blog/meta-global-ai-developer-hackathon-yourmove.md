@@ -8,14 +8,14 @@ date: 2026-10-26
 published: true
 image: /assets/blog/yourmove-meta-hackathon-featured.webp
 social_image: /assets/identity/yourmove-og-hackathon.png
-image_alt: "*Ten days, a global AI hackathon, and a job application tool I'm
-  building because I got tired of applying for jobs.*"
+image_alt: "Announcement artwork: YourMove accepted into the Indie Developer track of the Meta Global AI Developer Hackathon."
+image_caption: "Original hackathon announcement artwork. An illustration, not a product screenshot."
 ---
 *Ten days, a global AI hackathon, and a job application tool I'm building because I got tired of applying for jobs.*
 
 I was accepted into the Indie Developer track of the **2026 Meta Global AI Developer Hackathon**, hosted by Meta and Cerebral Valley.
 
-I'm bringing [YourMove](https://www.yourmove.run/), the free, open-source, local-first job application tool I've been building while looking for work myself.
+I'm bringing [YourMove](/), the free, open-source, local-first job application tool I've been building while looking for work myself.
 
 That's a pretty cool sentence to get to write.
 
@@ -47,7 +47,7 @@ You review the answers. You make the corrections. You submit on the employer's w
 
 I'm building the kind of tool I wish I'd had when I started looking for work.
 
-You can see more of the actual workflow on the [How YourMove Works](https://www.yourmove.run/how-it-works/) page.
+You can see more of the actual workflow on the [How YourMove Works](/how-it-works/) page.
 
 ## I don't want AI applying to hundreds of jobs for people.
 
@@ -79,7 +79,7 @@ One of the hackathon's themes is called *Build for Your World*. The idea is to s
 
 Well, I certainly know this one.
 
-For the hackathon, I want to push YourMove further in an area I've been calling **career evidence**.
+For the hackathon, I want to push YourMove further in an area I've been calling **[career evidence](/evidence/)**.
 
 Here's what I mean.
 
@@ -131,7 +131,7 @@ Over the next ten days, I'll share some of the experiments, the decisions, and p
 
 If you're looking for work yourself, or you're a developer interested in building AI tools that leave people in control, you're welcome to follow along.
 
-You can explore the project at [yourmove.run](https://www.yourmove.run/). The source code is available through GitHub, and I'm working toward the first public desktop release in November.
+You can explore the project at [yourmove.run](/). The [source code is available through GitHub](https://github.com/jenksed/yourmove-go), and I'm working toward the first public desktop release in November.
 
 The goal hasn't changed.
 

@@ -61,6 +61,10 @@ Open Graph and Twitter image metadata use the approved Green Signature B cards u
 - `public/assets/identity/`: approved Green Signature B navigation logos, icons, and social cards. The original `logo-official.png` remains the raster provenance source, not live site branding.
 - `IDENTITY_WAVE_2.md`: approved identity, source limitations, optional export commands, and verification.
 - `HOMEPAGE_WAVE_4.md`: homepage decisions, screenshot links, verification, and deferred work.
+- `JOURNAL_WAVE_6.md`: editorial direction, before/after screenshots, publishing fields, verification, and limitations.
+- `public/blog.css`, `public/blog.js`, `scripts/build-blog.mjs`: Journal and shared Markdown article template; generated `public/blog/`, RSS, sitemap, and robots files are build output.
+- `public/manifesto.css`: companion Manifesto presentation.
+- `scripts/blog_checks.mjs`, `scripts/journal_checks.py`: isolated publishing safeguards and served editorial acceptance checks.
 - `PRODUCT_DISCOVERY_WAVE_5.md`: three-page visitor journey, authentic capture provenance, responsive review, verification, and the November 6 release switch.
 - `public/product-discovery.css`, `public/product-discovery.js`: scoped supporting-page reading rhythm and illustrative supported/manual form comparison.
 - `public/evidence.css`, `public/how-it-works.css`, `public/get-started.css`: page-owned Wave 5 compositions.
@@ -84,3 +88,7 @@ Content and artwork licensing are **not specified** by this repository. Do not a
 ## Release announcement
 
 A reusable release announcement is configured in **`public/release-config.js`**. Set `enabled: false` to restore the normal announcement everywhere, or change the date and copy to describe a planned release. See [RELEASE_BANNER.md](RELEASE_BANNER.md) for details and browser checks. For the verified official-release transition, fill `published` in that same configuration and run `npm run build`; see [Wave 5 launch instructions](PRODUCT_DISCOVERY_WAVE_5.md#november-6-launch-transition). A planned date never enables a download.
+
+## Journal publishing
+
+Edit `content/blog/*.md` or use the existing Pages CMS form, then run `npm run build`. Existing slugs and required frontmatter remain unchanged. Optional `featured: true` chooses the lead story; keep one selected. Without a selection, the latest published article leads. `pull_quote` supplies an exact excerpt for an image-free lead; `image_caption` supplies escaped plain text below the article cover. Both are optional. Additional articles inherit the reading template and chronological list automatically. See [Wave 6](JOURNAL_WAVE_6.md) for the full workflow and checks.

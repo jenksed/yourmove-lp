@@ -1,0 +1,44 @@
+/* A companion essay: the same publication, with room for a reasonable objection. */
+.manifesto-editorial {color:var(--color-text);background:var(--color-bg)}
+.manifesto-shell {width:min(1120px,100% - 64px);margin-inline:auto}
+.manifesto-editorial a {color:var(--color-action);text-decoration:underline;text-underline-offset:.2em}
+.manifesto-editorial :focus-visible {outline:3px solid var(--color-focus);outline-offset:5px}
+.manifesto-opening {background:var(--color-dark);color:var(--color-dark-text);padding:30px 0 68px}
+.manifesto-masthead {display:flex;justify-content:space-between;gap:24px;border-bottom:1px solid var(--color-dark-border);padding-bottom:24px;font-size:15px}
+.manifesto-masthead p {margin:0}
+.manifesto-masthead a {color:var(--color-dark-action)}
+.manifesto-opening :focus-visible {outline-color:var(--color-dark-action)}
+.manifesto-thesis {display:grid;grid-template-columns:1.4fr .6fr;gap:80px;align-items:end;padding-top:52px}
+.manifesto-thesis h1 {font-size:clamp(64px,7.8vw,112px);font-weight:500;line-height:1.02;letter-spacing:-.055em;max-width:10ch;margin:0;color:inherit}
+.manifesto-thesis h1 em {font-weight:400;font-style:normal;color:var(--color-dark-muted)}
+.manifesto-thesis p {font-size:23px;line-height:1.5;color:var(--color-dark-text);margin:0 0 6px}
+.manifesto-argument {display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:start;padding:72px 0 48px}
+.manifesto-argument h2 {font-size:clamp(32px,3.2vw,46px);font-weight:500;line-height:1.14;letter-spacing:-.03em;margin:0;text-wrap:balance}
+.manifesto-argument h2 span {color:var(--color-muted)}
+.manifesto-argument p {font-size:21px;line-height:1.65;margin:0}
+.manifesto-satire {margin:0}
+.manifesto-satire img {width:100%;height:auto}
+.manifesto-satire figcaption {font-size:15px;line-height:1.6;color:var(--color-muted);max-width:85ch;margin:18px 0 0}
+.manifesto-satire figcaption strong {font-weight:500;color:var(--color-text)}
+.manifesto-response {max-width:680px;margin-inline:auto;padding:64px 0 72px;font-size:21px;line-height:1.7}
+.manifesto-response h2 {font-size:36px;line-height:1.2;font-weight:500;letter-spacing:-.035em;margin:0 0 28px}
+.manifesto-response p {line-height:inherit;margin:0 0 1.25em}
+.manifesto-response .manifesto-postscript {font-size:17px;line-height:1.6;padding-top:28px;margin-top:32px;border-top:1px solid var(--color-border)}
+@media(max-width:900px) {
+ .manifesto-thesis {grid-template-columns:1fr;gap:30px;padding-top:38px}
+ .manifesto-thesis p {max-width:35ch}
+ .manifesto-argument {gap:36px}
+}
+@media(max-width:600px) {
+ .manifesto-shell {width:calc(100% - 40px)}
+ .manifesto-opening {padding:24px 0 40px}
+ .manifesto-masthead {font-size:14px;gap:18px;align-items:start}
+ .manifesto-thesis h1 {font-size:clamp(60px,13vw,78px)}
+ .manifesto-thesis p {font-size:21px}
+ .manifesto-argument {grid-template-columns:1fr;gap:28px;padding:40px 0 32px}
+ .manifesto-argument h2 {font-size:34px;max-width:18ch}
+ .manifesto-argument p,.manifesto-response {font-size:19px}
+ .manifesto-satire figcaption {font-size:14px}
+ .manifesto-response {padding:42px 0 40px}
+ .manifesto-response h2 {font-size:30px}
+}

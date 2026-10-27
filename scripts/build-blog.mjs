@@ -33,7 +33,7 @@ const origin = 'https://www.yourmove.run';
 const urlFor = slug => origin + '/blog/' + (slug ? slug + '/' : '');
 const isoTime = date => date + 'T12:00:00Z';
 const jsonLd = value => JSON.stringify(value).replace(/</g, '\\u003c');
-const pageHead = ({title, description, canonical, ogType='website', image='', schema=null}) =>
+const pageHead = ({title, description, canonical, ogType='website', image='', published='', schema=null}) =>
   '<!doctype html><html lang="en"><head>' +
   '<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
   '<meta name="theme-color" content="#f5f4f1">' +
@@ -42,6 +42,7 @@ const pageHead = ({title, description, canonical, ogType='website', image='', sc
   '<link rel="canonical" href="' + esc(canonical) + '">' +
   '<link rel="alternate" type="application/rss+xml" title="YourMove Journal" href="/feed.xml">' +
   '<meta property="og:type" content="' + esc(ogType) + '">' +
+  (published ? '<meta property="article:published_time" content="' + esc(isoTime(published)) + '"><meta name="author" content="Joshua Jenks">' : '') +
   '<meta property="og:site_name" content="YourMove">' +
   '<meta property="og:title" content="' + esc(title) + ' · YourMove">' +
   '<meta property="og:description" content="' + esc(description) + '">' +
@@ -55,7 +56,7 @@ const pageHead = ({title, description, canonical, ogType='website', image='', sc
   '<link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261027b"><link rel="icon" type="image/png" sizes="16x16" href="/assets/identity/favicon-16.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/identity/favicon-32.png"><link rel="icon" type="image/svg+xml" href="/assets/identity/favicon.svg?v=20261027b"><link rel="apple-touch-icon" sizes="180x180" href="/assets/identity/apple-touch-icon.png">' +
   '<link rel="preconnect" href="https://fonts.googleapis.com">' +
   '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
-  '<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">' +
+  '<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">' +
   '<link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/campaign.css">' +
   '<link rel="stylesheet" href="/focused.css"><link rel="stylesheet" href="/brand-refresh.css">' +
   '<link rel="stylesheet" href="/blog.css"><link rel="stylesheet" href="/release-banner.css"><link rel="stylesheet" href="/site-layout.css">' +
@@ -79,66 +80,45 @@ const posts = fs.readdirSync(contentDir).filter(f => f.endsWith('.md')).map(file
   return {
     slug, date, title:data.title.trim(), seoTitle:typeof data.seo_title==='string' ? data.seo_title.trim() : '',
     description:data.description.trim(), image:imageURL(data.image), socialImage:imageURL(data.social_image),
-    imageAlt:typeof data.image_alt==='string' ? data.image_alt.trim() : '', body:item.content
+    imageAlt:typeof data.image_alt==='string' ? data.image_alt.trim() : '',
+    imageCaption:typeof data.image_caption==='string' ? data.image_caption.trim() : '',
+    featured:data.featured === true,
+    pullQuote:typeof data.pull_quote==='string' ? data.pull_quote.trim() : '', body:item.content
   };
 }).filter(Boolean).sort((a,b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
 const pubDate = post => '<time datetime="' + esc(post.date) + '">' + esc(dateDisplay(post.date)) + '</time>';
-const visual = post => post.image
-  ? '<div class="ym-feature-art"><img src="' + esc(post.image) + '" alt="' + esc(post.imageAlt) + '"></div>'
-  : '<div class="ym-feature-art ym-feature-art--drawing" aria-hidden="true">' +
-      '<div class="ym-paper ym-paper--back"></div><div class="ym-paper ym-paper--front">' +
-      '<span class="ym-paper-head"></span>' +
-      '<span class="ym-paper-line"></span><span class="ym-paper-line"></span>' +
-      '<span class="ym-paper-line"></span><span class="ym-paper-line"></span>' +
-      '<span class="ym-paper-line"></span><span class="ym-paper-check">✓</span></div></div>';
-const feature = post =>
-  '<a class="ym-feature" href="/blog/' + esc(post.slug) + '/">' +
-  '<div class="ym-feature-copy"><span class="ym-feature-label">Featured story · ' + pubDate(post) + '</span>' +
-  '<h2>' + esc(post.title) + '</h2><p class="ym-feature-summary">' + esc(post.description) + '</p>' +
-  '<span class="ym-feature-link">Read the story <span aria-hidden="true">↗</span></span></div>' +
-  visual(post) + '</a>';
-const card = post =>
-  '<a class="ym-post-card" href="/blog/' + esc(post.slug) + '/">' +
-  (post.image
-    ? '<span class="ym-post-media"><img src="' + esc(post.image) + '" alt="' + esc(post.imageAlt) + '" loading="lazy"></span>'
-    : '<span class="ym-post-media ym-post-media--graphic" aria-hidden="true"></span>') +
-  '<div class="ym-post-card-copy"><span class="ym-post-meta">' + pubDate(post) + '</span>' +
-  '<h3>' + esc(post.title) + '</h3><p>' + esc(post.description) + '</p>' +
-  '<span class="ym-post-link">Read article <span aria-hidden="true">↗</span></span></div></a>';
-const note = '<section class="ym-journal-note" aria-labelledby="ym-journal-note-title"><div class="shell ym-journal-note-grid">' +
-  '<div><span class="ym-journal-label">From the builder</span><h2 id="ym-journal-note-title">BUILDING IN THE OPEN.</h2></div>' +
-  '<div class="ym-journal-note-copy"><p>I started YourMove while looking for work myself. Here I write about the problem, the decisions behind the software, and what happens when those decisions meet real applications.</p>' +
-  '<p>I’m Joshua Jenks, and this is an independent, open-source project. You can <a href="/support/">read why I’m building it</a> or <a href="https://github.com/jenksed/yourmove-go" target="_blank" rel="noopener noreferrer">inspect the code</a>.</p></div></div></section>';
-const closer = '<section class="ym-journal-end" aria-labelledby="ym-journal-end-title"><div class="shell ym-journal-end-grid">' +
-  '<div><span class="ym-journal-label">Explore the project</span><h2 id="ym-journal-end-title">SEE WHAT WE’RE BUILDING.</h2></div>' +
-  '<div><p>YourMove helps job seekers keep their work, prepare supported applications, and make the final call themselves.</p>' +
-  '<div class="ym-journal-end-links"><a class="ym-primary" href="/how-it-works/" data-analytics-cta="see_how_it_works" data-analytics-placement="blog_end">See how YourMove works <span aria-hidden="true">↗</span></a>' +
-  '<a class="ym-secondary" href="/get-started/" data-analytics-cta="get_started" data-analytics-placement="blog_end">Get started</a></div></div></div></section>';
+// An explicit editorial choice wins; new articles otherwise remain in date order.
+const lead = posts.find(post => post.featured) || posts[0];
+const byline = post => '<p class="ym-post-meta">Joshua Jenks <span aria-hidden="true">·</span> ' + pubDate(post) + '</p>';
+const postLink = post => '/blog/' + esc(post.slug) + '/';
+const story = post =>
+  '<article class="ym-story">' +
+  (post.image ? '<a class="ym-story-image" href="' + postLink(post) + '" tabindex="-1" aria-hidden="true"><img src="' + esc(post.image) + '" alt="" loading="lazy"></a>' : '') +
+  '<div class="ym-story-copy">' + byline(post) + '<h3><a href="' + postLink(post) + '">' + esc(post.title) + '</a></h3>' +
+  '<p>' + esc(post.description) + '</p></div></article>';
 const index = pageHead({
-  title:'Job Search, Product & Engineering — The Journal',
-  description:'Notes from behind YourMove: the job search, the engineering, product decisions, and what it takes to build a better application experience.',
+  title:'The Journal — Building YourMove',
+  description:'Writing by Joshua Jenks about looking for work, building YourMove, and the engineering decisions behind an independent, open-source project.',
   canonical:urlFor(''),
   schema:{"@context":"https://schema.org","@type":"Blog",name:"The YourMove Journal",url:urlFor(''),
     description:"Stories about building YourMove, an open-source job application tool."}
 }) +
-  '<main id="main" class="ym-blog">' +
-  '<section class="ym-journal-hero" aria-labelledby="ym-journal-title"><div class="shell">' +
-  '<div class="ym-journal-heading"><div><span class="ym-journal-label">The YourMove Journal</span>' +
-  '<h1 id="ym-journal-title">THERE’S MORE<br>TO <em>THE STORY.</em></h1></div>' +
-  '<div class="ym-journal-intro"><p>The job search. The software. The decisions, setbacks, and progress behind YourMove.</p>' +
-  '<a href="#stories">Read the stories <span aria-hidden="true">↓</span></a></div></div>' +
-  '<div class="ym-journal-hero-foot"><span>PRODUCT · ENGINEERING · JOB SEARCH</span>' +
-  '<span>INDEPENDENTLY BUILT. OPEN SOURCE.</span></div></div></section>' +
-  '<section id="stories" class="ym-feature-section" aria-labelledby="ym-feature-title"><div class="shell">' +
-  '<div class="ym-section-heading"><h2 id="ym-feature-title">Start here</h2><span>Stories from the project</span></div>' +
-  (posts.length ? feature(posts[0]) : '<p>No articles published yet. The first story is coming soon.</p>') +
-  '</div></section>' +
-  (posts.length > 1
-    ? '<section class="ym-journal-latest" aria-labelledby="ym-latest-title"><div class="shell">' +
-      '<div class="ym-section-heading"><h2 id="ym-latest-title">More from the journal</h2></div>' +
-      '<div class="ym-post-grid">' + posts.slice(1).map(card).join('') + '</div></div></section>'
-    : '') +
-  note + closer + pageEnd;
+  '<main id="main" class="ym-blog"><div class="ym-journal-shell">' +
+  '<header class="ym-journal-masthead"><h1>The Journal.</h1><div><p>Looking for work.<br> Building something useful along the way.</p>' +
+  '<p class="ym-journal-credit">Writing by Joshua Jenks <span aria-hidden="true">·</span> <a href="/feed.xml">RSS</a></p></div></header>' +
+  (lead ? '<section id="stories" class="ym-lead-story" aria-labelledby="lead-story-title"><div>' +
+    '<p class="ym-reading-note">' + (lead.featured ? 'A place to begin' : 'Latest story') + '</p>' +
+    '<h2 id="lead-story-title"><a href="' + postLink(lead) + '">' + esc(lead.title) + '</a></h2>' +
+    '<p class="ym-lead-summary">' + esc(lead.description) + '</p>' + byline(lead) +
+    '<a class="ym-read-link" href="' + postLink(lead) + '">Read the story</a></div>' +
+    (lead.image ? '<a class="ym-lead-image" href="' + postLink(lead) + '" tabindex="-1" aria-hidden="true"><img src="' + esc(lead.image) + '" alt=""></a>' :
+      lead.pullQuote ? '<blockquote><p>“' + esc(lead.pullQuote) + '”</p><cite>From “' + esc(lead.title) + '”</cite></blockquote>' : '') +
+    '</section>' : '<p>No articles published yet.</p>') +
+  (posts.length > 1 ? '<section class="ym-story-list" aria-labelledby="more-stories-title"><h2 id="more-stories-title">More from the Journal</h2>' +
+    posts.filter(post => post !== lead).map(story).join('') + '</section>' : '') +
+  '<aside class="ym-journal-companion" aria-labelledby="companion-title"><h2 id="companion-title">A small, reasonable objection.</h2>' +
+  '<div><p>Upload your résumé. Now re-type your résumé. The Manifesto takes issue with the routine.</p>' +
+  '<a href="/manifesto/">The form has amnesia</a></div></aside></div>' + pageEnd;
 fs.rmSync(outputDir,{recursive:true,force:true});
 fs.mkdirSync(outputDir,{recursive:true});
 fs.writeFileSync(path.join(outputDir,'index.html'),index);
@@ -155,26 +135,23 @@ for(const post of posts){
     image:origin+(post.socialImage || '/assets/identity/yourmove-og-default.png')
   };
   const related=posts.filter(p=>p.slug!==post.slug).slice(0,3);
-  const cover=post.image ? '<figure class="ym-article-cover"><img src="' + esc(post.image) + '" alt="' + esc(post.imageAlt) + '"></figure>' : '';
+  const cover=post.image ? '<figure class="ym-article-cover"><img src="' + esc(post.image) + '" alt="' + esc(post.imageAlt) + '">' +
+    (post.imageCaption ? '<figcaption>' + esc(post.imageCaption) + '</figcaption>' : '') + '</figure>' : '';
   const article=pageHead({
-    title:post.seoTitle || post.title,description:post.description,canonical:url,ogType:'article',image:post.socialImage,schema
+    title:post.seoTitle || post.title,description:post.description,canonical:url,ogType:'article',image:post.socialImage,published:post.date,schema
   }) +
-    '<main id="main" class="ym-blog"><header class="ym-blog-article-head"><div class="shell">' +
-    '<a class="ym-blog-back" href="/blog/">← All articles</a>' +
-    '<div class="ym-article-meta">The YourMove Journal · ' + pubDate(post) + '</div>' +
-    '<h1>' + esc(post.title) + '</h1><p class="ym-blog-deck">' + esc(post.description) + '</p>' +
-    '<div class="ym-author-row"><span class="ym-author-mark" aria-hidden="true">J.</span>' +
-    '<div><strong>Joshua Jenks</strong><span>Creator of YourMove</span></div></div></div></header>' +
-    cover +
-    '<article class="ym-blog-article"><div class="ym-prose">' + md.render(post.body) + '</div>' +
-    '<footer class="ym-article-end"><p>Found this useful? Share the article or explore the rest of the project.</p>' +
-    '<div class="ym-article-actions"><button type="button" data-copy-article data-url="' + esc(url) + '">Copy article link</button>' +
-    '<a href="/blog/">More articles <span aria-hidden="true">↗</span></a></div>' +
+    '<main id="main" class="ym-blog"><article class="ym-article" aria-labelledby="article-title">' +
+    '<header class="ym-blog-article-head"><a class="ym-blog-back" href="/blog/">Back to the Journal</a>' +
+    '<h1 id="article-title">' + esc(post.title) + '</h1><p class="ym-blog-deck">' + esc(post.description) + '</p>' +
+    '<div class="ym-article-meta"><span>By Joshua Jenks</span>' + pubDate(post) + '</div></header>' +
+    cover + '<div class="ym-blog-article"><div class="ym-prose">' + md.render(post.body) + '</div>' +
+    '<footer class="ym-article-end"><div class="ym-article-actions"><a href="/blog/">Back to the Journal</a>' +
+    '<button type="button" hidden data-copy-article data-url="' + esc(url) + '">Copy article link</button></div>' +
     '<p class="ym-copy-status" data-copy-status role="status" aria-live="polite"></p></footer>' +
-    (related.length ? '<section class="ym-article-related" aria-labelledby="related-title">' +
-      '<h2 id="related-title">Keep reading</h2>' + related.map(r=>'<a href="/blog/' + esc(r.slug) + '/">' + esc(r.title) + ' <span aria-hidden="true">↗</span></a>').join('') +
-      '</section>' : '') +
-    '</article>' + closer + pageEnd;
+    (related.length ? '<nav class="ym-article-related" aria-labelledby="related-title">' +
+      '<h2 id="related-title">Keep reading</h2>' + related.map(r=>'<a href="/blog/' + esc(r.slug) + '/">' + esc(r.title) + '</a>').join('') +
+      '<a href="/manifesto/">The form has amnesia — the Manifesto</a></nav>' : '') +
+    '</div></article>' + pageEnd;
   const dest=path.join(outputDir,post.slug);
   fs.mkdirSync(dest,{recursive:true});
   fs.writeFileSync(path.join(dest,'index.html'),article);
