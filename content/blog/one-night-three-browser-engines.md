@@ -1,12 +1,15 @@
 ---
 title: "One night, three browser engines: taking YourMove beyond Chromium"
 seo_title: "YourMove Cross-Browser Support: Chromium, Firefox and WebKit"
-description: "How I took YourMove's browser-assisted job application workflow beyond Chromium, what worked, what broke, and what still needs to happen before release."
+description: How I took YourMove's browser-assisted job application workflow
+  beyond Chromium, what worked, what broke, and what still needs to happen
+  before release.
 date: 2026-10-27
 published: true
-pull_quote: "The browser changed. The applicant's role didn't."
+featured: false
+pull_quote: The browser changed. The applicant's role didn't.
+image: /assets/blog/mobileopt48ea4cd8-e2ea-4be7-b5fa-e97db41ca091-1.png
 ---
-
 Last night, YourMove's managed browser automation worked in Chromium.
 
 By morning, the same job application workflow was running in Chromium, Firefox, and WebKit.
