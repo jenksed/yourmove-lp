@@ -1,0 +1,353 @@
+{
+  "renders": [
+    {
+      "route": "/",
+      "width": 390,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/blog/",
+      "width": 390,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/blog/meta-global-ai-developer-hackathon-yourmove/",
+      "width": 390,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/blog/why-im-building-yourmove/",
+      "width": 390,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/docs/",
+      "width": 390,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/docs/availability/",
+      "width": 390,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/docs/first-application/",
+      "width": 390,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/docs/troubleshooting/",
+      "width": 390,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/evidence/",
+      "width": 390,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/get-started/",
+      "width": 390,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/how-it-works/",
+      "width": 390,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/manifesto/",
+      "width": 390,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/review/",
+      "width": 390,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/support/",
+      "width": 390,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/blog/",
+      "width": 768,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/blog/meta-global-ai-developer-hackathon-yourmove/",
+      "width": 768,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/blog/why-im-building-yourmove/",
+      "width": 768,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/docs/",
+      "width": 768,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/docs/availability/",
+      "width": 768,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/docs/first-application/",
+      "width": 768,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/docs/troubleshooting/",
+      "width": 768,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/evidence/",
+      "width": 768,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/get-started/",
+      "width": 768,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/how-it-works/",
+      "width": 768,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/manifesto/",
+      "width": 768,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/review/",
+      "width": 768,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/support/",
+      "width": 768,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/",
+      "width": 1024,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/blog/",
+      "width": 1024,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/blog/meta-global-ai-developer-hackathon-yourmove/",
+      "width": 1024,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/blog/why-im-building-yourmove/",
+      "width": 1024,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/docs/",
+      "width": 1024,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/docs/availability/",
+      "width": 1024,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/docs/first-application/",
+      "width": 1024,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/docs/troubleshooting/",
+      "width": 1024,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/evidence/",
+      "width": 1024,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/get-started/",
+      "width": 1024,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/how-it-works/",
+      "width": 1024,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/manifesto/",
+      "width": 1024,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/review/",
+      "width": 1024,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/support/",
+      "width": 1024,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/blog/",
+      "width": 1440,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/blog/meta-global-ai-developer-hackathon-yourmove/",
+      "width": 1440,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/blog/why-im-building-yourmove/",
+      "width": 1440,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/docs/",
+      "width": 1440,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/docs/availability/",
+      "width": 1440,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/docs/first-application/",
+      "width": 1440,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/docs/troubleshooting/",
+      "width": 1440,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/evidence/",
+      "width": 1440,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/get-started/",
+      "width": 1440,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/how-it-works/",
+      "width": 1440,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/manifesto/",
+      "width": 1440,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/review/",
+      "width": 1440,
+      "overflow": 0,
+      "navigation": "PASS"
+    },
+    {
+      "route": "/support/",
+      "width": 1440,
+      "overflow": 0,
+      "navigation": "PASS"
+    }
+  ],
+  "interactions": [
+    "real job-seeker/help/blog links",
+    "keyboard Enter/Tab/Escape and visible focus on all routes",
+    "touch toggle, outside click, focus leaving menu",
+    "current section on generated articles and docs",
+    "retained CTA attributes and localhost analytics exclusion",
+    "menu resets across breakpoint",
+    "all 14 routes usable without JavaScript at mobile/tablet",
+    "mobile touchscreen tap and keyboard Space",
+    "mock PostHog: header, release, support clicks and release views on home/docs/generated article"
+  ],
+  "errors": [],
+  "result": "PASS"
+}

@@ -13,3 +13,6 @@ node_modules/
 # Marketing distribution stays outside the source repository.
 YourMove-Quiet-Ink-Brand-and-Marketing-Kit.zip
 YourMove-Quiet-Ink-Brand-and-Marketing-Kit/
+
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/

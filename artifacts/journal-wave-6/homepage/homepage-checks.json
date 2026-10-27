@@ -1,0 +1,420 @@
+{
+  "renders": [
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 3961,
+      "font": "Jost",
+      "keyboard": "PASS",
+      "photoContrast": "PASS"
+    },
+    {
+      "width": 1024,
+      "scrollWidth": 1024,
+      "height": 3887,
+      "font": "Jost",
+      "keyboard": "PASS",
+      "photoContrast": "PASS"
+    },
+    {
+      "width": 768,
+      "scrollWidth": 768,
+      "height": 4031,
+      "font": "Jost",
+      "keyboard": "PASS",
+      "photoContrast": "PASS"
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "height": 5263,
+      "font": "Jost",
+      "keyboard": "PASS",
+      "photoContrast": "PASS"
+    },
+    {
+      "width": 320,
+      "scrollWidth": 320,
+      "height": 5683,
+      "font": "Jost",
+      "keyboard": "PASS",
+      "photoContrast": "PASS"
+    }
+  ],
+  "interactions": [
+    "mouse shortcut and both states",
+    "keyboard arrows, Home, End, Enter, Space, Tab, focus ring",
+    "saved-answer editing survives comparison toggles",
+    "unanswered job-specific field and no submission action",
+    "reduced motion",
+    "rendered photographic text contrast",
+    "localhost analytics excluded",
+    "real primary, evidence, first-application and founder destinations; GitHub remains source",
+    "touch menu, demo shortcut, both states, textarea editing",
+    "no-JS navigation, illustration explanation and CTAs at 320/390/768"
+  ],
+  "photoContrast": [
+    {
+      "width": 1440,
+      "selector": ".home-hero h1",
+      "worst": 12.68,
+      "required": 3
+    },
+    {
+      "width": 1440,
+      "selector": ".home-hero h1",
+      "worst": 9.14,
+      "required": 3
+    },
+    {
+      "width": 1440,
+      "selector": ".home-hero__content>p",
+      "worst": 12.19,
+      "required": 4.5
+    },
+    {
+      "width": 1440,
+      "selector": ".home-hero__content>p",
+      "worst": 12.2,
+      "required": 4.5
+    },
+    {
+      "width": 1440,
+      "selector": ".home-hero__content>p",
+      "worst": 12.46,
+      "required": 4.5
+    },
+    {
+      "width": 1440,
+      "selector": ".home-hero__content>p",
+      "worst": 12.68,
+      "required": 4.5
+    },
+    {
+      "width": 1440,
+      "selector": ".home-hero__content>p",
+      "worst": 12.59,
+      "required": 4.5
+    },
+    {
+      "width": 1440,
+      "selector": ".home-hero a",
+      "worst": 6.73,
+      "required": 4.5
+    },
+    {
+      "width": 1440,
+      "selector": ".home-hero a",
+      "worst": 5.87,
+      "required": 4.5
+    },
+    {
+      "width": 1440,
+      "selector": ".home-hero a",
+      "worst": 6.08,
+      "required": 4.5
+    },
+    {
+      "width": 1440,
+      "selector": ".home-hero__caption",
+      "worst": 5.18,
+      "required": 4.5
+    },
+    {
+      "width": 1024,
+      "selector": ".home-hero h1",
+      "worst": 12.68,
+      "required": 3
+    },
+    {
+      "width": 1024,
+      "selector": ".home-hero h1",
+      "worst": 10.48,
+      "required": 3
+    },
+    {
+      "width": 1024,
+      "selector": ".home-hero__content>p",
+      "worst": 11.81,
+      "required": 4.5
+    },
+    {
+      "width": 1024,
+      "selector": ".home-hero__content>p",
+      "worst": 10.72,
+      "required": 4.5
+    },
+    {
+      "width": 1024,
+      "selector": ".home-hero__content>p",
+      "worst": 12.56,
+      "required": 4.5
+    },
+    {
+      "width": 1024,
+      "selector": ".home-hero__content>p",
+      "worst": 12.68,
+      "required": 4.5
+    },
+    {
+      "width": 1024,
+      "selector": ".home-hero__content>p",
+      "worst": 11.68,
+      "required": 4.5
+    },
+    {
+      "width": 1024,
+      "selector": ".home-hero a",
+      "worst": 6.73,
+      "required": 4.5
+    },
+    {
+      "width": 1024,
+      "selector": ".home-hero a",
+      "worst": 5.6,
+      "required": 4.5
+    },
+    {
+      "width": 1024,
+      "selector": ".home-hero a",
+      "worst": 5.4,
+      "required": 4.5
+    },
+    {
+      "width": 1024,
+      "selector": ".home-hero__caption",
+      "worst": 5.18,
+      "required": 4.5
+    },
+    {
+      "width": 768,
+      "selector": ".home-hero h1",
+      "worst": 13.02,
+      "required": 3
+    },
+    {
+      "width": 768,
+      "selector": ".home-hero h1",
+      "worst": 5.7,
+      "required": 3
+    },
+    {
+      "width": 768,
+      "selector": ".home-hero__content>p",
+      "worst": 5.65,
+      "required": 4.5
+    },
+    {
+      "width": 768,
+      "selector": ".home-hero__content>p",
+      "worst": 5.93,
+      "required": 4.5
+    },
+    {
+      "width": 768,
+      "selector": ".home-hero__content>p",
+      "worst": 12.67,
+      "required": 4.5
+    },
+    {
+      "width": 768,
+      "selector": ".home-hero__content>p",
+      "worst": 12.34,
+      "required": 4.5
+    },
+    {
+      "width": 768,
+      "selector": ".home-hero__content>p",
+      "worst": 9.82,
+      "required": 4.5
+    },
+    {
+      "width": 768,
+      "selector": ".home-hero a",
+      "worst": 6.73,
+      "required": 4.5
+    },
+    {
+      "width": 768,
+      "selector": ".home-hero a",
+      "worst": 5.43,
+      "required": 4.5
+    },
+    {
+      "width": 768,
+      "selector": ".home-hero a",
+      "worst": 5.44,
+      "required": 4.5
+    },
+    {
+      "width": 768,
+      "selector": ".home-hero__caption",
+      "worst": 5.18,
+      "required": 4.5
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero h1",
+      "worst": 12.71,
+      "required": 3
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero h1",
+      "worst": 9.45,
+      "required": 3
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero h1",
+      "worst": 12.34,
+      "required": 3
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero__content>p",
+      "worst": 9.44,
+      "required": 4.5
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero__content>p",
+      "worst": 9.28,
+      "required": 4.5
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero__content>p",
+      "worst": 11.79,
+      "required": 4.5
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero__content>p",
+      "worst": 12.93,
+      "required": 4.5
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero__content>p",
+      "worst": 12.57,
+      "required": 4.5
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero__content>p",
+      "worst": 13.03,
+      "required": 4.5
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero a",
+      "worst": 6.73,
+      "required": 4.5
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero a",
+      "worst": 6.02,
+      "required": 4.5
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero a",
+      "worst": 5.96,
+      "required": 4.5
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero__caption",
+      "worst": 5.18,
+      "required": 4.5
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero h1",
+      "worst": 12.26,
+      "required": 3
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero h1",
+      "worst": 10.2,
+      "required": 3
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero h1",
+      "worst": 10.94,
+      "required": 3
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero__content>p",
+      "worst": 8.5,
+      "required": 4.5
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero__content>p",
+      "worst": 9.88,
+      "required": 4.5
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero__content>p",
+      "worst": 9.54,
+      "required": 4.5
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero__content>p",
+      "worst": 12.23,
+      "required": 4.5
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero__content>p",
+      "worst": 12.68,
+      "required": 4.5
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero__content>p",
+      "worst": 13.14,
+      "required": 4.5
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero__content>p",
+      "worst": 13.14,
+      "required": 4.5
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero a",
+      "worst": 6.73,
+      "required": 4.5
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero a",
+      "worst": 5.86,
+      "required": 4.5
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero a",
+      "worst": 5.85,
+      "required": 4.5
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero__caption",
+      "worst": 5.18,
+      "required": 4.5
+    }
+  ],
+  "errors": [],
+  "result": "PASS"
+}

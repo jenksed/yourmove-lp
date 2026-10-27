@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "renders": 15,
+  "contrast": [
+    {
+      "route": "how-it-works",
+      "lowestRatio": 4.95
+    },
+    {
+      "route": "evidence",
+      "lowestRatio": 4.95
+    },
+    {
+      "route": "get-started",
+      "lowestRatio": 4.95
+    }
+  ],
+  "interactions": [
+    "Enter/Space support comparison and source/evidence disclosures",
+    "Tab order and visible focus",
+    "real Mac and browser clipboard contents",
+    "localhost excludes PostHog",
+    "touch comparison at 390px; normal and reduced motion",
+    "all 3 pages without JavaScript at all 5 widths",
+    "qualified-release fixture rendered at 5 widths; static status/asset/requirements and no planned banner"
+  ],
+  "errors": []
+}

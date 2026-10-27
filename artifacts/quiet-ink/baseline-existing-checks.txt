@@ -1,0 +1,4 @@
+BASELINE RUN site_checks.py
+FAIL AssertionError((320, 'review', 'overflow', {'client': 320, 'scroll': 325}))
+BASELINE RUN release_banner_checks.py
+FAIL AssertionError(('index.html', 320, 'horizontal overflow', 347))

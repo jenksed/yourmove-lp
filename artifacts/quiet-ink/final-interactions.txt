@@ -1,0 +1,1 @@
+PASS: final blank/saved comparison, readable missing-source labels, docs attention, light/dark docs small text.

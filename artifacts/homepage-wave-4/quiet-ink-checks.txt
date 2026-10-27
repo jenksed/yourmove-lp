@@ -1,0 +1,30 @@
+PASS /blog/
+PASS /blog/meta-global-ai-developer-hackathon-yourmove/
+PASS /blog/why-im-building-yourmove/
+PASS /docs/availability/
+PASS /docs/first-application/
+PASS /docs/
+PASS /docs/troubleshooting/
+PASS /evidence/
+PASS /get-started/
+PASS /how-it-works/
+PASS /
+PASS /manifesto/
+PASS /review/
+PASS /support/
+{
+  "result": "PASS",
+  "renderChecks": 42,
+  "existingOverflowCases": [],
+  "interactions": [
+    "comparison mouse and keyboard states",
+    "hero hover and keyboard focus",
+    "Get Started disclosure and real command clipboard",
+    "evidence tabs",
+    "docs selection mouse and keyboard",
+    "docs attention semantics",
+    "docs search and Escape",
+    "troubleshooting deep-link disclosure",
+    "mobile navigation on all 14 pages; no-JS homepage navigation"
+  ]
+}

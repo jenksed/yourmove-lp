@@ -1,0 +1,50 @@
+[
+  {
+    "route": "blog",
+    "width": 390,
+    "motion": "no-preference",
+    "result": "PASS"
+  },
+  {
+    "route": "blog/why-im-building-yourmove",
+    "width": 390,
+    "motion": "no-preference",
+    "result": "PASS"
+  },
+  {
+    "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+    "width": 390,
+    "motion": "no-preference",
+    "result": "PASS"
+  },
+  {
+    "route": "manifesto",
+    "width": 390,
+    "motion": "no-preference",
+    "result": "PASS"
+  },
+  {
+    "route": "blog",
+    "width": 1440,
+    "motion": "no-preference",
+    "result": "PASS"
+  },
+  {
+    "route": "blog/why-im-building-yourmove",
+    "width": 1440,
+    "motion": "no-preference",
+    "result": "PASS"
+  },
+  {
+    "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+    "width": 1440,
+    "motion": "no-preference",
+    "result": "PASS"
+  },
+  {
+    "route": "manifesto",
+    "width": 1440,
+    "motion": "no-preference",
+    "result": "PASS"
+  }
+]

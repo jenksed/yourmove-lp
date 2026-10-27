@@ -1,0 +1,7 @@
+{
+  "result": "PASS",
+  "approvedPalette": "exact light/dark arrays",
+  "wordmarkColorFilters": "byte-for-byte matches approved B SVG filter output",
+  "opticalM": "all four paths and fills exactly match approved B",
+  "originalRaster": "sha256 pinned in module"
+}

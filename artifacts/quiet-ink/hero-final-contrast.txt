@@ -1,0 +1,42 @@
+/ 1440 .hero-real__eyebrow 5.41
+/ 1440 .hero-real h1 11.48
+/ 1440 .hero-real h1 5.08
+/ 1440 .hero-real__intro 11.3
+/ 1440 .hero-real__intro 11.26
+/ 1440 .hero-real__intro 10.8
+/ 1440 .hero-real__intro 11.47
+/ 1440 .hero-real__availability 12.91
+/ 1440 .hero-real__foot-inner 12.83
+/ 1440 .hero-real__foot-inner 9.21
+/ 1440 .footer-support-callout__eyebrow 11.4
+/ 1440 .footer-support-callout__title 10.78
+/ 1440 .footer-support-callout__note 10.94
+/ 768 .hero-real__eyebrow 5.92
+/ 768 .hero-real h1 12.91
+/ 768 .hero-real h1 4.82
+/ 768 .hero-real__intro 8.81
+/ 768 .hero-real__intro 8.0
+/ 768 .hero-real__intro 7.21
+/ 768 .hero-real__availability 12.12
+/ 768 .hero-real__foot-inner 11.62
+/ 768 .hero-real__foot-inner 9.89
+/ 768 .footer-support-callout__eyebrow 10.94
+/ 768 .footer-support-callout__title 10.59
+/ 768 .footer-support-callout__note 10.33
+/ 390 .hero-real__eyebrow 5.25
+/ 390 .hero-real h1 11.71
+/ 390 .hero-real h1 5.1
+/ 390 .hero-real__intro 10.94
+/ 390 .hero-real__intro 11.11
+/ 390 .hero-real__intro 10.34
+/ 390 .hero-real__intro 11.05
+/ 390 .hero-real__intro 12.24
+/ 390 .hero-real__availability 11.79
+/ 390 .hero-real__availability 12.8
+/ 390 .hero-real__foot-inner 10.61
+/ 390 .hero-real__foot-inner 12.02
+/ 390 .footer-support-callout__eyebrow 10.16
+/ 390 .footer-support-callout__title 9.74
+/ 390 .footer-support-callout__title 10.94
+/ 390 .footer-support-callout__note 9.59
+/ 390 .footer-support-callout__note 10.6

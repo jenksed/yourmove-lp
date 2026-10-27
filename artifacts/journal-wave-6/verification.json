@@ -1,0 +1,283 @@
+{
+  "renders": [
+    {
+      "route": "blog",
+      "width": 320,
+      "height": 2826,
+      "overflow": 0
+    },
+    {
+      "route": "blog",
+      "width": 390,
+      "height": 2664,
+      "overflow": 0
+    },
+    {
+      "route": "blog",
+      "width": 768,
+      "height": 2032,
+      "overflow": 0
+    },
+    {
+      "route": "blog",
+      "width": 1024,
+      "height": 1778,
+      "overflow": 0
+    },
+    {
+      "route": "blog",
+      "width": 1440,
+      "height": 1910,
+      "overflow": 0
+    },
+    {
+      "route": "blog/why-im-building-yourmove",
+      "width": 320,
+      "height": 4285,
+      "overflow": 0
+    },
+    {
+      "route": "blog/why-im-building-yourmove",
+      "width": 390,
+      "height": 3713,
+      "overflow": 0
+    },
+    {
+      "route": "blog/why-im-building-yourmove",
+      "width": 768,
+      "height": 2944,
+      "overflow": 0
+    },
+    {
+      "route": "blog/why-im-building-yourmove",
+      "width": 1024,
+      "height": 2816,
+      "overflow": 0
+    },
+    {
+      "route": "blog/why-im-building-yourmove",
+      "width": 1440,
+      "height": 2859,
+      "overflow": 0
+    },
+    {
+      "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+      "width": 320,
+      "height": 12851,
+      "overflow": 0
+    },
+    {
+      "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+      "width": 390,
+      "height": 10979,
+      "overflow": 0
+    },
+    {
+      "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+      "width": 768,
+      "height": 8884,
+      "overflow": 0
+    },
+    {
+      "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+      "width": 1024,
+      "height": 8914,
+      "overflow": 0
+    },
+    {
+      "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+      "width": 1440,
+      "height": 9045,
+      "overflow": 0
+    },
+    {
+      "route": "manifesto",
+      "width": 320,
+      "height": 2874,
+      "overflow": 0
+    },
+    {
+      "route": "manifesto",
+      "width": 390,
+      "height": 2582,
+      "overflow": 0
+    },
+    {
+      "route": "manifesto",
+      "width": 768,
+      "height": 2376,
+      "overflow": 0
+    },
+    {
+      "route": "manifesto",
+      "width": 1024,
+      "height": 2249,
+      "overflow": 0
+    },
+    {
+      "route": "manifesto",
+      "width": 1440,
+      "height": 2405,
+      "overflow": 0
+    }
+  ],
+  "contrast": [
+    {
+      "route": "blog",
+      "width": 320,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "blog",
+      "width": 390,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "blog",
+      "width": 768,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "blog",
+      "width": 1024,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "blog",
+      "width": 1440,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "blog/why-im-building-yourmove",
+      "width": 320,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "blog/why-im-building-yourmove",
+      "width": 390,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "blog/why-im-building-yourmove",
+      "width": 768,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "blog/why-im-building-yourmove",
+      "width": 1024,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "blog/why-im-building-yourmove",
+      "width": 1440,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+      "width": 320,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+      "width": 390,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+      "width": 768,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+      "width": 1024,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+      "width": 1440,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "manifesto",
+      "width": 320,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "manifesto",
+      "width": 390,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "manifesto",
+      "width": 768,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "manifesto",
+      "width": 1024,
+      "lowestRatio": 5.18
+    },
+    {
+      "route": "manifesto",
+      "width": 1440,
+      "lowestRatio": 5.18
+    }
+  ],
+  "journeys": [
+    {
+      "width": 390,
+      "result": "Journal \u2192 founder \u2192 workflow/evidence \u2192 Manifesto \u2192 founder \u2192 Journal \u2192 hackathon \u2192 evidence"
+    },
+    {
+      "width": 1440,
+      "result": "Journal \u2192 founder \u2192 workflow/evidence \u2192 Manifesto \u2192 founder \u2192 Journal \u2192 hackathon \u2192 evidence"
+    }
+  ],
+  "interactions": [
+    "keyboard reading links and focus",
+    "real clipboard URL and denial fallback",
+    "uncropped image aspect ratios",
+    "no-JS reading/navigation at five widths",
+    "local analytics exclusion",
+    "quote/list/code/table/caption QA fixture at 320px"
+  ],
+  "metadata": [
+    {
+      "route": "blog",
+      "canonical": "https://www.yourmove.run/blog/",
+      "socialImage": "assets/identity/yourmove-og-default.png",
+      "dimensions": [
+        1200,
+        630
+      ]
+    },
+    {
+      "route": "blog/why-im-building-yourmove",
+      "canonical": "https://www.yourmove.run/blog/why-im-building-yourmove/",
+      "socialImage": "assets/identity/yourmove-og-default.png",
+      "dimensions": [
+        1200,
+        630
+      ]
+    },
+    {
+      "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+      "canonical": "https://www.yourmove.run/blog/meta-global-ai-developer-hackathon-yourmove/",
+      "socialImage": "assets/identity/yourmove-og-hackathon.png",
+      "dimensions": [
+        1200,
+        630
+      ]
+    },
+    {
+      "route": "manifesto",
+      "canonical": "https://www.yourmove.run/manifesto/",
+      "socialImage": "assets/identity/yourmove-og-default.png",
+      "dimensions": [
+        1200,
+        630
+      ]
+    }
+  ],
+  "errors": []
+}

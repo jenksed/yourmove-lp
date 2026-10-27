@@ -1,0 +1,121 @@
+{
+  "renders": [
+    {
+      "route": "how-it-works",
+      "width": 320,
+      "overflow": 0,
+      "height": 6688
+    },
+    {
+      "route": "how-it-works",
+      "width": 390,
+      "overflow": 0,
+      "height": 6364
+    },
+    {
+      "route": "how-it-works",
+      "width": 768,
+      "overflow": 0,
+      "height": 4998
+    },
+    {
+      "route": "how-it-works",
+      "width": 1024,
+      "overflow": 0,
+      "height": 4715
+    },
+    {
+      "route": "how-it-works",
+      "width": 1440,
+      "overflow": 0,
+      "height": 4700
+    },
+    {
+      "route": "evidence",
+      "width": 320,
+      "overflow": 0,
+      "height": 5678
+    },
+    {
+      "route": "evidence",
+      "width": 390,
+      "overflow": 0,
+      "height": 5396
+    },
+    {
+      "route": "evidence",
+      "width": 768,
+      "overflow": 0,
+      "height": 3989
+    },
+    {
+      "route": "evidence",
+      "width": 1024,
+      "overflow": 0,
+      "height": 3645
+    },
+    {
+      "route": "evidence",
+      "width": 1440,
+      "overflow": 0,
+      "height": 3776
+    },
+    {
+      "route": "get-started",
+      "width": 320,
+      "overflow": 0,
+      "height": 4210
+    },
+    {
+      "route": "get-started",
+      "width": 390,
+      "overflow": 0,
+      "height": 3871
+    },
+    {
+      "route": "get-started",
+      "width": 768,
+      "overflow": 0,
+      "height": 3077
+    },
+    {
+      "route": "get-started",
+      "width": 1024,
+      "overflow": 0,
+      "height": 2844
+    },
+    {
+      "route": "get-started",
+      "width": 1440,
+      "overflow": 0,
+      "height": 2819
+    }
+  ],
+  "journeys": [
+    "Homepage \u2192 How It Works \u2192 Career Evidence \u2192 Get Started; real stage anchors, release URL and both copy-command payloads"
+  ],
+  "interactions": [
+    "Enter/Space support comparison and source/evidence disclosures",
+    "Tab order and visible focus",
+    "real Mac and browser clipboard contents",
+    "localhost excludes PostHog",
+    "touch comparison at 390px; normal and reduced motion",
+    "all 3 pages without JavaScript at all 5 widths",
+    "qualified-release fixture rendered at 5 widths; static status/asset/requirements and no planned banner"
+  ],
+  "contrast": [
+    {
+      "route": "how-it-works",
+      "lowestRatio": 4.95
+    },
+    {
+      "route": "evidence",
+      "lowestRatio": 4.95
+    },
+    {
+      "route": "get-started",
+      "lowestRatio": 4.95
+    }
+  ],
+  "errors": []
+}

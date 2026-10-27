@@ -1,0 +1,142 @@
+[
+  {
+    "route": "blog",
+    "width": 320,
+    "scrollWidth": 320,
+    "height": 4518,
+    "font": true
+  },
+  {
+    "route": "blog",
+    "width": 390,
+    "scrollWidth": 390,
+    "height": 4243,
+    "font": true
+  },
+  {
+    "route": "blog",
+    "width": 768,
+    "scrollWidth": 768,
+    "height": 3312,
+    "font": true
+  },
+  {
+    "route": "blog",
+    "width": 1024,
+    "scrollWidth": 1024,
+    "height": 3319,
+    "font": true
+  },
+  {
+    "route": "blog",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "height": 4146,
+    "font": true
+  },
+  {
+    "route": "blog/why-im-building-yourmove",
+    "width": 320,
+    "scrollWidth": 320,
+    "height": 4865,
+    "font": true
+  },
+  {
+    "route": "blog/why-im-building-yourmove",
+    "width": 390,
+    "scrollWidth": 390,
+    "height": 4385,
+    "font": true
+  },
+  {
+    "route": "blog/why-im-building-yourmove",
+    "width": 768,
+    "scrollWidth": 768,
+    "height": 3094,
+    "font": true
+  },
+  {
+    "route": "blog/why-im-building-yourmove",
+    "width": 1024,
+    "scrollWidth": 1024,
+    "height": 3111,
+    "font": true
+  },
+  {
+    "route": "blog/why-im-building-yourmove",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "height": 3735,
+    "font": true
+  },
+  {
+    "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+    "width": 320,
+    "scrollWidth": 320,
+    "height": 12503,
+    "font": true
+  },
+  {
+    "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+    "width": 390,
+    "scrollWidth": 390,
+    "height": 10865,
+    "font": true
+  },
+  {
+    "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+    "width": 768,
+    "scrollWidth": 768,
+    "height": 7552,
+    "font": true
+  },
+  {
+    "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+    "width": 1024,
+    "scrollWidth": 1024,
+    "height": 7850,
+    "font": true
+  },
+  {
+    "route": "blog/meta-global-ai-developer-hackathon-yourmove",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "height": 9385,
+    "font": true
+  },
+  {
+    "route": "manifesto",
+    "width": 320,
+    "scrollWidth": 320,
+    "height": 4092,
+    "font": true
+  },
+  {
+    "route": "manifesto",
+    "width": 390,
+    "scrollWidth": 390,
+    "height": 3794,
+    "font": true
+  },
+  {
+    "route": "manifesto",
+    "width": 768,
+    "scrollWidth": 768,
+    "height": 3174,
+    "font": true
+  },
+  {
+    "route": "manifesto",
+    "width": 1024,
+    "scrollWidth": 1024,
+    "height": 3034,
+    "font": true
+  },
+  {
+    "route": "manifesto",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "height": 3321,
+    "font": true
+  }
+]
