@@ -59,6 +59,10 @@ content:
       - name: image_alt
         label: Featured image accessibility text
         type: string
+      - name: image_mobile
+        label: Mobile featured image (optional)
+        type: image
+        description: Optional 4:3 composition for narrow screens. Uses the featured image accessibility text.
       - name: image_caption
         label: Featured image caption (optional)
         type: string

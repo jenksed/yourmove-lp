@@ -30,6 +30,12 @@
 .ym-story h3 {font-size:clamp(27px,2.7vw,38px);line-height:1.16;margin:0 0 20px}
 .ym-story-copy>p:last-child {font-size:18px;line-height:1.6;margin:0}
 .ym-story-image img,.ym-lead-image img {width:100%;height:auto}
+.ym-story-image picture,.ym-lead-image picture {display:flex;aspect-ratio:16/9;background:var(--color-bg);align-items:center}
+.ym-story-image img,.ym-lead-image img {height:100%;object-fit:contain}
+.ym-article-cover picture {display:block}
+@media (max-width:600px) {
+ .ym-story-image picture,.ym-lead-image picture {aspect-ratio:4/3}
+}
 .ym-journal-companion {display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:12px 0 80px;align-items:start}
 .ym-journal-companion h2 {font-size:38px;line-height:1.15;max-width:15ch;margin:0}
 .ym-journal-companion p {font-size:18px;line-height:1.6;margin:0 0 14px}

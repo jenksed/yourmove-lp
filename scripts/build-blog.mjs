@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
 import MarkdownIt from 'markdown-it';
+import {imageSize} from 'image-size';
 import {layout, syncStaticLayout} from './shared-layout.mjs';
 
 const root = process.cwd();
@@ -30,6 +31,13 @@ const imageURL = value => {
 };
 
 const origin = 'https://www.yourmove.run';
+const imageDimensions = url => imageSize(fs.readFileSync(path.join(root, 'public', url)));
+const imageMarkup = (post, {decorative=false, lazy=false}={}) => {
+  const dimensions = imageDimensions(post.image);
+  const mobile = post.mobileImage ? imageDimensions(post.mobileImage) : null;
+  return '<picture>' + (mobile ? '<source media="(max-width: 600px)" srcset="' + esc(post.mobileImage) + '" width="' + mobile.width + '" height="' + mobile.height + '">' : '') +
+    '<img src="' + esc(post.image) + '" alt="' + esc(decorative ? '' : post.imageAlt) + '" width="' + dimensions.width + '" height="' + dimensions.height + '" decoding="async"' + (lazy ? ' loading="lazy"' : '') + '></picture>';
+};
 const urlFor = slug => origin + '/blog/' + (slug ? slug + '/' : '');
 const isoTime = date => date + 'T12:00:00Z';
 const jsonLd = value => JSON.stringify(value).replace(/</g, '\\u003c');
@@ -48,7 +56,7 @@ const pageHead = ({title, description, canonical, ogType='website', image='', pu
   '<meta property="og:description" content="' + esc(description) + '">' +
   '<meta property="og:url" content="' + esc(canonical) + '">' +
   '<meta property="og:image" content="' + origin + esc(image || '/assets/identity/yourmove-og-default.png') + '">' +
-  '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">' +
+  '<meta property="og:image:width" content="' + imageDimensions(image || '/assets/identity/yourmove-og-default.png').width + '"><meta property="og:image:height" content="' + imageDimensions(image || '/assets/identity/yourmove-og-default.png').height + '"><meta property="og:image:type" content="image/' + ((image || '').endsWith('.webp') ? 'webp' : (image || '').match(/\.jpe?g$/) ? 'jpeg' : 'png') + '">' +
   '<meta property="og:image:alt" content="' + esc(ogType === 'article' ? title + ' · YourMove' : 'YourMove — Real experience is enough work.') + '">' +
   '<meta name="twitter:card" content="summary_large_image">' +
   '<meta name="twitter:image" content="' + origin + esc(image || '/assets/identity/yourmove-og-default.png') + '">' +
@@ -79,7 +87,7 @@ const posts = fs.readdirSync(contentDir).filter(f => f.endsWith('.md')).map(file
   if (!date) throw new Error('Invalid publication date in ' + file);
   return {
     slug, date, title:data.title.trim(), seoTitle:typeof data.seo_title==='string' ? data.seo_title.trim() : '',
-    description:data.description.trim(), image:imageURL(data.image), socialImage:imageURL(data.social_image),
+    description:data.description.trim(), image:imageURL(data.image), mobileImage:imageURL(data.image_mobile), socialImage:imageURL(data.social_image),
     imageAlt:typeof data.image_alt==='string' ? data.image_alt.trim() : '',
     imageCaption:typeof data.image_caption==='string' ? data.image_caption.trim() : '',
     featured:data.featured === true,
@@ -93,7 +101,7 @@ const byline = post => '<p class="ym-post-meta">Joshua Jenks <span aria-hidden="
 const postLink = post => '/blog/' + esc(post.slug) + '/';
 const story = post =>
   '<article class="ym-story">' +
-  (post.image ? '<a class="ym-story-image" href="' + postLink(post) + '" tabindex="-1" aria-hidden="true"><img src="' + esc(post.image) + '" alt="" loading="lazy"></a>' : '') +
+  (post.image ? '<a class="ym-story-image" href="' + postLink(post) + '" tabindex="-1" aria-hidden="true">' + imageMarkup(post, {decorative:true,lazy:true}) + '</a>' : '') +
   '<div class="ym-story-copy">' + byline(post) + '<h3><a href="' + postLink(post) + '">' + esc(post.title) + '</a></h3>' +
   '<p>' + esc(post.description) + '</p></div></article>';
 const index = pageHead({
@@ -111,7 +119,7 @@ const index = pageHead({
     '<h2 id="lead-story-title"><a href="' + postLink(lead) + '">' + esc(lead.title) + '</a></h2>' +
     '<p class="ym-lead-summary">' + esc(lead.description) + '</p>' + byline(lead) +
     '<a class="ym-read-link" href="' + postLink(lead) + '">Read the story</a></div>' +
-    (lead.image ? '<a class="ym-lead-image" href="' + postLink(lead) + '" tabindex="-1" aria-hidden="true"><img src="' + esc(lead.image) + '" alt=""></a>' :
+    (lead.image ? '<a class="ym-lead-image" href="' + postLink(lead) + '" tabindex="-1" aria-hidden="true">' + imageMarkup(lead, {decorative:true}) + '</a>' :
       lead.pullQuote ? '<blockquote><p>“' + esc(lead.pullQuote) + '”</p><cite>From “' + esc(lead.title) + '”</cite></blockquote>' : '') +
     '</section>' : '<p>No articles published yet.</p>') +
   (posts.length > 1 ? '<section class="ym-story-list" aria-labelledby="more-stories-title"><h2 id="more-stories-title">More from the Journal</h2>' +
@@ -135,7 +143,7 @@ for(const post of posts){
     image:origin+(post.socialImage || '/assets/identity/yourmove-og-default.png')
   };
   const related=posts.filter(p=>p.slug!==post.slug).slice(0,3);
-  const cover=post.image ? '<figure class="ym-article-cover"><img src="' + esc(post.image) + '" alt="' + esc(post.imageAlt) + '">' +
+  const cover=post.image ? '<figure class="ym-article-cover">' + imageMarkup(post) +
     (post.imageCaption ? '<figcaption>' + esc(post.imageCaption) + '</figcaption>' : '') + '</figure>' : '';
   const article=pageHead({
     title:post.seoTitle || post.title,description:post.description,canonical:url,ogType:'article',image:post.socialImage,published:post.date,schema
