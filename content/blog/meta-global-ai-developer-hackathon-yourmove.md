@@ -6,10 +6,13 @@ description: I was accepted into Meta's 2026 Global AI Developer Hackathon.
   career evidence.
 date: 2026-10-26
 published: true
-image: /assets/blog/yourmove-meta-hackathon-featured.webp
+featured: false
+image: /assets/blog/mobileopt48ea4cd8-e2ea-4be7-b5fa-e97db41ca091.png
+image_alt: "Announcement artwork: YourMove accepted into the Indie Developer
+  track of the Meta Global AI Developer Hackathon."
+image_caption: Original hackathon announcement artwork. An illustration, not a
+  product screenshot.
 social_image: /assets/identity/yourmove-og-hackathon.png
-image_alt: "Announcement artwork: YourMove accepted into the Indie Developer track of the Meta Global AI Developer Hackathon."
-image_caption: "Original hackathon announcement artwork. An illustration, not a product screenshot."
 ---
 *Ten days, a global AI hackathon, and a job application tool I'm building because I got tired of applying for jobs.*
 
