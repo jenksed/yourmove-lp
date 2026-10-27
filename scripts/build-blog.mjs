@@ -30,8 +30,8 @@ const dateDisplay = iso => new Intl.DateTimeFormat('en-US', {
 }).format(new Date(iso + 'T12:00:00Z'));
 const imageURL = value => {
   if (typeof value !== 'string' || !value.trim()) return '';
-  // Keep featured images on the site's own asset path.
-  return /^\/assets\/blog\/[a-zA-Z0-9_./%-]+\.(?:png|jpg|jpeg|webp|gif|avif)$/i.test(value) && !value.includes('..') ? value : '';
+  // Keep editorial and approved identity images on the site's own asset paths.
+  return /^\/assets\/(?:blog|identity)\/[a-zA-Z0-9_./%-]+\.(?:png|jpg|jpeg|webp|gif|avif)$/i.test(value) && !value.includes('..') ? value : '';
 };
 
 const origin = 'https://www.yourmove.run';
@@ -51,9 +51,13 @@ const pageHead = ({title, description, canonical, ogType='website', image='', sc
   '<meta property="og:title" content="' + esc(title) + ' · YourMove">' +
   '<meta property="og:description" content="' + esc(description) + '">' +
   '<meta property="og:url" content="' + esc(canonical) + '">' +
-  '<meta property="og:image" content="' + origin + esc(image || '/assets/og-platforms.webp') + '">' +
+  '<meta property="og:image" content="' + origin + esc(image || '/assets/identity/yourmove-og-default.png') + '">' +
+  '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png">' +
+  '<meta property="og:image:alt" content="' + esc(ogType === 'article' ? title + ' · YourMove' : 'YourMove — Real experience is enough work.') + '">' +
   '<meta name="twitter:card" content="summary_large_image">' +
-  '<link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261025">' +
+  '<meta name="twitter:image" content="' + origin + esc(image || '/assets/identity/yourmove-og-default.png') + '">' +
+  '<meta name="twitter:image:alt" content="' + esc(ogType === 'article' ? title + ' · YourMove' : 'YourMove — Real experience is enough work.') + '">' +
+  '<link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261027b"><link rel="icon" type="image/png" sizes="16x16" href="/assets/identity/favicon-16.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/identity/favicon-32.png"><link rel="icon" type="image/svg+xml" href="/assets/identity/favicon.svg?v=20261027b"><link rel="apple-touch-icon" sizes="180x180" href="/assets/identity/apple-touch-icon.png">' +
   '<link rel="preconnect" href="https://fonts.googleapis.com">' +
   '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
   '<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">' +
@@ -78,7 +82,7 @@ const posts = fs.readdirSync(contentDir).filter(f => f.endsWith('.md')).map(file
   if (!date) throw new Error('Invalid publication date in ' + file);
   return {
     slug, date, title:data.title.trim(), seoTitle:typeof data.seo_title==='string' ? data.seo_title.trim() : '',
-    description:data.description.trim(), image:imageURL(data.image),
+    description:data.description.trim(), image:imageURL(data.image), socialImage:imageURL(data.social_image),
     imageAlt:typeof data.image_alt==='string' ? data.image_alt.trim() : '', body:item.content
   };
 }).filter(Boolean).sort((a,b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
@@ -152,12 +156,12 @@ for(const post of posts){
     author:{'@type':'Person',name:'Joshua Jenks'},
     publisher:{'@type':'Organization',name:'YourMove',url:origin},
     mainEntityOfPage:{'@type':'WebPage','@id':url},
-    ...(post.image ? {image:origin+post.image} : {})
+    image:origin+(post.socialImage || '/assets/identity/yourmove-og-default.png')
   };
   const related=posts.filter(p=>p.slug!==post.slug).slice(0,3);
   const cover=post.image ? '<figure class="ym-article-cover"><img src="' + esc(post.image) + '" alt="' + esc(post.imageAlt) + '"></figure>' : '';
   const article=pageHead({
-    title:post.seoTitle || post.title,description:post.description,canonical:url,ogType:'article',image:post.image,schema
+    title:post.seoTitle || post.title,description:post.description,canonical:url,ogType:'article',image:post.socialImage,schema
   }) +
     '<main id="main" class="ym-blog"><header class="ym-blog-article-head"><div class="shell">' +
     '<a class="ym-blog-back" href="/blog/">← All articles</a>' +

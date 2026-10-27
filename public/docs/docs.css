@@ -115,7 +115,7 @@ body[data-page="docs"] .doc-site-header .nav-annotation{display:none}
 .doc-solid-link:hover{background:#164b34}
 .doc-footer{background:#101b14;color:#eaf0e6;padding:54px 0 25px}
 .doc-footer-layout{display:grid;grid-template-columns:1fr .7fr 1fr;gap:35px}
-.doc-footer img{width:175px;height:auto;filter:brightness(0) invert(1)}
+.doc-footer img{width:175px;height:auto;filter:none}
 .doc-footer p{font-size:13px;color:#adbcaf}
 .doc-footer a:hover{text-decoration:underline}
 .doc-footer-links{display:grid;align-content:start;gap:12px;font-size:14px;font-weight:650}

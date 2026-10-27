@@ -45,7 +45,7 @@ The committed `vercel.json` declares the output directory, explicit page rewrite
 
 ### Preview URL and production metadata
 
-Open Graph image metadata in the HTML currently references `https://yourmove.run/assets/og-platforms.webp`, the intended custom-domain asset. That URL will not represent the new deployment until the domain is mapped. Test social previews after connecting the production domain.
+Open Graph and Twitter image metadata use the approved Green Signature B cards under `https://www.yourmove.run/assets/identity/`. The default is `yourmove-og-default.png`; the hackathon article selects its dedicated card with `social_image` frontmatter. These URLs reference committed local assets, but production preview caches will reflect the change only after a separately authorized deployment. Test social previews after deployment.
 
 ## Edit the site
 
@@ -57,7 +57,8 @@ Open Graph image metadata in the HTML currently references `https://yourmove.run
 - `public/analytics-config.js`: **only file you edit to enable PostHog**.
 - `public/analytics.js`: explicit, cookieless PostHog instrumentation (no build tool).
 - `ANALYTICS.md`: setup steps, tracked events, funnels, privacy/validation notes.
-- `public/assets/`: only images referenced by the published site.
+- `public/assets/identity/`: approved Green Signature B navigation logos, icons, and social cards. The original `logo-official.png` remains the raster provenance source, not live site branding.
+- `IDENTITY_WAVE_2.md`: approved identity, source limitations, optional export commands, and verification.
 - `scripts/site_checks.py`: optional browser/structural QA (requires Python packages `playwright` and `beautifulsoup4`, plus a Chromium binary).
 
 The static HTML files are the source of truth for this deployment. Do not use `build_site.py` from an older marketing archive; it can restore obsolete hero/layout content.

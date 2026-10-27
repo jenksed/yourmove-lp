@@ -50,6 +50,10 @@ content:
       - name: image_alt
         label: Featured image accessibility text
         type: string
+      - name: social_image
+        label: Social preview image (optional)
+        type: string
+        description: Separate 1200 x 630 sharing card under /assets/blog/ or /assets/identity/. Defaults to the approved YourMove brand card.
       - name: body
         label: Article
         type: rich-text

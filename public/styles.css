@@ -71,7 +71,7 @@
 .site-nav > a {font-size: 13px}
 .site-nav > .nav-cta {min-height: 48px;align-items:center}
 .footer-logo {display:inline-block;width:174px}
-.footer-logo img {width:100%;height:auto;filter:brightness(0) invert(1)}
+.footer-logo img {width:100%;height:auto;filter:none}
 .hero-shell {padding-top:38px}
 .hero-grid {grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr);gap:clamp(44px,5vw,84px);min-height: 645px}
 .hero h1 {font-size:clamp(70px,6.5vw,110px);line-height:.92;margin:0 0 31px;letter-spacing:-.071em}

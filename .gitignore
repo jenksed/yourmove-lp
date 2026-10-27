@@ -9,3 +9,7 @@ node_modules/
 .env.*
 !.env.example
 *.log
+
+# Marketing distribution stays outside the source repository.
+YourMove-Quiet-Ink-Brand-and-Marketing-Kit.zip
+YourMove-Quiet-Ink-Brand-and-Marketing-Kit/
