@@ -7,7 +7,7 @@ description: I was accepted into Meta's 2026 Global AI Developer Hackathon.
 date: 2026-10-26
 published: true
 featured: false
-image: /assets/blog/mobileopt48ea4cd8-e2ea-4be7-b5fa-e97db41ca091.png
+image: /assets/blog/8ea1a65c-14a1-4692-9e4f-eaa5980465ee.png
 image_alt: "Announcement artwork: YourMove accepted into the Indie Developer
   track of the Meta Global AI Developer Hackathon."
 image_caption: Original hackathon announcement artwork. An illustration, not a
