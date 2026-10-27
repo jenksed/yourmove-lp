@@ -63,12 +63,18 @@ Open Graph and Twitter image metadata use the approved Green Signature B cards u
 
 The static HTML files are the source of truth for this deployment. Do not use `build_site.py` from an older marketing archive; it can restore obsolete hero/layout content.
 
+## Shared layout
+
+The homepage owns the header, footer, and evergreen announcement. After editing them, run `npm run build`: `scripts/shared-layout.mjs` copies those elements into static routes and the blog build uses the same source. `npm run check:blog` rejects stale static layouts. `public/site-layout.css` holds the scoped responsive styles and loads after page styles. All pages retain usable navigation without JavaScript.
+
+Run `python scripts/navigation_checks.py --url http://127.0.0.1:8765` against the preview for keyboard, touch, breakpoint, no-JavaScript and mock analytics checks. Optional QA dependencies are Playwright and BeautifulSoup; use `--browser /path/to/chromium` if needed. See [NAVIGATION_WAVE_3.md](NAVIGATION_WAVE_3.md) for the local review.
+
 ## Product/distribution boundaries
 
 The landing page is separate from the [YourMove application](https://github.com/jenksed/yourmove-go). The marketing artwork illustrates a product concept; it is not a verified screenshot, and platform logos do not independently establish qualified support. Do not imply automatic application submission. The Get Started page currently links to the application's source and release page rather than distributing a standalone installer.
 
 Content and artwork licensing are **not specified** by this repository. Do not assume the app's GPL-3.0-only license automatically covers the marketing files or third-party branding depicted in artwork.
 
-## Compact release countdown
+## Release announcement
 
-A reusable release announcement is configured in **`public/release-config.js`**. Set `enabled: false` to restore the normal announcement everywhere, or change the date and copy to promote a future release. See [RELEASE_BANNER.md](RELEASE_BANNER.md) for details and browser checks.
+A reusable release announcement is configured in **`public/release-config.js`**. Set `enabled: false` to restore the normal announcement everywhere, or change the date and copy to describe a planned release. See [RELEASE_BANNER.md](RELEASE_BANNER.md) for details and browser checks.

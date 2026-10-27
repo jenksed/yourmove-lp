@@ -35,10 +35,10 @@
   const original = strip.innerHTML;
   const safeLabel = value => String(value || '').slice(0, 70);
   const campaign = String(config.campaign || 'release').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 60);
-  const title = safeLabel(config.title || 'UPCOMING RELEASE');
+  const title = safeLabel(config.title || 'Release');
   const dateLabel = safeLabel(config.dateLabel || new Intl.DateTimeFormat('en-US', {
     timeZone: 'UTC', month: 'short', day: 'numeric'
-  }).format(validDate)).toUpperCase();
+  }).format(validDate));
   const linkText = safeLabel(config.linkText || 'Release details');
   const href = String(config.linkHref || '/get-started/');
   // Only allow same-site paths: this banner is not a configurable redirect.
@@ -46,35 +46,14 @@
 
   const shell = document.createElement('div');
   shell.className = 'shell';
-  const left = document.createElement('div');
-  left.className = 'ym-release-left';
-  const dot = document.createElement('span');
-  dot.className = 'ym-release-dot';
-  dot.setAttribute('aria-hidden', 'true');
-  const kicker = document.createElement('span');
-  kicker.className = 'ym-release-kicker';
-  kicker.textContent = 'COMING UP';
-  const heading = document.createElement('strong');
-  heading.className = 'ym-release-title';
-  heading.textContent = title;
-  const date = document.createElement('span');
-  date.className = 'ym-release-date';
-  date.textContent = dateLabel;
-  left.append(dot, kicker, heading, date);
-
-  const right = document.createElement('div');
-  right.className = 'ym-release-right';
-  const countdown = document.createElement('span');
-  countdown.className = 'ym-release-countdown';
-  countdown.setAttribute('role', 'status');
+  const message = document.createElement('span');
   const link = document.createElement('a');
   link.className = 'ym-release-link';
   link.href = href;
-  link.textContent = linkText + ' ↗';
+  link.textContent = linkText;
   link.dataset.analyticsCta = 'release_details';
   link.dataset.analyticsPlacement = 'release_banner';
-  right.append(countdown, link);
-  shell.append(left, right);
+  shell.append(message, link);
 
   let displayed = false;
   function update() {
@@ -88,10 +67,7 @@
       }
       return;
     }
-    countdown.textContent = remaining === 0 ? 'TODAY' : remaining === 1 ? '1 DAY TO GO' : `${remaining} DAYS TO GO`;
-    countdown.setAttribute('aria-label', remaining === 0
-      ? `${title} planned for today, ${dateLabel}`
-      : `${remaining} days until ${title} on ${dateLabel}`);
+    message.textContent = `${title} planned for ${remaining === 0 ? 'today, ' : ''}${dateLabel}.`;
     if (!displayed) {
       strip.replaceChildren(shell);
       strip.classList.add('ym-release-announcement');

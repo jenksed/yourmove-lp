@@ -4,19 +4,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
 import MarkdownIt from 'markdown-it';
+import {layout, syncStaticLayout} from './shared-layout.mjs';
 
 const root = process.cwd();
 const contentDir = path.join(root, 'content/blog');
 const outputDir = path.join(root, 'public/blog');
-const home = fs.readFileSync(path.join(root, 'public/index.html'), 'utf8');
-const find = (re, label) => {
-  const result = home.match(re);
-  if (!result) throw new Error('Missing site layout: ' + label);
-  return result[0];
-};
-const announcement = find(/<div class="announcement">[\s\S]*?<\/div><\/div>/, 'announcement');
-const header = find(/<header class="header">[\s\S]*?<\/header>/, 'header');
-const footer = find(/<footer class="footer">[\s\S]*?<\/footer>/, 'footer');
+// Both generated articles and static routes use the homepage's shared layout.
+const {announcement, header, footer} = layout;
+syncStaticLayout({check: process.argv.includes('--check')});
 const esc = v => String(v ?? '').replace(/[&<>"']/g, ch => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
 })[ch]);
@@ -63,7 +58,8 @@ const pageHead = ({title, description, canonical, ogType='website', image='', sc
   '<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">' +
   '<link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/campaign.css">' +
   '<link rel="stylesheet" href="/focused.css"><link rel="stylesheet" href="/brand-refresh.css">' +
-  '<link rel="stylesheet" href="/blog.css">' +
+  '<link rel="stylesheet" href="/blog.css"><link rel="stylesheet" href="/release-banner.css"><link rel="stylesheet" href="/site-layout.css">' +
+  '<script defer src="/release-config.js"></script><script defer src="/release-banner.js"></script>' +
   '<script defer src="/app.js"></script><script defer src="/blog.js"></script>' +
   '<script defer src="/analytics-config.js"></script><script defer src="/analytics.js"></script>' +
   (schema ? '<script type="application/ld+json">' + jsonLd(schema) + '</script>' : '') +

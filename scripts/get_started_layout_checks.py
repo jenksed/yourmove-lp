@@ -21,7 +21,7 @@ with sync_playwright() as p:
     for width in widths:
         page=browser.new_page(viewport={'width':width,'height':900})
         page.set_content(html)
-        for stylesheet in ['styles.css','campaign.css','focused.css','brand-refresh.css','hero.css','get-started.css']:
+        for stylesheet in ['styles.css','campaign.css','focused.css','brand-refresh.css','hero.css','get-started.css','site-layout.css']:
             page.add_style_tag(content=(root/stylesheet).read_text())
         result=page.evaluate('''() => {
           const cards=[...document.querySelectorAll('.gs-path')];

@@ -26,7 +26,7 @@ def source(route):
 
 def start(page, route, enable):
     page.set_content(source(route), wait_until='domcontentloaded')
-    for name in ['styles.css', 'campaign.css', 'focused.css', 'brand-refresh.css', 'hero.css', 'application-handoff.css']:
+    for name in ['styles.css', 'campaign.css', 'focused.css', 'brand-refresh.css', 'hero.css', 'application-handoff.css', 'site-layout.css']:
         page.add_style_tag(content=(ROOT / name).read_text())
     page.add_script_tag(content=(ROOT / 'app.js').read_text())
     page.evaluate('''() => {

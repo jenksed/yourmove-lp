@@ -65,6 +65,7 @@ with sync_playwright() as p:
                 page.add_style_tag(content=(R/'how-it-works.css').read_text())
             if route=='support':
                 page.add_style_tag(content=(R/'support.css').read_text())
+            page.add_style_tag(content=(R/'site-layout.css').read_text())
             page.add_script_tag(content=(R/'app.js').read_text())
             scroll=page.evaluate('''() => ({client:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth})''')
             assert scroll['scroll']<=scroll['client']+1,(width,route,'overflow',scroll)
@@ -138,6 +139,7 @@ with sync_playwright() as p:
     pg.add_style_tag(content=(R/'hero.css').read_text())
     pg.add_style_tag(content=(R/'application-handoff.css').read_text())
     pg.add_style_tag(content=(R/'process-journey.css').read_text())
+    pg.add_style_tag(content=(R/'site-layout.css').read_text())
     assert pg.locator('.site-nav').is_visible(), 'mobile nav hidden without JS'
     pg.close()
     b.close()

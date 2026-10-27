@@ -6,16 +6,26 @@
     const setOpen=(open)=>{
       menu.setAttribute('aria-expanded',String(open));
       nav.classList.toggle('is-open',open);
-      menu.querySelector('.menu-icon').textContent=open?'×':'☰';
+      menu.querySelector('.menu-icon').textContent=open?'−':'+';
+      const label=menu.querySelector('[data-menu-label]');
+      if(label)label.textContent=open?'Close':'Menu';
     };
     menu.addEventListener('click',()=>setOpen(menu.getAttribute('aria-expanded')!=='true'));
-    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setOpen(false)));
+    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      if(window.matchMedia('(max-width:900px)').matches)menu.focus();
+      setOpen(false);
+    }));
+    const header=menu.closest('.header');
+    header.addEventListener('focusout',e=>{if(e.relatedTarget&&!header.contains(e.relatedTarget))setOpen(false)});
     document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.getAttribute('aria-expanded')==='true'){setOpen(false);menu.focus()}});
     document.addEventListener('pointerdown',e=>{if(!menu.contains(e.target)&&!nav.contains(e.target))setOpen(false)});
-    window.matchMedia('(min-width:761px)').addEventListener('change',e=>{if(e.matches)setOpen(false)});
+    window.matchMedia('(min-width:901px)').addEventListener('change',e=>{if(e.matches)setOpen(false)});
   }
-  const path=window.location.pathname;
-  document.querySelectorAll('.site-nav [data-path]').forEach(a=>{if(a.dataset.path===path)a.setAttribute('aria-current','page')});
+  const path='/' + window.location.pathname.split('/').filter(Boolean).filter(p=>p!=='index.html').join('/') + '/';
+  document.querySelectorAll('.site-nav [data-path]').forEach(a=>{
+    if(a.dataset.path===path)a.setAttribute('aria-current','page');
+    else if(path.startsWith(a.dataset.path))a.setAttribute('aria-current','location');
+  });
   const stages=[
     {kicker:'OPPORTUNITY / 01',title:'One job. One place to begin.',body:'Start with a supported employer posting and its application requirements.',rows:[['Opportunity','Support Engineer'],['Source','Employer posting'],['Next','Prepare application']]},
     {kicker:'YOUR RECORDS / 02',title:'Your work comes with you.',body:'Choose the information, answers, and documents that belong in this application.',rows:[['Candidate profile','Saved information'],['Documents','Selected resume'],['Previous writing','Answer Library']]},
