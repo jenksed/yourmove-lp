@@ -112,7 +112,7 @@ with sync_playwright() as pw:
                 page.screenshot(path=str(OUT / 'other-pages' / (route.strip('/').replace('/', '-') + f'-{width}.png')), full_page=True)
             report['renders'].append({'route': route, 'width': width, 'scrollWidth': scroll})
             # Solid computed surfaces only; photographic/gradient sampling is separate.
-            for selector in ['.nav-cta', '.ym2-download-button', '.gs-path-foot', '.doc-solid-link', '.ym-prose', '.ym-journal-end .ym-primary']:
+            for selector in ['.nav-cta', '.home-next .home-button', '.gs-path-foot', '.doc-solid-link', '.ym-prose', '.ym-journal-end .ym-primary']:
                 for el in page.locator(selector).all():
                     if el.is_visible():
                         value = el.evaluate(CONTRAST_JS)
@@ -122,19 +122,19 @@ with sync_playwright() as pw:
 
     page.goto(args.url + '/', wait_until='networkidle')
     page.locator('[data-compare-state="blank"]').click()
-    assert page.locator('[data-demo-name]').inner_text() == '—'
-    assert 'empty box' in page.locator('[data-compare-summary]').inner_text()
+    assert page.locator('[data-demo-name]').inner_text() == 'Enter your name'
+    assert page.locator('[data-demo-answer]').input_value() == ''
     page.locator('[data-compare-state="blank"]').focus()
     page.keyboard.press('ArrowRight')
     assert page.locator('[data-compare-state="saved"]').get_attribute('aria-pressed') == 'true'
     assert page.locator('[data-demo-name]').inner_text() == 'Taylor Kim'
-    assert 'ready to review' in page.locator('[data-answer-meta]').inner_text().lower()
-    assert page.locator('.ym-handoff-answer').evaluate('(e)=>getComputedStyle(e).backgroundColor') == 'rgb(233, 238, 248)'
-    page.locator('.hero-real__button').hover()
+    assert 'ready for your review' in page.locator('[data-demo-status]').inner_text().lower()
+    assert page.locator('[data-demo-answer]').evaluate('(e)=>getComputedStyle(e).backgroundColor') == 'rgb(234, 242, 237)'
+    page.locator('.home-hero .home-button').hover()
     page.wait_for_timeout(220)
-    assert page.locator('.hero-real__button').evaluate('(e)=>getComputedStyle(e).backgroundColor') == 'rgb(40, 73, 132)'
-    page.locator('.hero-real__button').focus()
-    assert page.locator('.hero-real__button').evaluate('(e)=>getComputedStyle(e).outlineStyle') == 'solid'
+    assert page.locator('.home-hero .home-button').evaluate('(e)=>getComputedStyle(e).backgroundColor') == 'rgb(40, 73, 132)'
+    page.locator('.home-hero .home-button').focus()
+    assert page.locator('.home-hero .home-button').evaluate('(e)=>getComputedStyle(e).outlineStyle') == 'solid'
     report['interactions'] += ['comparison mouse and keyboard states', 'hero hover and keyboard focus']
 
     page.goto(args.url + '/get-started/', wait_until='networkidle')

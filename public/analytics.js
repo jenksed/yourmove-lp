@@ -76,7 +76,7 @@
   // A single pageview per document; no query strings or full URLs in our custom payload.
   capture('$pageview', { $pathname: normalize(location.pathname), $current_url: location.origin + normalize(location.pathname) });
 
-  const comparisonSeen = new Set(['with_yourmove']);
+  const comparisonSeen = new Set([document.querySelector('[data-compare]')?.dataset.mode === 'saved' ? 'with_yourmove' : 'starting_over']);
   let comparisonCompleted = false;
 
   // Conversion events. IDs are authored in markup; text from DOM is never collected.
@@ -134,6 +134,10 @@
       comparisonCompleted=true;
       capture('ym_comparison_both_states_seen',{demo:'application_handoff'});
     }
+  });
+
+  document.addEventListener('ym:comparison-answer-edited', () => {
+    capture('ym_comparison_answer_edited', { demo: 'application_handoff' });
   });
 
   document.addEventListener('ym:copy-command', (ev) => {

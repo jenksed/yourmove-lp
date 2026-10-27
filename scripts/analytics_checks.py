@@ -26,9 +26,11 @@ def source(route):
 
 def start(page, route, enable):
     page.set_content(source(route), wait_until='domcontentloaded')
-    for name in ['styles.css', 'campaign.css', 'focused.css', 'brand-refresh.css', 'hero.css', 'application-handoff.css', 'site-layout.css']:
+    for name in ['styles.css', 'campaign.css', 'focused.css', 'brand-refresh.css', 'hero.css', 'application-handoff.css', 'homepage.css', 'site-layout.css']:
         page.add_style_tag(content=(ROOT / name).read_text())
     page.add_script_tag(content=(ROOT / 'app.js').read_text())
+    if route=='':
+        page.add_script_tag(content=(ROOT / 'homepage.js').read_text())
     page.evaluate('''() => {
         window.__events = [];
         window.__init = null;
@@ -70,18 +72,24 @@ with sync_playwright() as p:
         assert config['options']['cookieless_mode']=='always'
         assert len(events(page,'$pageview'))==1, f'expected exactly one view on {route}'
         if route=='':
-            page.locator('.hero-real__button').click()
+            page.locator('.home-hero .home-button').click()
             assert events(page,'ym_cta_clicked')[-1]['properties']['placement']=='hero'
+            # Initial From scratch state is counted; only real state changes emit.
             page.locator('[data-compare-state="blank"]').click()
-            assert events(page,'ym_comparison_changed')[-1]['properties']['mode']=='starting_over'
+            assert events(page,'ym_comparison_changed')==[]
             page.locator('[data-compare-state="saved"]').click()
             assert events(page,'ym_comparison_changed')[-1]['properties']['mode']=='with_yourmove'
+            page.locator('[data-demo-answer]').fill('PRIVATE_EDIT_SENTINEL')
+            page.locator('[data-demo-answer]').fill('PRIVATE_EDIT_SENTINEL_2')
+            assert len(events(page,'ym_comparison_answer_edited'))==1
+            assert 'PRIVATE_EDIT_SENTINEL' not in str(page.evaluate('window.__events'))
             seen=events(page,'ym_comparison_both_states_seen')
             assert len(seen)==1 and seen[0]['properties']['demo']=='application_handoff'
             page.locator('[data-compare-state="blank"]').click()
+            assert events(page,'ym_comparison_changed')[-1]['properties']['mode']=='starting_over'
             page.locator('[data-compare-state="saved"]').click()
             assert len(events(page,'ym_comparison_both_states_seen'))==1
-            page.locator('.ym2-download-button').click()
+            page.locator('.home-next .home-button').click()
             assert events(page,'ym_cta_clicked')[-1]['properties']['placement']=='final_section'
             assert events(page,'ym_section_viewed'), 'no sections observed'
             page.evaluate('window.scrollTo(0,document.documentElement.scrollHeight)')

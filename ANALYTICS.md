@@ -47,7 +47,8 @@ The support page uses existing explicit `ym_cta_clicked` events (`support_kofi`,
 | `ym_navigation_clicked` | Header and footer navigation links | `location`, `destination`, `page` |
 | `ym_github_outbound_clicked` | Link to YourMove application GitHub repo | `action` (`repository`, `releases`, `source_zip`, `mac_build_docs`, `local_run_docs`, `report_issue`), `placement` |
 | `ym_comparison_changed` | Homepage starting-over/with-YourMove toggle | `mode` |
-| `ym_comparison_both_states_seen` | Visitor switches from the default With YourMove demo into Starting Over (once per page load) | `demo = application_handoff` |
+| `ym_comparison_both_states_seen` | Visitor has seen both starting points, including the default From scratch state (once per page load) | `demo = application_handoff` |
+| `ym_comparison_answer_edited` | First edit to the illustrative prepared answer (once per page load; no answer text collected) | `demo = application_handoff` |
 | `ym_workflow_step_selected` | How It Works interactive tab | `step` |
 | `ym_evidence_stage_selected` | Career evidence example tab | `stage` |
 | `ym_section_viewed` | One-time intersection of marked homepage / Get Started sections | `section` |

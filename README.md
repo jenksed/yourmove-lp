@@ -51,14 +51,16 @@ Open Graph and Twitter image metadata use the approved Green Signature B cards u
 
 - `public/index.html`: homepage content.
 - `public/{get-started,how-it-works,evidence,manifesto,review}/index.html`: supporting pages.
-- `public/hero.css`: full-background photographic hero; headline, supporting copy and CTAs are HTML elements, **not embedded in the image**.
+- `public/homepage.css`, `public/homepage.js`: Wave 4 photographic hero, saved-work comparison, and homepage narrative. The illustration is synthetic; editing stays in memory and never submits an application.
+- `public/hero.css`, `public/application-handoff.css`, `public/process-journey.css`: retained legacy section styles used by existing supporting-page checks.
 - `public/styles.css`, `public/campaign.css`, `public/focused.css`, `public/brand-refresh.css`: shared and section styles.
-- `public/app.js`: mobile menu, interactive examples, and command-copy outcome events.
+- `public/app.js`: shared mobile menu, supporting-page examples, and command-copy outcome events.
 - `public/analytics-config.js`: **only file you edit to enable PostHog**.
 - `public/analytics.js`: explicit, cookieless PostHog instrumentation (no build tool).
 - `ANALYTICS.md`: setup steps, tracked events, funnels, privacy/validation notes.
 - `public/assets/identity/`: approved Green Signature B navigation logos, icons, and social cards. The original `logo-official.png` remains the raster provenance source, not live site branding.
 - `IDENTITY_WAVE_2.md`: approved identity, source limitations, optional export commands, and verification.
+- `HOMEPAGE_WAVE_4.md`: homepage decisions, screenshot links, verification, and deferred work.
 - `scripts/site_checks.py`: optional browser/structural QA (requires Python packages `playwright` and `beautifulsoup4`, plus a Chromium binary).
 
 The static HTML files are the source of truth for this deployment. Do not use `build_site.py` from an older marketing archive; it can restore obsolete hero/layout content.
