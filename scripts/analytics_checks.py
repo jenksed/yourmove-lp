@@ -26,9 +26,11 @@ def source(route):
 
 def start(page, route, enable):
     page.set_content(source(route), wait_until='domcontentloaded')
-    for name in ['styles.css', 'campaign.css', 'focused.css', 'brand-refresh.css', 'hero.css', 'application-handoff.css', 'homepage.css', 'site-layout.css']:
+    for name in ['styles.css', 'campaign.css', 'focused.css', 'brand-refresh.css', 'hero.css', 'application-handoff.css', 'homepage.css', 'product-discovery.css', 'how-it-works.css', 'evidence.css', 'get-started.css', 'site-layout.css']:
         page.add_style_tag(content=(ROOT / name).read_text())
     page.add_script_tag(content=(ROOT / 'app.js').read_text())
+    if route=='how-it-works':
+        page.add_script_tag(content=(ROOT / 'product-discovery.js').read_text())
     if route=='':
         page.add_script_tag(content=(ROOT / 'homepage.js').read_text())
     page.evaluate('''() => {
@@ -96,13 +98,16 @@ with sync_playwright() as p:
             page.wait_for_timeout(75)
             assert len(events(page,'ym_scroll_depth_reached'))>=1
         if route=='get-started':
-            page.locator('.gs-dark-button').click()
-            assert events(page,'ym_github_outbound_clicked')[-1]['properties']['action']=='releases'
-            page.locator('.gs-source-link').click()
+            page.locator('.availability-section [data-analytics-cta=check_releases]').click()
+            assert events(page,'ym_github_outbound_clicked')[-1]['properties']['action'] in ('releases','release_notes')
+            page.locator('[data-analytics-cta=download_source]').click()
             assert events(page,'ym_github_outbound_clicked')[-1]['properties']['action']=='source_zip'
-            page.locator('.gs-details summary').first.click()
+            page.locator('.start-questions summary').first.click()
             page.wait_for_timeout(120)
             assert events(page,'ym_faq_opened')[-1]['properties']['question']==1
+            page.locator('.build-instructions summary').first.click()
+            page.wait_for_timeout(100)
+            assert events(page,'ym_source_instructions_opened')[-1]['properties']['command_group']=='mac_build'
             page.locator('.gs-console button[data-copy-text]').click()
             page.wait_for_timeout(100)
             assert events(page,'ym_install_command_copy_clicked')[-1]['properties']['command_group']=='mac_build'
@@ -110,14 +115,28 @@ with sync_playwright() as p:
             assert len(result_events)==1 and result_events[0]['properties']['result'] in ('success','failure')
             assert not any('git clone' in str(e) for e in result_events), 'copied text leaked to analytics'
         if route=='evidence':
-            page.locator('[data-evidence-stage="1"]').click()
-            assert events(page,'ym_evidence_stage_selected')[-1]['properties']['stage']==2
+            page.locator('.actual-evidence summary').click()
+            page.wait_for_timeout(100)
+            assert events(page,'ym_evidence_detail_opened')[-1]['properties']['detail']=='local_build'
         if route=='how-it-works':
-            tabs=page.locator('[data-flow]')
-            if tabs.count() > 1:
-                tabs.nth(1).click()
-                assert events(page,'ym_workflow_step_selected')[-1]['properties']['step']==2
+            page.locator('[data-path-choice=manual]').click()
+            assert events(page,'ym_preparation_path_selected')[-1]['properties']['path']=='manual'
         page.close()
+
+    # Explicit published-release click fixtures, intercepted by start(): no asset is requested.
+    page=browser.new_page()
+    start(page,'get-started',True)
+    page.evaluate("""() => {
+      const link=document.createElement('a');link.href='https://github.com/jenksed/yourmove-go/releases/download/v0.0.0-qa/YourMove-QA.zip';
+      link.dataset.analyticsCta='download_release';link.dataset.analyticsPlacement='get_started_availability';link.id='qa-release-asset';link.textContent='QA download';document.body.append(link);
+      const notes=document.createElement('a');notes.href='https://github.com/jenksed/yourmove-go/releases/tag/v0.0.0-qa';notes.id='qa-release-notes';notes.textContent='QA notes';document.body.append(notes);
+    }""")
+    page.locator('#qa-release-asset').click()
+    assert events(page,'ym_github_outbound_clicked')[-1]['properties']['action']=='release_download'
+    assert events(page,'ym_install_path_selected')[-1]['properties']['path']=='download_release'
+    page.locator('#qa-release-notes').click()
+    assert events(page,'ym_github_outbound_clicked')[-1]['properties']['action']=='release_notes'
+    page.close()
 
     page=browser.new_page(viewport={'width':390,'height':844})
     page.on('pageerror', lambda exc: errors.append(str(exc)))
@@ -157,5 +176,5 @@ with sync_playwright() as p:
 print(json.dumps({'status':'PASS','routes':len(ROUTES),'inactive_and_active_pageviews':12,
   'verified_events':['$pageview','ym_cta_clicked','ym_comparison_changed','ym_section_viewed','ym_scroll_depth_reached',
   'ym_github_outbound_clicked','ym_faq_opened','ym_install_command_copy_clicked','ym_install_command_copy_result',
-  'ym_evidence_stage_selected','ym_workflow_step_selected','ym_mobile_menu_toggled'],
+  'ym_evidence_detail_opened','ym_preparation_path_selected','ym_mobile_menu_toggled'],
   'note':'Mock client verifies event wiring, not live PostHog ingestion.'},indent=2))

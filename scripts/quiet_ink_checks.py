@@ -138,17 +138,18 @@ with sync_playwright() as pw:
     report['interactions'] += ['comparison mouse and keyboard states', 'hero hover and keyboard focus']
 
     page.goto(args.url + '/get-started/', wait_until='networkidle')
-    page.locator('.gs-details summary').first.click()
-    assert page.locator('.gs-details details').first.get_attribute('open') is not None
+    page.locator('.start-questions summary').first.click()
+    assert page.locator('.start-questions details').first.get_attribute('open') is not None
+    page.locator('.build-instructions summary').first.click()
     copy = page.locator('.gs-console button[data-copy-text]')
     expected = copy.get_attribute('data-copy-text')
     copy.click()
     assert page.evaluate('navigator.clipboard.readText()') == expected
     report['interactions'] += ['Get Started disclosure and real command clipboard']
     page.goto(args.url + '/evidence/', wait_until='networkidle')
-    page.locator('[data-evidence-stage="1"]').click()
-    assert 'actual incident' in page.locator('.ev-transform h3').inner_text().lower()
-    report['interactions'] += ['evidence tabs']
+    page.locator('.actual-evidence summary').click()
+    assert page.locator('.actual-evidence img').is_visible()
+    report['interactions'] += ['authentic evidence disclosure']
     page.goto(args.url + '/docs/', wait_until='networkidle')
     page.locator('[data-doc-state="applying"]').click()
     assert 'READY TO REVIEW' in page.locator('[data-doc-stage-visual-pill]').inner_text()

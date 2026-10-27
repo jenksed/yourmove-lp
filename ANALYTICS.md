@@ -45,18 +45,21 @@ The support page uses existing explicit `ym_cta_clicked` events (`support_kofi`,
 | `$pageview` | Once per full document navigation, on all six pages | `page`, `path`, `$pathname` |
 | `ym_cta_clicked` | Explicit main CTA links | `cta`, `placement`, `page` |
 | `ym_navigation_clicked` | Header and footer navigation links | `location`, `destination`, `page` |
-| `ym_github_outbound_clicked` | Link to YourMove application GitHub repo | `action` (`repository`, `releases`, `source_zip`, `mac_build_docs`, `local_run_docs`, `report_issue`), `placement` |
+| `ym_github_outbound_clicked` | Link to YourMove application GitHub repo | `action` (`repository`, `releases`, `release_notes`, `release_download`, `source_zip`, `mac_build_docs`, `local_run_docs`, `report_issue`), `placement` |
 | `ym_comparison_changed` | Homepage starting-over/with-YourMove toggle | `mode` |
 | `ym_comparison_both_states_seen` | Visitor has seen both starting points, including the default From scratch state (once per page load) | `demo = application_handoff` |
 | `ym_comparison_answer_edited` | First edit to the illustrative prepared answer (once per page load; no answer text collected) | `demo = application_handoff` |
-| `ym_workflow_step_selected` | How It Works interactive tab | `step` |
-| `ym_evidence_stage_selected` | Career evidence example tab | `stage` |
+| `ym_preparation_path_selected` | How It Works illustrative support comparison | `path` (`supported`, `manual`) |
+| `ym_evidence_detail_opened` | Actual evidence editor capture disclosed | `detail = local_build` |
+| `ym_source_instructions_opened` | Source-build instructions expanded | `command_group` (`mac_build`, `browser_run`) |
 | `ym_section_viewed` | One-time intersection of marked homepage / Get Started sections | `section` |
 | `ym_scroll_depth_reached` | First time reaching 50% or 90% | `percent` |
 | `ym_faq_opened` | Installation FAQ item opened | `faq`, `question` (numeric index) |
 | `ym_install_command_copy_clicked` | Visitor attempts to copy Mac build or browser command | `command_group` |
 | `ym_install_command_copy_result` | Browser reports a successful/failed clipboard copy | `command_group`, `result` |
 | `ym_mobile_menu_toggled` | Mobile menu opened/closed | `state` |
+
+The historical `ym_workflow_step_selected` and `ym_evidence_stage_selected` events are retained in the shared handler for compatibility; the redesigned pages no longer emit them.
 
 Event names and properties are stable, authored enums/IDs rather than text scraped from the page. `ym_install_command_copy_result: success` means the clipboard operation worked, **not** that YourMove installed or launched. GitHub/source/release events indicate a **click intent**, not a completed download or install.
 

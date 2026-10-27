@@ -2,7 +2,8 @@
 (() => {
   'use strict';
   const config = window.YOURMOVE_RELEASE;
-  if (!config || config.enabled !== true) return;
+  // A qualified release uses the build-generated evergreen availability notice.
+  if (!config || config.published?.qualified === true || config.enabled !== true) return;
 
   // Validate a DATE, rather than inventing a release hour or timezone conversion.
   const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(config.date || ''));

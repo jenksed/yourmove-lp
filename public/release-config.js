@@ -5,6 +5,10 @@
  * To reuse it, change the title, date, label, and link. No HTML edits.
  */
 window.YOURMOVE_RELEASE = {
+  // Set only after the asset is published and its downloaded installation is qualified.
+  // Run npm run build afterward. Null keeps the pending-release presentation.
+  // See PRODUCT_DISCOVERY_WAVE_5.md for the launch transition and rollback.
+  published: null,
   enabled: true,
   title: 'Initial release',
   date: '2026-11-06',

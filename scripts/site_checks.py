@@ -61,6 +61,10 @@ with sync_playwright() as p:
             page.add_style_tag(content=(R/'process-journey.css').read_text())
             if route=='':
                 page.add_style_tag(content=(R/'homepage.css').read_text())
+            if route in ['how-it-works','evidence','get-started']:
+                page.add_style_tag(content=(R/'product-discovery.css').read_text())
+            if route=='evidence':
+                page.add_style_tag(content=(R/'evidence.css').read_text())
             if route=='get-started':
                 page.add_style_tag(content=(R/'get-started.css').read_text())
             if route=='how-it-works':
@@ -69,6 +73,8 @@ with sync_playwright() as p:
                 page.add_style_tag(content=(R/'support.css').read_text())
             page.add_style_tag(content=(R/'site-layout.css').read_text())
             page.add_script_tag(content=(R/'app.js').read_text())
+            if route=='how-it-works':
+                page.add_script_tag(content=(R/'product-discovery.js').read_text())
             if route=='':
                 page.add_script_tag(content=(R/'homepage.js').read_text())
             scroll=page.evaluate('''() => ({client:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth})''')
@@ -99,29 +105,16 @@ with sync_playwright() as p:
                 assert page.locator('[data-demo-answer]').input_value()=='A revised answer for this role.'
                 assert 'Still yours to write' in page.locator('.application-preview__unfinished').inner_text()
             if route=='get-started':
-                assert 'CHECK' in page.locator('.gs-path-release h3').inner_text()
-                assert 'RELEASES' in page.locator('.gs-path-release h3').inner_text()
-                cards=page.locator('.gs-path')
-                assert cards.count()==2
-                for card in cards.all():
-                    # Text and actions must stay inside their own card even with long labels.
-                    assert card.evaluate('(el) => el.scrollWidth <= el.clientWidth + 1'), (width,'card overflow')
-                    assert card.locator('h3').evaluate('(el) => el.scrollWidth <= el.clientWidth + 1'), (width,'heading overflow')
-                positions=[card.bounding_box() for card in cards.all()]
-                if width<=1000:
-                    assert positions[1]['y']>positions[0]['y'] + 20, (width,'cards not stacked')
-                else:
-                    assert abs(positions[0]['y']-positions[1]['y'])<2, (width,'cards not paired')
+                assert page.locator('#availability-title').is_visible()
                 assert page.locator('a[href="https://github.com/jenksed/yourmove-go/releases"]').count()>=1
                 assert page.locator('a[href$="/archive/refs/heads/main.zip"]').count()==1
-                assert page.locator('.gs-console button[data-copy-text]').count()==1
+                page.locator('.build-instructions summary').first.click()
                 assert 'prepare.sh' in page.locator('.gs-console button').get_attribute('data-copy-text')
-                assert page.locator('.gs-details details').count()==4
-                page.locator('.gs-details summary').first.click()
-                assert page.locator('.gs-details details').first.get_attribute('open') is not None
+                page.locator('.start-questions summary').first.click()
+                assert page.locator('.start-questions details').first.get_attribute('open') is not None
             if route=='evidence':
-                page.locator('[data-evidence-stage="1"]').click()
-                assert 'actual incident' in page.locator('.ev-transform h3').inner_text().lower()
+                page.locator('.actual-evidence summary').click()
+                assert page.locator('.actual-evidence img').is_visible()
             if width<=760:
                 page.locator('.menu-button').click()
                 assert page.locator('.menu-button').get_attribute('aria-expanded')=='true'
@@ -147,4 +140,4 @@ with sync_playwright() as p:
 print(json.dumps({'result':'PASS','viewports':WIDTHS,'pages':len(ROUTES),'renderChecks':len(checks),
                   'checked':['overflow','console exceptions','internal paths and anchor targets',
                              'image paths and alt attributes','heading structure','comparison toggle and updated answer','saved records and applicant control',
-                             'evidence tabs','installation FAQ disclosures and command block','mobile menu and Escape','no-JS mobile navigation']},indent=2))
+                             'evidence disclosure','installation FAQ disclosures and command block','mobile menu and Escape','no-JS mobile navigation']},indent=2))

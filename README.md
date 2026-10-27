@@ -61,6 +61,10 @@ Open Graph and Twitter image metadata use the approved Green Signature B cards u
 - `public/assets/identity/`: approved Green Signature B navigation logos, icons, and social cards. The original `logo-official.png` remains the raster provenance source, not live site branding.
 - `IDENTITY_WAVE_2.md`: approved identity, source limitations, optional export commands, and verification.
 - `HOMEPAGE_WAVE_4.md`: homepage decisions, screenshot links, verification, and deferred work.
+- `PRODUCT_DISCOVERY_WAVE_5.md`: three-page visitor journey, authentic capture provenance, responsive review, verification, and the November 6 release switch.
+- `public/product-discovery.css`, `public/product-discovery.js`: scoped supporting-page reading rhythm and illustrative supported/manual form comparison.
+- `public/evidence.css`, `public/how-it-works.css`, `public/get-started.css`: page-owned Wave 5 compositions.
+- `scripts/sync-availability.mjs`: generates Get Started release status and existing homepage/shared availability notices from `public/release-config.js`; runs before the normal blog/shared-layout build.
 - `scripts/site_checks.py`: optional browser/structural QA (requires Python packages `playwright` and `beautifulsoup4`, plus a Chromium binary).
 
 The static HTML files are the source of truth for this deployment. Do not use `build_site.py` from an older marketing archive; it can restore obsolete hero/layout content.
@@ -79,4 +83,4 @@ Content and artwork licensing are **not specified** by this repository. Do not a
 
 ## Release announcement
 
-A reusable release announcement is configured in **`public/release-config.js`**. Set `enabled: false` to restore the normal announcement everywhere, or change the date and copy to describe a planned release. See [RELEASE_BANNER.md](RELEASE_BANNER.md) for details and browser checks.
+A reusable release announcement is configured in **`public/release-config.js`**. Set `enabled: false` to restore the normal announcement everywhere, or change the date and copy to describe a planned release. See [RELEASE_BANNER.md](RELEASE_BANNER.md) for details and browser checks. For the verified official-release transition, fill `published` in that same configuration and run `npm run build`; see [Wave 5 launch instructions](PRODUCT_DISCOVERY_WAVE_5.md#november-6-launch-transition). A planned date never enables a download.
