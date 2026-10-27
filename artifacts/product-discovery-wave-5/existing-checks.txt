@@ -1,0 +1,23 @@
+RUN site_checks.py
+FAIL (320, 'review', 'overflow', {'client': 320, 'scroll': 325})
+RUN analytics_checks.py
+{
+  "status": "PASS",
+  "routes": 6,
+  "inactive_and_active_pageviews": 12,
+  "verified_events": [
+    "$pageview",
+    "ym_cta_clicked",
+    "ym_comparison_changed",
+    "ym_section_viewed",
+    "ym_scroll_depth_reached",
+    "ym_github_outbound_clicked",
+    "ym_faq_opened",
+    "ym_install_command_copy_clicked",
+    "ym_install_command_copy_result",
+    "ym_evidence_detail_opened",
+    "ym_preparation_path_selected",
+    "ym_mobile_menu_toggled"
+  ],
+  "note": "Mock client verifies event wiring, not live PostHog ingestion."
+}

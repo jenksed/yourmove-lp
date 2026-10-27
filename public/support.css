@@ -1,5 +1,5 @@
 /* YourMove independent developer support page. Scoped to body[data-page=support]. */
-body[data-page="support"]{--ys-ink:#101915;--ys-cream:#f9f8f3;--ys-blue:#2456bd;--ys-paper:#f2f3ed;background:var(--ys-cream);color:var(--ys-ink)}
+body[data-page="support"]{--ys-ink:var(--color-text);--ys-cream:var(--color-bg);--ys-blue:var(--color-action);--ys-paper:var(--color-surface-muted);background:var(--ys-cream);color:var(--ys-ink)}
 body[data-page="support"] .shell{max-width:1440px;padding-inline:clamp(22px,4vw,72px)}
 body[data-page="support"] h1,body[data-page="support"] h2,body[data-page="support"] h3{font-family:"Jost","Avenir Next",system-ui,sans-serif}
 .ys-rail{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;border-top:1px solid #67736c;color:#d2ddd3;text-transform:uppercase;letter-spacing:.1em;font-size:10px;font-weight:800}
@@ -93,3 +93,32 @@ body[data-page="support"] h1,body[data-page="support"] h2,body[data-page="suppor
 .ys-last-share{color:var(--ym-support-forest);font-weight:750}
 .ys-last-share:hover{color:#103426}
 @media(max-width:760px){.ys-milestone{font-size:13px!important}.ys-example-link{font-size:12px;line-height:1.4}.ys-last h2{font-size:clamp(45px,9vw,66px)}}
+
+/* Quiet Ink support: preserve the honey invitation and voluntary donation flow. */
+.ys-hero,.ys-purpose {background:var(--color-dark)}
+.ys-rail,.ys-hero-tail,.ys-purpose-items,.ys-purpose-items>div,.ys-milestone {border-color:var(--color-border-strong)}
+.ys-rail,.ys-kicker,.ys-hero-copy .ys-quiet,.ys-hero-tail,.ys-purpose-items p {color:var(--color-dark-muted)}
+.ys-dot,.ys-live span {background:var(--color-dark-muted)}
+.ys-hero-copy h1 em,.ys-purpose h2 em,.ys-purpose-items>div>span {color:var(--color-dark-action)}
+.ys-story-link,.ys-milestone a {color:var(--color-dark-action);border-color:currentColor}
+.ys-rail-light,.ys-signature span,.ys-proof>span:nth-last-child(2),.ys-proof-index,.ys-form-top,.ys-form-caption,.ys-form-overline {color:var(--color-muted)}
+.ys-rail-light,.ys-proof,.ys-form-paper,.ys-form-field>div {border-color:var(--color-border)}
+.ys-support-card {color:var(--color-text);box-shadow:14px 18px 0 var(--color-dark-surface)}
+.ys-card-main p {color:var(--color-text)}
+.ys-under-link,.ys-outlined-link {color:var(--color-text);border-color:var(--color-border-strong)}
+.ys-form-art,.ys-work {background:var(--color-action-soft)}
+.ys-form-art {border-color:var(--color-border);box-shadow:16px 17px 0 var(--color-surface-muted)}
+.ys-form-top i,.ys-form-field b {color:var(--color-danger)}
+.ys-form-paper {box-shadow:5px 7px 0 var(--color-border)}
+.ys-form-field>div {background:var(--color-bg);color:var(--color-muted)}
+.ys-form-upload {background:var(--color-action-soft);color:var(--color-action)}
+.ys-form-upload strong {color:var(--color-text)}
+.ys-proof:hover {box-shadow:0 9px 0 var(--color-border)}
+.ys-purpose-grid>div:first-child>p,.ys-milestone {color:var(--color-dark-text)!important}
+.ys-outlined-link:hover {background:var(--color-surface)}
+.ys-example-link {color:var(--color-action);border-color:currentColor}
+.ys-example-link:hover {color:var(--color-action-hover);border-color:currentColor}
+.ys-share-status {color:var(--color-muted)}
+.ys-last-share,.ys-last-share:hover {color:var(--color-text)}
+.ys-hero :focus-visible,.ys-purpose :focus-visible {outline-color:var(--color-dark-action)}
+.ys-support-card :focus-visible {outline-color:var(--color-focus)}

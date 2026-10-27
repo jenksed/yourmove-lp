@@ -1,12 +1,67 @@
 # YourMove Website Brand Guide
 
-**Version:** 1.0 — October 25, 2026  
-**Status:** Working website design standard  
+**Version:** 1.1 — October 27, 2026
+**Status:** Quiet Ink colors and Green Signature B identity approved
 **Website:** https://www.yourmove.run/  
 **Repository:** `jenksed/yourmove-lp`  
 **Scope:** Marketing homepage, support page, product/explainer pages, getting started, evidence, manifesto, review, and documentation (11 HTML pages inspected).
 
 > YourMove is a practical, independently built, local-first, open-source job-application project. The website should feel credible and human, not like a generic SaaS funnel. The product helps people prepare; the applicant decides what is true and submits their own application.
+
+## Wave 2 identity authority — Green Signature B (October 27, 2026)
+
+**Green Signature B is the approved identity.** This section supersedes earlier logo guidance. Preserve the integrated layered M, four planes, original wordmark lettering, proportions, and spacing. The logo signature green is intentional identity color; product actions and links remain Quiet Ink cobalt.
+
+| Plane | On light surfaces | On dark surfaces |
+| --- | --- | --- |
+| Lettering / front | `#242933` | `#EDF0F5` |
+| White plane | `#E9EEF8` | `#D4E1FB` |
+| Middle | `#AAC5FF` | `#AAC5FF` |
+| Green rear | `#215C43` | `#78B696` |
+
+- Header: `public/assets/identity/yourmove-wordmark-navigation-light.png`. Footer: the dedicated `yourmove-wordmark-navigation-dark.png`; do not whiten it with a CSS filter. Compact image framing preserves the existing navigation and footer dimensions.
+- Browser icons: adaptive path-based `favicon.svg`, 16/32px PNG fallbacks, and `/favicon.ico` with 16/32/48px frames. Apple touch: `apple-touch-icon.png`, 180px.
+- Default sharing: `yourmove-og-default.png`, 1200 × 630. The hackathon article has a dedicated branded social card selected by `social_image` frontmatter. Documentation now has explicit image metadata too.
+- The available original wordmark is a 768 × 268 raster PNG, retained as the provenance source at `public/assets/logo-official.png`. There is no original editable vector master. Wordmarks preserve its lettering and geometry using the exact approved color mapping; do not claim their resampled exports contain new source detail.
+- The flat standalone M and favicon SVGs are the approved path-based optical reconstruction. They are valid vectors, explicitly not recovered original masters. Use this simplified mark at small sizes; retain dimensional promotional artwork for illustration.
+- Clear space: at least one quarter of the M's total height around visible artwork. Normal minimum visible wordmark width: 136px; the existing 145px compact mobile image box is the navigation exception. Use the flat M below this scale. Ordinary standalone marks: 24px minimum; supplied 16/32px favicon exports are dedicated exceptions.
+- Marketing typography remains Jost, with the original raster logo lettering treated as artwork. Never retype the wordmark in Jost.
+
+The standalone marketing ZIP and marketing-only exports remain outside the repository. [Wave 2 implementation and verification](IDENTITY_WAVE_2.md) records provenance, reproduction commands, and local checks. Existing photography and editorial illustrations are retained as contextual artwork, not sources for new logo extraction.
+
+## Wave 1 color authority — Quiet Ink (October 27, 2026)
+
+This section supersedes the older color assignments and source-color contrast table below. The remaining guide records the earlier editorial direction; its comprehensive rewrite belongs to the final redesign audit. Typography, composition, copy, and photography remain unchanged. Wave 2 above now governs approved logo adaptations.
+
+The application's `static/styles.css` and `docs/design/DESIGN_SYSTEM.md` in `jenksed/yourmove-hackathon` establish Quiet Ink. The website uses the same semantic foundation in `public/styles.css`; `brand-refresh.css` and the existing page styles apply it to the marketing compositions.
+
+| Role / CSS token | Value |
+| --- | --- |
+| Canvas / `--color-bg` | `#F5F4F1` |
+| Surface / `--color-surface` | `#FFFFFF` |
+| Muted surface / `--color-surface-muted` | `#EEEFF1` |
+| Primary ink / `--color-text` | `#242933` |
+| Secondary text / `--color-muted` | `#606773` |
+| Border / `--color-border` | `#D9DDE3` |
+| Strong border / `--color-border-strong` | `#8792A0` |
+| Primary action / `--color-action` | `#3459A5` |
+| Action hover / `--color-action-hover` | `#284984` |
+| On action / `--color-on-action` | `#FFFFFF` |
+| Action soft / `--color-action-soft` | `#E9EEF8` |
+| Success / `--color-success` | `#2C694D` |
+| Success soft / `--color-success-soft` | `#EAF2ED` |
+| Attention / `--color-attention` | `#815719` |
+| Danger / `--color-danger` | `#A13736` |
+| Focus / `--color-focus` | `#3459A5` |
+
+- Product CTAs and ordinary links use cobalt. Hover uses the action-hover token; keyboard focus remains explicit.
+- Graphite `#191C22` and `#22262E`, light ink `#EDF0F5`, secondary text `#B0B8C5`, and light action/focus `#AAC5FF` support dark editorial sections. This is not a dark-mode switch.
+- Selection, saved work, available information, and attempted actions do not imply success. Use neutral or action-soft treatments; green means a confirmed positive outcome. Amber means attention; red means error or destruction.
+- Honey support gradients remain a deliberate editorial exception. Support buttons use graphite and white; preserve the voluntary donation language and destinations.
+- Legacy names such as `--green`, `--ym-forest`, and `--journal-green` are compatibility aliases to semantic tokens, not green action authority. Do not copy historical hex values from the sections below into new work.
+- Current logo artwork and photography retain their colors. Color-only browser checks and before/after captures are recorded in `artifacts/quiet-ink/`; this is not a full accessibility certification.
+
+---
 
 ## 1. Visual strategy
 
@@ -96,7 +151,7 @@ Links must remain distinguishable on hover, keyboard focus, and touch. Existing 
 - **Microcopy:** do not make labels tiny or pale simply to get them out of the way. Small disclaimers need at least AA text contrast.
 - **Composition:** bold full-width section transitions, repeatable content gutters, modular rules/dividers, and generous whitespace.
 - **Buttons:** visible label, touch-friendly height, no icon-only primary action, no misleading urgency.
-- **Logo:** use the existing official artwork at `public/assets/logo-official.png`; keep spacing and proportions, do not recolor it for each section.
+- **Logo:** follow the approved Green Signature B variants in the Wave 2 identity authority above. Preserve geometry and lettering; use the dedicated light/dark artwork rather than section-specific recoloring.
 
 ## 7. Accessibility requirements
 

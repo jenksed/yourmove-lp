@@ -1,0 +1,5 @@
+PASS editorial renders blog
+PASS editorial renders blog/why-im-building-yourmove
+PASS editorial renders blog/meta-global-ai-developer-hackathon-yourmove
+PASS editorial renders manifesto
+PASS 20 editorial renders, 20 no-JS renders, metadata/assets/RSS/sitemap, contrast, keyboard/clipboard, privacy boundary and reading journeys. No console errors or failed local responses.

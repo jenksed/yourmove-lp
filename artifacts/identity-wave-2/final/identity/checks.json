@@ -1,0 +1,189 @@
+{
+  "routes": [
+    "/blog/",
+    "/blog/meta-global-ai-developer-hackathon-yourmove/",
+    "/blog/why-im-building-yourmove/",
+    "/docs/availability/",
+    "/docs/first-application/",
+    "/docs/",
+    "/docs/troubleshooting/",
+    "/evidence/",
+    "/get-started/",
+    "/how-it-works/",
+    "/",
+    "/manifesto/",
+    "/review/",
+    "/support/"
+  ],
+  "preserved": [
+    "release-banner.css",
+    "release-config.js",
+    "get-started.css",
+    "support-share.js",
+    "styles.css",
+    "brand-refresh.css",
+    "analytics-config.js",
+    "support.css",
+    "hero.css",
+    "campaign.css",
+    "application-handoff.css",
+    "focused.css",
+    "blog.js",
+    "analytics.js",
+    "how-it-works.css",
+    "release-banner.js",
+    "blog.css",
+    "app.js",
+    "process-journey.css",
+    "docs/docs.js",
+    "docs/docs.css"
+  ],
+  "placements": [
+    {
+      "route": "/",
+      "viewport": 1440,
+      "width": 163,
+      "height": 56.875,
+      "naturalWidth": 768,
+      "filter": "none",
+      "complete": true,
+      "src": "/assets/identity/yourmove-wordmark-navigation-light.png"
+    },
+    {
+      "route": "/",
+      "viewport": 1440,
+      "width": 174,
+      "height": 60.71875,
+      "naturalWidth": 768,
+      "filter": "none",
+      "complete": true,
+      "src": "/assets/identity/yourmove-wordmark-navigation-dark.png"
+    },
+    {
+      "route": "/",
+      "viewport": 390,
+      "width": 145,
+      "height": 50.59375,
+      "naturalWidth": 768,
+      "filter": "none",
+      "complete": true,
+      "src": "/assets/identity/yourmove-wordmark-navigation-light.png"
+    },
+    {
+      "route": "/",
+      "viewport": 390,
+      "width": 174,
+      "height": 60.71875,
+      "naturalWidth": 768,
+      "filter": "none",
+      "complete": true,
+      "src": "/assets/identity/yourmove-wordmark-navigation-dark.png"
+    },
+    {
+      "route": "/docs/",
+      "viewport": 1440,
+      "width": 163,
+      "height": 56.875,
+      "naturalWidth": 768,
+      "filter": "none",
+      "complete": true,
+      "src": "/assets/identity/yourmove-wordmark-navigation-light.png"
+    },
+    {
+      "route": "/docs/",
+      "viewport": 1440,
+      "width": 175,
+      "height": 61.0625,
+      "naturalWidth": 768,
+      "filter": "none",
+      "complete": true,
+      "src": "/assets/identity/yourmove-wordmark-navigation-dark.png"
+    },
+    {
+      "route": "/docs/",
+      "viewport": 390,
+      "width": 144,
+      "height": 50.25,
+      "naturalWidth": 768,
+      "filter": "none",
+      "complete": true,
+      "src": "/assets/identity/yourmove-wordmark-navigation-light.png"
+    },
+    {
+      "route": "/docs/",
+      "viewport": 390,
+      "width": 175,
+      "height": 61.0625,
+      "naturalWidth": 768,
+      "filter": "none",
+      "complete": true,
+      "src": "/assets/identity/yourmove-wordmark-navigation-dark.png"
+    },
+    {
+      "route": "/blog/",
+      "viewport": 1440,
+      "width": 163,
+      "height": 56.875,
+      "naturalWidth": 768,
+      "filter": "none",
+      "complete": true,
+      "src": "/assets/identity/yourmove-wordmark-navigation-light.png"
+    },
+    {
+      "route": "/blog/",
+      "viewport": 1440,
+      "width": 174,
+      "height": 60.71875,
+      "naturalWidth": 768,
+      "filter": "none",
+      "complete": true,
+      "src": "/assets/identity/yourmove-wordmark-navigation-dark.png"
+    },
+    {
+      "route": "/get-started/",
+      "viewport": 390,
+      "width": 145,
+      "height": 50.59375,
+      "naturalWidth": 768,
+      "filter": "none",
+      "complete": true,
+      "src": "/assets/identity/yourmove-wordmark-navigation-light.png"
+    },
+    {
+      "route": "/get-started/",
+      "viewport": 390,
+      "width": 174,
+      "height": 60.71875,
+      "naturalWidth": 768,
+      "filter": "none",
+      "complete": true,
+      "src": "/assets/identity/yourmove-wordmark-navigation-dark.png"
+    },
+    {
+      "route": "/support/",
+      "viewport": 1440,
+      "width": 163,
+      "height": 56.875,
+      "naturalWidth": 768,
+      "filter": "none",
+      "complete": true,
+      "src": "/assets/identity/yourmove-wordmark-navigation-light.png"
+    },
+    {
+      "route": "/support/",
+      "viewport": 1440,
+      "width": 174,
+      "height": 60.71875,
+      "naturalWidth": 768,
+      "filter": "none",
+      "complete": true,
+      "src": "/assets/identity/yourmove-wordmark-navigation-dark.png"
+    }
+  ],
+  "result": "PASS",
+  "sourceRasterUnchanged": true,
+  "copyAndAnalytics": "unchanged",
+  "icoFrames": "16/32/48 exact separately rendered PNGs",
+  "adaptiveSvg": "light and dark verified",
+  "errors": []
+}

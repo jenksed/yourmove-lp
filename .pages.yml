@@ -44,12 +44,29 @@ content:
         type: boolean
         default: false
         description: Leave unchecked to keep the article off the public site.
+      - name: featured
+        label: Feature on the Journal homepage
+        type: boolean
+        default: false
+        description: Choose one published story to lead the Journal. Otherwise the latest story leads.
+      - name: pull_quote
+        label: Featured quotation (optional)
+        type: text
+        description: An exact excerpt from the story, used when the featured story has no image.
       - name: image
         label: Featured image (optional)
         type: image
       - name: image_alt
         label: Featured image accessibility text
         type: string
+      - name: image_caption
+        label: Featured image caption (optional)
+        type: string
+        description: Plain text identifying artwork, context, or credit. Shown below the article image.
+      - name: social_image
+        label: Social preview image (optional)
+        type: string
+        description: Separate 1200 x 630 sharing card under /assets/blog/ or /assets/identity/. Defaults to the approved YourMove brand card.
       - name: body
         label: Article
         type: rich-text

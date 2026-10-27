@@ -1,0 +1,47 @@
+.evidence-opening {padding-block:62px 80px}
+.evidence-title-grid {display:grid;grid-template-columns:1.3fr 1fr;gap:10%;align-items:center}
+.evidence-title-grid .lead {margin:30px 0 0;max-width:25ch}
+.resume-excerpt {border-block:1px solid var(--color-border-strong);padding:27px 0}
+.discovery .document-label {font-size:14px;color:var(--color-muted);margin-bottom:24px}
+.resume-excerpt blockquote {font-size:clamp(24px,2.4vw,35px);line-height:1.35;margin:0 0 28px;letter-spacing:-.015em}
+.resume-excerpt>p:last-child {font-size:16px;color:var(--color-muted);margin:0}
+.experience-chapter {background:var(--color-surface-muted)}
+.experience-grid {display:grid;grid-template-columns:.85fr 1.25fr;gap:9%;align-items:start}
+.experience-record {background:var(--color-surface);padding:32px 38px;border-top:3px solid var(--color-success)}
+.record-heading h3 {margin:0 0 10px}
+.record-heading span {font-size:14px;color:var(--color-success)}
+.experience-record dl {margin-top:30px}
+.experience-record dl>div {border-top:1px solid var(--color-border);padding:22px 0 0;margin-top:22px}
+.experience-record dt {font-size:14px;color:var(--color-muted);margin-bottom:9px}
+.experience-record dd {margin:0}
+.experience-record .record-foot {font-size:14px;color:var(--color-muted);border-top:1px solid var(--color-border);padding-top:20px;margin:28px 0 0}
+.answer-heading {display:grid;grid-template-columns:1fr 1fr;gap:10%;margin-bottom:25px}
+.answer-pair {display:grid;grid-template-columns:1fr 1fr;gap:8%}
+.answer-pair article {border-top:2px solid var(--color-border-strong);padding-top:26px}
+.answer-pair h3 {font-size:28px;max-width:25ch;min-height:3.6em}
+.answer-pair .answer-writing {border-left:2px solid var(--color-border);padding-left:22px;font-size:20px;line-height:1.6}
+.answer-focus {font-size:15px;color:var(--color-muted);margin-top:28px}
+.review-chapter {background:var(--color-dark);color:var(--color-dark-text)}
+.review-chapter h2 {max-width:700px;margin-bottom:46px}
+.review-distinction {display:grid;grid-template-columns:1fr 1fr;gap:9%}
+.review-distinction h3 {font-size:26px;max-width:24ch;margin-bottom:20px}
+.review-distinction p {color:var(--color-dark-muted)}
+.actual-evidence {border-top:1px solid var(--color-dark-border);margin-top:35px;padding-top:15px}
+.actual-evidence summary {cursor:pointer;color:var(--color-dark-action);padding-block:12px;font-size:17px}
+.actual-evidence .product-figure {max-width:800px;margin-top:20px}
+.actual-evidence figcaption {color:var(--color-dark-muted)}
+.actual-evidence a {color:var(--color-dark-action)}
+.review-chapter :focus-visible {outline-color:var(--color-dark-action)}
+@media(max-width:760px) {
+ .evidence-opening {padding-block:38px 50px}
+ .evidence-title-grid,.experience-grid,.answer-heading,.answer-pair,.review-distinction {grid-template-columns:1fr;gap:30px}
+ .resume-excerpt {margin-top:10px}
+ .resume-excerpt blockquote {font-size:27px}
+ .experience-record {padding:26px 24px}
+ .answer-pair {gap:30px}
+ .answer-pair h3 {min-height:0;font-size:25px}
+ .answer-pair .answer-writing {font-size:18px}
+ .answer-focus {margin-top:18px}
+ .review-chapter h2 {margin-bottom:30px}
+ .review-distinction {gap:12px}
+}

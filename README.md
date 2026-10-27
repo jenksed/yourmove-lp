@@ -45,22 +45,39 @@ The committed `vercel.json` declares the output directory, explicit page rewrite
 
 ### Preview URL and production metadata
 
-Open Graph image metadata in the HTML currently references `https://yourmove.run/assets/og-platforms.webp`, the intended custom-domain asset. That URL will not represent the new deployment until the domain is mapped. Test social previews after connecting the production domain.
+Open Graph and Twitter image metadata use the approved Green Signature B cards under `https://www.yourmove.run/assets/identity/`. The default is `yourmove-og-default.png`; the hackathon article selects its dedicated card with `social_image` frontmatter. These URLs reference committed local assets, but production preview caches will reflect the change only after a separately authorized deployment. Test social previews after deployment.
 
 ## Edit the site
 
 - `public/index.html`: homepage content.
 - `public/{get-started,how-it-works,evidence,manifesto,review}/index.html`: supporting pages.
-- `public/hero.css`: full-background photographic hero; headline, supporting copy and CTAs are HTML elements, **not embedded in the image**.
+- `public/homepage.css`, `public/homepage.js`: Wave 4 photographic hero, saved-work comparison, and homepage narrative. The illustration is synthetic; editing stays in memory and never submits an application.
+- `public/hero.css`, `public/application-handoff.css`, `public/process-journey.css`: retained legacy section styles used by existing supporting-page checks.
 - `public/styles.css`, `public/campaign.css`, `public/focused.css`, `public/brand-refresh.css`: shared and section styles.
-- `public/app.js`: mobile menu, interactive examples, and command-copy outcome events.
+- `public/app.js`: shared mobile menu, supporting-page examples, and command-copy outcome events.
 - `public/analytics-config.js`: **only file you edit to enable PostHog**.
 - `public/analytics.js`: explicit, cookieless PostHog instrumentation (no build tool).
 - `ANALYTICS.md`: setup steps, tracked events, funnels, privacy/validation notes.
-- `public/assets/`: only images referenced by the published site.
+- `public/assets/identity/`: approved Green Signature B navigation logos, icons, and social cards. The original `logo-official.png` remains the raster provenance source, not live site branding.
+- `IDENTITY_WAVE_2.md`: approved identity, source limitations, optional export commands, and verification.
+- `HOMEPAGE_WAVE_4.md`: homepage decisions, screenshot links, verification, and deferred work.
+- `JOURNAL_WAVE_6.md`: editorial direction, before/after screenshots, publishing fields, verification, and limitations.
+- `public/blog.css`, `public/blog.js`, `scripts/build-blog.mjs`: Journal and shared Markdown article template; generated `public/blog/`, RSS, sitemap, and robots files are build output.
+- `public/manifesto.css`: companion Manifesto presentation.
+- `scripts/blog_checks.mjs`, `scripts/journal_checks.py`: isolated publishing safeguards and served editorial acceptance checks.
+- `PRODUCT_DISCOVERY_WAVE_5.md`: three-page visitor journey, authentic capture provenance, responsive review, verification, and the November 6 release switch.
+- `public/product-discovery.css`, `public/product-discovery.js`: scoped supporting-page reading rhythm and illustrative supported/manual form comparison.
+- `public/evidence.css`, `public/how-it-works.css`, `public/get-started.css`: page-owned Wave 5 compositions.
+- `scripts/sync-availability.mjs`: generates Get Started release status and existing homepage/shared availability notices from `public/release-config.js`; runs before the normal blog/shared-layout build.
 - `scripts/site_checks.py`: optional browser/structural QA (requires Python packages `playwright` and `beautifulsoup4`, plus a Chromium binary).
 
 The static HTML files are the source of truth for this deployment. Do not use `build_site.py` from an older marketing archive; it can restore obsolete hero/layout content.
+
+## Shared layout
+
+The homepage owns the header, footer, and evergreen announcement. After editing them, run `npm run build`: `scripts/shared-layout.mjs` copies those elements into static routes and the blog build uses the same source. `npm run check:blog` rejects stale static layouts. `public/site-layout.css` holds the scoped responsive styles and loads after page styles. All pages retain usable navigation without JavaScript.
+
+Run `python scripts/navigation_checks.py --url http://127.0.0.1:8765` against the preview for keyboard, touch, breakpoint, no-JavaScript and mock analytics checks. Optional QA dependencies are Playwright and BeautifulSoup; use `--browser /path/to/chromium` if needed. See [NAVIGATION_WAVE_3.md](NAVIGATION_WAVE_3.md) for the local review.
 
 ## Product/distribution boundaries
 
@@ -68,6 +85,10 @@ The landing page is separate from the [YourMove application](https://github.com/
 
 Content and artwork licensing are **not specified** by this repository. Do not assume the app's GPL-3.0-only license automatically covers the marketing files or third-party branding depicted in artwork.
 
-## Compact release countdown
+## Release announcement
 
-A reusable release announcement is configured in **`public/release-config.js`**. Set `enabled: false` to restore the normal announcement everywhere, or change the date and copy to promote a future release. See [RELEASE_BANNER.md](RELEASE_BANNER.md) for details and browser checks.
+A reusable release announcement is configured in **`public/release-config.js`**. Set `enabled: false` to restore the normal announcement everywhere, or change the date and copy to describe a planned release. See [RELEASE_BANNER.md](RELEASE_BANNER.md) for details and browser checks. For the verified official-release transition, fill `published` in that same configuration and run `npm run build`; see [Wave 5 launch instructions](PRODUCT_DISCOVERY_WAVE_5.md#november-6-launch-transition). A planned date never enables a download.
+
+## Journal publishing
+
+Edit `content/blog/*.md` or use the existing Pages CMS form, then run `npm run build`. Existing slugs and required frontmatter remain unchanged. Optional `featured: true` chooses the lead story; keep one selected. Without a selection, the latest published article leads. `pull_quote` supplies an exact excerpt for an image-free lead; `image_caption` supplies escaped plain text below the article cover. Both are optional. Additional articles inherit the reading template and chronological list automatically. See [Wave 6](JOURNAL_WAVE_6.md) for the full workflow and checks.

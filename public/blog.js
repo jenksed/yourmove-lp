@@ -1,5 +1,6 @@
 // The copy control is intentionally optional; reading and navigation work without JavaScript.
 document.querySelectorAll('[data-copy-article]').forEach(button => {
+  button.hidden = false;
   button.addEventListener('click', async () => {
     const url = button.getAttribute('data-url');
     const status = button.closest('.ym-article-end')?.querySelector('[data-copy-status]');

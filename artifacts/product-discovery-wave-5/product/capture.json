@@ -1,0 +1,9 @@
+{
+  "source_commit": "a14e7fb17fff1bc551ef2af7b351271554fa26e3",
+  "mode": "local browser interface",
+  "data": "fictional applicant and employer, isolated workspace; no employer submission",
+  "urls": [
+    "/jobs/1#prepare",
+    "http://127.0.0.1:3005/career-evidence/1?notice=reviewed"
+  ]
+}

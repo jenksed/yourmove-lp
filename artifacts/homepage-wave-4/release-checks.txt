@@ -1,0 +1,1 @@
+PASS: 14 routes × 11 widths; planned date, no countdown, release day, live midnight expiry, fresh expiry, disabled/invalid config fallbacks.

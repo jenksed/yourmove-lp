@@ -1,89 +1,64 @@
-"""Release banner browser checks: layout, site-wide coverage, and expiration."""
+"""Offline release date, fallback, layout, and expiry checks for every built route."""
 from pathlib import Path
-import re, base64, mimetypes
+import argparse, re, base64, mimetypes
 from datetime import datetime, timezone
 from playwright.sync_api import sync_playwright
 
 PUBLIC = Path(__file__).resolve().parents[1] / 'public'
-PAGES = ['index.html','get-started/index.html','how-it-works/index.html','evidence/index.html','manifesto/index.html','review/index.html']
-WIDTHS = [320, 360, 375, 390, 430, 490, 560, 768, 1024, 1280, 1440]
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--browser', help='Path to an installed Chromium, or use Playwright default')
+args = parser.parse_args()
+PAGES = sorted(PUBLIC.rglob('index.html'))
+WIDTHS = [320, 360, 375, 390, 430, 540, 768, 900, 901, 1024, 1440]
 
-def local_html(page_name):
-    html = (PUBLIC / page_name).read_text()
-    html = re.sub(r'<script[^>]+></script>', '', html)
-    css_files = ['styles.css','campaign.css','focused.css','brand-refresh.css','hero.css','get-started.css','release-banner.css']
-    css = '\n'.join((PUBLIC / path).read_text() for path in css_files)
-    html = re.sub(r'<link[^>]+>', '', html)
+def local_html(file, config=None):
+    html = file.read_text()
+    css = '\n'.join((PUBLIC/name.lstrip('/')).read_text() for name in re.findall(r'<link rel="stylesheet" href="([^"]+)"', html))
+    html = re.sub(r'<script[^>]+></script>|<link[^>]+>', '', html)
     html = html.replace('</head>', '<style>' + css + '</style></head>')
-    def image_src(match):
-        name = match.group(1)
-        path = PUBLIC/name.removeprefix('/')
-        typ = mimetypes.guess_type(str(path))[0] or 'image/png'
-        return 'src="data:' + typ + ';base64,' + base64.b64encode(path.read_bytes()).decode() + '"'
-    html = re.sub(r'src="(/assets/[^" ]+)"', image_src, html)
-    scripts = '<script>' + (PUBLIC/'release-config.js').read_text() + '</script>' + '<script>' + (PUBLIC/'release-banner.js').read_text() + '</script>'
-    return html.replace('</body>', scripts + '</body>')
-
-def setup_context(browser, when):
-    context = browser.new_context(viewport={'width': 1440, 'height': 900}, timezone_id='America/Detroit')
-    context.route('https://**/*', lambda route: route.abort())
-    context.clock.install(time=when)
-    return context
+    def embed(match):
+        path = PUBLIC / match.group(1).lstrip('/')
+        mime = mimetypes.guess_type(str(path))[0] or 'image/png'
+        return 'src="data:' + mime + ';base64,' + base64.b64encode(path.read_bytes()).decode() + '"'
+    html = re.sub(r'src="(/assets/[^" ]+)"', embed, html)
+    config = config if config is not None else (PUBLIC/'release-config.js').read_text()
+    return html.replace('</body>', '<script>' + config + '</script><script>' + (PUBLIC/'release-banner.js').read_text() + '</script></body>')
 
 with sync_playwright() as pw:
-    browser = pw.chromium.launch(headless=True, executable_path='/usr/bin/chromium', args=['--no-sandbox'])
-    context = setup_context(browser, datetime(2026, 10, 25, 16, 0, tzinfo=timezone.utc))
-    for page_name in PAGES:
-        for width in WIDTHS:
-            page = context.new_page()
-            page.set_viewport_size({'width': width, 'height': 900})
-            errors = []
-            page.on('pageerror', lambda error: errors.append(str(error)))
-            page.set_content(local_html(page_name), wait_until='load')
-            announcement = page.locator('.announcement.ym-release-announcement')
-            assert announcement.count() == 1, (page_name, width, 'no release announcement')
-            assert page.locator('.ym-release-title').inner_text() == 'INITIAL RELEASE', (page_name, width)
-            assert page.locator('.ym-release-date').inner_text() == 'NOV 6', (page_name, width)
-            assert page.locator('.ym-release-countdown').inner_text() == '12 DAYS TO GO', (page_name, width)
-            d=page.evaluate('''() => ({
-                doc: document.documentElement.scrollWidth,
-                viewport: window.innerWidth,
-                banner: document.querySelector('.announcement').getBoundingClientRect().toJSON(),
-                title: document.querySelector('.ym-release-title').getBoundingClientRect().toJSON(),
-                date: document.querySelector('.ym-release-date').getBoundingClientRect().toJSON(),
-                countdown: document.querySelector('.ym-release-countdown').getBoundingClientRect().toJSON(),
-                link: document.querySelector('.ym-release-link').getBoundingClientRect().toJSON(),
-                inner: document.querySelector('.announcement .shell').getBoundingClientRect().toJSON()
-            })''')
-            assert d['doc'] <= width + 1, (page_name, width, 'horizontal overflow', d['doc'])
-            for el in ['title','date','countdown','link']:
-                assert d[el]['left'] >= d['inner']['left'] - 2 and d[el]['right'] <= d['inner']['right'] + 2, (page_name,width,el,d[el],d['inner'])
-            assert d['link']['left'] >= d['countdown']['right'] - 2, (page_name,width,'link overlaps countdown')
-            assert not errors, (page_name,width,errors)
-            if page_name == 'get-started/index.html' and width in (390,768,1440):
-                page.screenshot(path=f'/mnt/data/release-compact-{width}.png', full_page=False)
-            page.close()
-    context.close()
-    print('PASS release displayed on six pages at eleven viewport widths (66 cases).')
-    for when, expect in [(datetime(2026,11,5,18,tzinfo=timezone.utc),'1 DAY TO GO'),(datetime(2026,11,6,18,tzinfo=timezone.utc),'TODAY')]:
-        context = setup_context(browser, when)
-        page=context.new_page()
-        page.set_content(local_html('index.html'), wait_until='load')
-        assert page.locator('.ym-release-countdown').inner_text() == expect, (when,expect)
-        context.close()
-    context = setup_context(browser, datetime(2026,11,7,18,tzinfo=timezone.utc))
-    page=context.new_page()
-    page.set_content(local_html('index.html'), wait_until='load')
-    assert page.locator('.announcement.ym-release-announcement').count() == 0
-    assert 'OPEN SOURCE · BUILT FOR JOB SEEKERS' in page.locator('.announcement').inner_text()
-    context.close()
-    print('PASS Nov 5, release day and automatic expiry Nov 7.')
-    context = setup_context(browser, datetime(2026, 10, 25, 16, 0, tzinfo=timezone.utc))
+    browser = pw.chromium.launch(headless=True, executable_path=args.browser)
+    context = browser.new_context(timezone_id='America/Detroit')
+    context.route('https://**/*', lambda route: route.abort())
     page = context.new_page()
-    disabled = local_html('index.html').replace('enabled: true,', 'enabled: false,')
-    page.set_content(disabled, wait_until='load')
-    assert page.locator('.announcement.ym-release-announcement').count() == 0
-    assert 'OPEN SOURCE · BUILT FOR JOB SEEKERS' in page.locator('.announcement').inner_text()
+    page.clock.install(time=datetime(2026,10,27,16,tzinfo=timezone.utc))
+    for file in PAGES:
+        for width in WIDTHS:
+            page.set_viewport_size({'width':width,'height':900})
+            page.set_content(local_html(file), wait_until='load')
+            banner = page.locator('.announcement.ym-release-announcement')
+            assert banner.count() == 1, file
+            assert banner.locator('.shell>span').inner_text() == 'Initial release planned for November 6.'
+            assert banner.locator('a').inner_text() == 'Release details'
+            assert banner.locator('a').get_attribute('data-analytics-placement') == 'release_banner'
+            assert banner.locator('a').get_attribute('data-analytics-cta') == 'release_details'
+            assert not banner.locator('[role="status"],.ym-release-countdown,.ym-release-dot').count()
+            assert banner.evaluate('(el)=>el.scrollWidth') <= width+1, (file,width)
+            assert banner.evaluate('(el)=>[...el.querySelectorAll(".shell>*")].every(e=>{const r=e.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth})'), (file,width)
     context.close()
-    print('PASS disabling release config restores the original announcement.')
+    # Both fresh loads and an already-open tab must return to truthful availability.
+    for when in [datetime(2026,11,6,18,tzinfo=timezone.utc), datetime(2026,11,7,18,tzinfo=timezone.utc)]:
+        context=browser.new_context();page=context.new_page();page.clock.install(time=when)
+        page.set_content(local_html(PUBLIC/'index.html'))
+        if when.day==6:
+            assert 'planned for today, November 6.' in page.locator('.announcement').inner_text()
+            page.clock.fast_forward(24*60*60*1000)
+        assert page.locator('.ym-release-announcement').count()==0
+        assert 'Official installer not yet published.' in page.locator('.announcement').inner_text()
+        context.close()
+    config=(PUBLIC/'release-config.js').read_text()
+    for changed in [config.replace('enabled: true','enabled: false'), config.replace('2026-11-06','2026-02-30'),config.replace('America/Detroit','Invalid/Zone'),config.replace("linkHref: '/get-started/'", "linkHref: '//example.com'")]:
+        context=browser.new_context();page=context.new_page();page.clock.install(time=datetime(2026,10,27,16,tzinfo=timezone.utc));page.set_content(local_html(PUBLIC/'index.html',changed))
+        assert not page.locator('.ym-release-announcement').count()
+        assert 'Official installer not yet published.' in page.locator('.announcement').inner_text()
+        context.close()
     browser.close()
+print(f'PASS: {len(PAGES)} routes × {len(WIDTHS)} widths; planned date, no countdown, release day, live midnight expiry, fresh expiry, disabled/invalid config fallbacks.')

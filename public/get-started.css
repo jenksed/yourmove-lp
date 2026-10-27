@@ -1,47 +1,65 @@
-/* Get Started layout safeguards. Scoped to this route and loaded last.
-   Card headings scale to the space that contains them, not solely the viewport. */
-.gs-paths {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(16px, 1.8vw, 24px);
+.start-opening {padding-block:62px 42px}
+.start-opening .lead {margin-top:25px;margin-bottom:0}
+.availability-section {padding-block:48px 56px;background:var(--color-dark);color:var(--color-dark-text)}
+.availability-grid {display:grid;grid-template-columns:1.1fr 1fr;gap:9%;align-items:start}
+.discovery .availability-state {font-size:16px;color:var(--color-dark-muted);margin-bottom:20px}
+.availability-section h2 {font-size:clamp(36px,3.6vw,52px);max-width:19ch;margin-bottom:24px}
+.availability-section p {color:var(--color-dark-muted)}
+.availability-section .discovery-button {background:var(--color-dark-text);color:var(--color-dark);margin-bottom:15px}
+.availability-section .discovery-button:hover {background:var(--color-dark-action)}
+.availability-section .text-action {color:var(--color-dark-action)}
+.availability-section :focus-visible {outline-color:var(--color-dark-action)}
+.availability-section .release-requirements {font-size:16px;color:var(--color-dark-text)}
+.availability-section .release-source {font-size:14px;margin-top:20px}
+.start-learn {display:grid;grid-template-columns:1.1fr 1fr;gap:9%;padding-block:62px}
+.start-learn h2 {font-size:clamp(32px,3.1vw,45px)}
+.start-learning-links {display:flex;flex-direction:column;align-items:flex-start}
+.source-chapter {background:var(--color-surface-muted)}
+.source-heading {display:grid;grid-template-columns:1.1fr 1fr;gap:9%}
+.source-heading h2 {font-size:clamp(34px,3.4vw,48px)}
+.source-requirements {margin-top:32px;display:grid;grid-template-columns:.75fr 1.4fr;gap:10%;padding-top:30px;border-top:1px solid var(--color-border-strong)}
+.source-requirements h3 {max-width:18ch}
+.source-requirements dl {margin:0}
+.source-requirements dl>div {display:grid;grid-template-columns:170px 1fr;gap:22px;font-size:16px;border-bottom:1px solid var(--color-border);padding:0 0 17px;margin-bottom:17px}
+.source-requirements dt {color:var(--color-muted)}
+.source-requirements dd {margin:0}
+.build-instructions {border-top:1px solid var(--color-border-strong);margin-top:24px}
+.build-instructions summary {padding:23px 0;cursor:pointer;font-size:22px;font-weight:500}
+.build-content {max-width:830px;padding:0 0 14px}
+.console-bar {display:flex;gap:20px;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--color-dark-border);font-size:14px}
+.console-bar button {color:var(--color-dark-action);border:1px solid var(--color-dark-muted);background:transparent;padding:9px 15px;cursor:pointer;font-size:15px}
+.gs-console,.browser-console {background:var(--color-dark);color:var(--color-dark-text);margin-block:24px;min-width:0}
+.gs-console pre,.browser-console pre {margin:0;padding:25px 20px;overflow-x:auto;font-size:14px;line-height:1.9;tab-size:2}
+.gs-console :focus-visible,.browser-console :focus-visible {outline-color:var(--color-dark-action)}
+.build-content code {font-size:.86em;overflow-wrap:anywhere}
+.source-zip {display:flex;gap:24px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--color-border-strong);padding-top:18px;margin:16px 0 0}
+.source-zip span {font-size:14px;color:var(--color-muted)}
+.start-help {padding-block:70px 85px;display:grid;grid-template-columns:1fr 1.1fr;gap:9%}
+.start-help h2 {font-size:clamp(34px,3.3vw,48px)}
+.start-questions details {border-top:1px solid var(--color-border-strong)}
+.start-questions summary {padding:22px 0;cursor:pointer;font-size:19px}
+.start-questions p {font-size:16px}
+.start-questions a {text-decoration:underline}
+@media(max-width:1000px) {
+ .source-requirements {grid-template-columns:.7fr 1.5fr;gap:5%}
+ .source-requirements dl>div {grid-template-columns:140px 1fr}
 }
-.gs-path {
-  min-width: 0;
-  padding: clamp(28px, 3.1vw, 48px);
+@media(max-width:760px) {
+ .start-opening {padding-block:38px 34px}
+ .availability-section {padding-block:34px 38px}
+ .availability-grid,.start-learn,.source-heading,.source-requirements,.start-help {grid-template-columns:1fr;gap:20px}
+ .availability-section h2 {font-size:36px}
+ .availability-section .availability-state {margin-bottom:17px}
+ .start-learn {padding-block:48px}
+ .source-requirements {margin-top:16px;gap:4px}
+ .source-requirements h3 {max-width:24ch}
+ .source-requirements dl>div {grid-template-columns:1fr;gap:7px}
+ .build-instructions summary {font-size:20px}
+ .console-bar {padding:12px 15px;font-size:13px;gap:10px}
+ .console-bar button {padding:8px 12px;font-size:14px}
+ .gs-console pre,.browser-console pre {padding:20px 15px;font-size:12px}
+ .build-content pre code {overflow-wrap:normal}
+ .source-zip {gap:0}
+ .start-help {padding-block:50px 60px}
 }
-.gs-path h3 {
-  max-width: 100%;
-  margin: 14px 0 20px;
-  font-size: clamp(40px, 4.8vw, 70px);
-  font-weight: 800;
-  letter-spacing: -.025em;
-  line-height: 1.02;
-  overflow-wrap: break-word;
-}
-.gs-path p, .gs-path-actions, .gs-path-foot {
-  max-width: 100%;
-}
-.gs-path-actions {
-  min-width: 0;
-}
-.gs-path a {
-  max-width: 100%;
-}
-.gs-path-number {
-  line-height: 1.4;
-}
-/* Two card columns become cramped well before the mobile breakpoint. */
-@media (max-width: 1000px) {
-  .gs-paths { grid-template-columns: minmax(0, 1fr); }
-  .gs-path { min-height: 0; padding: 34px 36px 32px; }
-  .gs-path h3 { font-size: clamp(46px, 6.4vw, 62px); }
-  .gs-choose-head { grid-template-columns: minmax(0, 1fr); gap: 18px; }
-  .gs-choose-head p { max-width: 560px; }
-}
-@media (max-width: 760px) {
-  .gs-path { padding: 29px 26px 30px; }
-  .gs-path h3 { font-size: clamp(40px, 8vw, 58px); }
-  .gs-choose-head p { margin-top: 0; }
-}
-@media (max-width: 380px) {
-  .gs-path h3 { font-size: clamp(36px, 10vw, 43px); }
-}
+.availability-section a {color:var(--color-dark-action)}

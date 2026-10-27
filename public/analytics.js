@@ -76,7 +76,7 @@
   // A single pageview per document; no query strings or full URLs in our custom payload.
   capture('$pageview', { $pathname: normalize(location.pathname), $current_url: location.origin + normalize(location.pathname) });
 
-  const comparisonSeen = new Set(['with_yourmove']);
+  const comparisonSeen = new Set([document.querySelector('[data-compare]')?.dataset.mode === 'saved' ? 'with_yourmove' : 'starting_over']);
   let comparisonCompleted = false;
 
   // Conversion events. IDs are authored in markup; text from DOM is never collected.
@@ -95,7 +95,9 @@
         if (target.hostname === 'github.com' && target.pathname.startsWith('/jenksed/yourmove-go')) {
           const path = target.pathname;
           let action = 'repository';
-          if (/\/releases\/?$/.test(path)) action = 'releases';
+          if (/\/releases\/download\//.test(path)) action = 'release_download';
+          else if (/\/releases\/tag\//.test(path)) action = 'release_notes';
+          else if (/\/releases\/?$/.test(path)) action = 'releases';
           else if (/\/archive\/refs\/heads\/.+\.zip$/.test(path)) action = 'source_zip';
           else if (/\/issues\/?$/.test(path)) action = 'report_issue';
           else if (/\/docs\/TRY_IT\.md$/.test(path)) action = 'local_run_docs';
@@ -119,6 +121,10 @@
       const tabs = [...evidence.closest('[data-evidence]').querySelectorAll('[data-evidence-stage]')];
       capture('ym_evidence_stage_selected', { stage: tabs.indexOf(evidence) + 1 });
     }
+    const preparationPath = ev.target.closest('[data-path-choice]');
+    if (preparationPath && ['supported', 'manual'].includes(preparationPath.dataset.pathChoice)) {
+      capture('ym_preparation_path_selected', { path: preparationPath.dataset.pathChoice });
+    }
     const menu = ev.target.closest('.menu-button');
     if (menu) capture('ym_mobile_menu_toggled', { state: menu.getAttribute('aria-expanded') === 'true' ? 'open' : 'closed' });
     const copy = ev.target.closest('[data-copy-text]');
@@ -136,6 +142,10 @@
     }
   });
 
+  document.addEventListener('ym:comparison-answer-edited', () => {
+    capture('ym_comparison_answer_edited', { demo: 'application_handoff' });
+  });
+
   document.addEventListener('ym:copy-command', (ev) => {
     if (!ev.detail) return;
     capture('ym_install_command_copy_result', {
@@ -147,10 +157,14 @@
   document.addEventListener('toggle', (ev) => {
     const el = ev.target;
     if (!(el instanceof HTMLDetailsElement) || !el.open) return;
-    const faq = el.closest('.gs-details, .home-faq');
+    if (el.matches('.build-instructions')) {
+      capture('ym_source_instructions_opened', { command_group: el.dataset.analyticsSection === 'mac_build' ? 'mac_build' : 'browser_run' });
+    }
+    if (el.matches('.actual-evidence')) capture('ym_evidence_detail_opened', { detail: 'local_build' });
+    const faq = el.closest('.start-questions, .gs-details, .home-faq');
     if (!faq) return;
     const questions = [...faq.querySelectorAll('details')];
-    capture('ym_faq_opened', { faq: faq.classList.contains('gs-details') ? 'installation' : 'home', question: questions.indexOf(el) + 1 });
+    capture('ym_faq_opened', { faq: (faq.classList.contains('gs-details') || faq.classList.contains('start-questions')) ? 'installation' : 'home', question: questions.indexOf(el) + 1 });
   }, true);
 
   if ('IntersectionObserver' in window) {
@@ -215,7 +229,7 @@
   const featureLabels={
     experience:'less_repetition',workflow:'workflow',career_records:'career_evidence',
     control:'applicant_control',final_cta:'getting_started',
-    installation_paths:'installation',mac_build:'source_build',
+    release_availability:'release_availability',installation_paths:'installation',mac_build:'source_build',
     browser_run:'browser_setup',installation_faq:'installation_objections'
   };
   const observerSupported= 'IntersectionObserver' in window;
@@ -290,7 +304,7 @@
       }
     }
     const install=target.closest('[data-analytics-cta]');
-    if(install&&/^(check_releases|build_on_mac|download_source)$/.test(install.dataset.analyticsCta||'')){
+    if(install&&/^(check_releases|download_release|build_on_mac|download_source)$/.test(install.dataset.analyticsCta||'')){
       capture('ym_install_path_selected',{path:install.dataset.analyticsCta,version,device});
     }
   },true);

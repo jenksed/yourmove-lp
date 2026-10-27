@@ -115,7 +115,7 @@ body[data-page="docs"] .doc-site-header .nav-annotation{display:none}
 .doc-solid-link:hover{background:#164b34}
 .doc-footer{background:#101b14;color:#eaf0e6;padding:54px 0 25px}
 .doc-footer-layout{display:grid;grid-template-columns:1fr .7fr 1fr;gap:35px}
-.doc-footer img{width:175px;height:auto;filter:brightness(0) invert(1)}
+.doc-footer img{width:175px;height:auto;filter:none}
 .doc-footer p{font-size:13px;color:#adbcaf}
 .doc-footer a:hover{text-decoration:underline}
 .doc-footer-links{display:grid;align-content:start;gap:12px;font-size:14px;font-weight:650}
@@ -274,3 +274,68 @@ body[data-page="docs"] .doc-site-header .nav-annotation{display:none}
 
 .doc-symptom-answer .doc-resolution{margin-top:18px;padding:13px 16px;background:#eaf2e7;border-left:3px solid #207553;color:#254934}
 .doc-symptom-answer .doc-resolution strong{font-weight:750}
+
+/* Quiet Ink: documentation selection is informational, never transfer success. */
+body[data-page="docs"],.doc-guide-section {background:var(--color-bg);color:var(--color-text)}
+.doc-header-word,.doc-section-rail,.doc-section-heading p,.doc-task-head p,.doc-choice-main small,.doc-choice-foot,.doc-stage-top,.doc-stage-visual-head,.doc-mini-job small,.doc-mini-label,.doc-stage-explainer p,.doc-results-heading span,.doc-guide-card p,.doc-no-results p,.doc-last p,.doc-article-sidebar .doc-micro,.doc-article-sidebar a,.doc-accuracy p,.doc-article-block p,.doc-symptom-answer p,.doc-critical p,.doc-support p,.doc-avail-grid p,.doc-avail-requirements dt,.doc-fix-heading>p {color:var(--color-muted)}
+.doc-hero,.doc-boundary,.doc-article-hero {background:var(--color-dark);color:var(--color-dark-text)}
+.doc-kicker,.doc-hero h1 em,.doc-article-hero h1 em,.doc-boundary h2 em,.doc-boundary .doc-micro,.doc-article-hero .doc-micro {color:var(--color-dark-action)}
+.doc-topline,.doc-hero-aside>p,.doc-boundary p,.doc-breadcrumb,.doc-article-hero>div>p {color:var(--color-dark-text)}
+.doc-topline i,.doc-live-dot {background:var(--color-dark-muted);box-shadow:none}
+.doc-search-control {background:var(--color-surface);color:var(--color-text);border-color:var(--color-border-strong)}
+.doc-search-control svg {stroke:var(--color-muted)}
+.doc-search-control input {color:var(--color-text)}
+.doc-search-control input::placeholder,.doc-key {color:var(--color-muted)}
+.doc-search-control:focus-within {outline-color:var(--color-dark-action)}
+.doc-key,.doc-header-word,.doc-section-rail,.doc-journey,.doc-journey-choices,.doc-choice,.doc-stage-top,.doc-stage-visual,.doc-stage-visual-head,.doc-mini-job,.doc-mini-field,.doc-stage-explainer,.doc-results-heading,.doc-guide-card,.doc-guide-bottom,.doc-no-results,.doc-footer-base,.doc-article-sidebar a,.doc-accuracy,.doc-article-block,.doc-symptoms,.doc-symptoms details,.doc-avail-requirements,.doc-avail-requirements dl>div {border-color:var(--color-border)}
+.doc-section-rail b {background:var(--color-action)}
+.doc-section-heading h2 em,.doc-task-head h2 em {color:var(--color-action)}
+.doc-journey,.doc-choice,.doc-journey-stage,.doc-mini-job,.doc-guide-card,.doc-no-results {background:var(--color-surface);color:var(--color-text)}
+.doc-journey {box-shadow:0 17px 36px #2429331f,0 3px 8px #2429330c}
+.doc-journey-toolbar {background:var(--color-dark-surface);color:var(--color-dark-text)}
+.doc-journey-toolbar>span {color:var(--color-dark-muted)}
+.doc-journey-choices,.doc-stage-visual,.doc-task-section,.doc-last,.doc-accuracy,.doc-support,.doc-avail-requirements {background:var(--color-surface-muted)}
+.doc-choice:hover,.doc-guide-card:hover {border-color:var(--color-action)}
+.doc-choice[aria-pressed="true"] {background:var(--color-action-soft);border-color:var(--color-action);box-shadow:inset 3px 0 var(--color-action)}
+.doc-choice-index,.doc-choice>span:last-child,.doc-mini-check,.doc-stage-ordinal,.doc-guide-index,.doc-step-index,.doc-symptoms summary>span,.doc-symptoms summary b {color:var(--color-action)}
+.doc-stage-visual-head>span,.doc-mini-field {background:var(--color-action-soft);color:var(--color-action)}
+/* Recovery is attention; the illustration never confirms an employer attachment. */
+.doc-journey:has([data-doc-state="stuck"][aria-pressed="true"]) .doc-stage-visual-head>span,
+.doc-journey:has([data-doc-state="stuck"][aria-pressed="true"]) .doc-mini-field {background:var(--color-attention-soft);color:var(--color-attention)}
+.doc-journey:has([data-doc-state="stuck"][aria-pressed="true"]) .doc-mini-check {color:var(--color-attention)}
+.doc-mini-square {background:var(--color-dark-surface)}
+.doc-mini-progress>span {background:var(--color-border)}
+.doc-mini-progress>span:first-child,.doc-mini-progress[data-progress="2"]>span:nth-child(2),.doc-mini-progress[data-progress="3"]>span:nth-child(2),.doc-mini-progress[data-progress="3"]>span:nth-child(3) {background:var(--color-action)}
+.doc-stage-explainer,.doc-guide-card-large,.doc-note,.doc-note-emphasis,.doc-search-panel>p {background:var(--color-action-soft)}
+.doc-stage-link,.doc-note a,.doc-article-block p a,.doc-avail-grid p a,.doc-symptom-answer a {color:var(--color-action);border-color:currentColor}
+.doc-stage-link:hover,.doc-article-sidebar a:hover {color:var(--color-action-hover)}
+.doc-guide-card-dark,.doc-article-next {background:var(--color-dark-surface);color:var(--color-dark-text)}
+.doc-guide-card-dark .doc-guide-index,.doc-article-next .doc-micro {color:var(--color-dark-action)}
+.doc-guide-card-dark p,.doc-article-next p {color:var(--color-dark-muted)}
+.doc-guide-card-dark .doc-guide-bottom {border-color:var(--color-border-strong)}
+.doc-boundary a,.doc-article-next a {color:var(--color-dark-action);border-color:currentColor}
+.doc-solid-link {background:var(--color-action);color:var(--color-on-action)}
+.doc-solid-link:hover {background:var(--color-action-hover)}
+.doc-footer {background:var(--color-dark);color:var(--color-dark-text)}
+.doc-footer a {color:var(--color-dark-text)}
+.doc-footer p,.doc-footer .doc-micro,.doc-footer-base {color:var(--color-dark-muted)}
+.doc-footer-base {border-color:var(--color-dark-border)}
+.doc-article-sidebar,.doc-note {border-color:var(--color-action)}
+.doc-accuracy-dot {background:var(--color-muted)}
+.doc-check {color:var(--color-muted)!important;border-color:var(--color-border-strong)}
+.doc-critical {background:var(--color-attention-soft);border-color:var(--color-attention)}
+.doc-popular>span {color:var(--color-dark-muted)}
+.doc-popular a {color:var(--color-dark-text);border-color:var(--color-border-strong)}
+.doc-popular a:hover,.doc-popular a:focus-visible {background:var(--color-dark-surface);border-color:var(--color-dark-action)}
+.doc-search-panel {background:var(--color-surface);color:var(--color-text);border-color:var(--color-border)}
+.doc-search-panel>p,.doc-search-panel li+li {border-color:var(--color-border)}
+.doc-search-panel>p,.doc-search-panel li span {color:var(--color-muted)}
+.doc-search-panel li a {color:var(--color-action)}
+.doc-search-panel li a:hover,.doc-search-panel li a:focus-visible {background:var(--color-action-soft)}
+.doc-popular a:focus-visible,.doc-footer a:focus-visible,.doc-hero :focus-visible,.doc-boundary :focus-visible,.doc-article-next :focus-visible {outline-color:var(--color-dark-action)}
+.doc-search-panel a:focus-visible,.doc-symptoms summary:focus-visible {outline-color:var(--color-focus)}
+.doc-symptom-answer .doc-resolution {background:var(--color-surface-muted);border-color:var(--color-border-strong);color:var(--color-text)}
+.doc-topline {border-color:var(--color-dark-border)}
+.doc-breadcrumb a {color:var(--color-dark-action)}
+.doc-muted {color:var(--color-muted)!important}
+.doc-footer .doc-muted {color:var(--color-dark-muted)!important}
