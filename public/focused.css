@@ -1,7 +1,7 @@
 /* YOURMOVE / AFTER THE HERO
    A shorter argument with one real interaction and one clear place to get the app.
    Keep global navigation, hero identity and legacy supporting pages intact. */
-:root { --ym2-paper:#f3f5f0; --ym2-ink:#111a15; --ym2-forest:#154a36; --ym2-sage:#aee2b2; --ym2-blue:#2b5dbc; }
+:root { --ym2-paper:var(--color-bg); --ym2-ink:var(--color-text); --ym2-forest:var(--color-dark); --ym2-sage:var(--color-dark-action); --ym2-blue:var(--color-action); }
 .ym2-rail {border-top:1px solid #9ba89b; padding-top:15px; display:flex; align-items:center; justify-content:space-between;gap:16px;color:#405648;font-size:10px;font-weight:850;letter-spacing:.075em;line-height:1.4;}
 .ym2-rail>span:first-child {display:inline-flex;align-items:center;gap:11px}
 .ym2-sq {width:9px;height:9px;display:inline-block;background:#24774d;flex-shrink:0}

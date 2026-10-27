@@ -8,6 +8,40 @@
 
 > YourMove is a practical, independently built, local-first, open-source job-application project. The website should feel credible and human, not like a generic SaaS funnel. The product helps people prepare; the applicant decides what is true and submits their own application.
 
+## Wave 1 color authority — Quiet Ink (October 27, 2026)
+
+This section supersedes the older color assignments and source-color contrast table below. The remaining guide records the earlier editorial direction; its comprehensive rewrite belongs to the final redesign audit. Typography, composition, copy, photography, and approved logo artwork remain unchanged.
+
+The application's `static/styles.css` and `docs/design/DESIGN_SYSTEM.md` in `jenksed/yourmove-hackathon` establish Quiet Ink. The website uses the same semantic foundation in `public/styles.css`; `brand-refresh.css` and the existing page styles apply it to the marketing compositions.
+
+| Role / CSS token | Value |
+| --- | --- |
+| Canvas / `--color-bg` | `#F5F4F1` |
+| Surface / `--color-surface` | `#FFFFFF` |
+| Muted surface / `--color-surface-muted` | `#EEEFF1` |
+| Primary ink / `--color-text` | `#242933` |
+| Secondary text / `--color-muted` | `#606773` |
+| Border / `--color-border` | `#D9DDE3` |
+| Strong border / `--color-border-strong` | `#8792A0` |
+| Primary action / `--color-action` | `#3459A5` |
+| Action hover / `--color-action-hover` | `#284984` |
+| On action / `--color-on-action` | `#FFFFFF` |
+| Action soft / `--color-action-soft` | `#E9EEF8` |
+| Success / `--color-success` | `#2C694D` |
+| Success soft / `--color-success-soft` | `#EAF2ED` |
+| Attention / `--color-attention` | `#815719` |
+| Danger / `--color-danger` | `#A13736` |
+| Focus / `--color-focus` | `#3459A5` |
+
+- Product CTAs and ordinary links use cobalt. Hover uses the action-hover token; keyboard focus remains explicit.
+- Graphite `#191C22` and `#22262E`, light ink `#EDF0F5`, secondary text `#B0B8C5`, and light action/focus `#AAC5FF` support dark editorial sections. This is not a dark-mode switch.
+- Selection, saved work, available information, and attempted actions do not imply success. Use neutral or action-soft treatments; green means a confirmed positive outcome. Amber means attention; red means error or destruction.
+- Honey support gradients remain a deliberate editorial exception. Support buttons use graphite and white; preserve the voluntary donation language and destinations.
+- Legacy names such as `--green`, `--ym-forest`, and `--journal-green` are compatibility aliases to semantic tokens, not green action authority. Do not copy historical hex values from the sections below into new work.
+- Current logo artwork and photography retain their colors. Color-only browser checks and before/after captures are recorded in `artifacts/quiet-ink/`; this is not a full accessibility certification.
+
+---
+
 ## 1. Visual strategy
 
 The existing visual identity is **warm editorial minimalism with strong technical structure**:

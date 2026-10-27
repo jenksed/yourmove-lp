@@ -1,15 +1,15 @@
 /* YourMove hero rebuilt as a true full-background scene.
    The workspace image is decorative. All marketing copy and CTAs remain live HTML. */
 .hero-real {
-  --hero-ink:#101815;
-  --hero-copy:#2e3b35;
-  --hero-green:#1d674b;
-  --hero-mint:#2a845c;
-  --hero-paper:#f5f6f2;
+  --hero-ink:var(--color-text);
+  --hero-copy:var(--color-text);
+  --hero-green:var(--color-action);
+  --hero-mint:var(--color-action);
+  --hero-paper:var(--color-bg);
   position:relative;
   isolation:isolate;
   overflow:hidden;
-  background:#e8ebe5;
+  background:var(--color-bg);
   color:var(--hero-ink);
 }
 .hero-real__scene {
@@ -26,8 +26,8 @@
   inset:0;
   z-index:-2;
   background:
-    linear-gradient(90deg, rgba(245,246,242,.95) 0%, rgba(245,246,242,.92) 24%, rgba(245,246,242,.82) 39%, rgba(245,246,242,.56) 52%, rgba(245,246,242,.24) 63%, rgba(245,246,242,.08) 74%, rgba(245,246,242,.02) 86%),
-    linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 26%, rgba(10,18,15,.08) 100%);
+    linear-gradient(90deg, rgba(245,244,241,.95) 0%, rgba(245,244,241,.92) 24%, rgba(245,244,241,.82) 39%, rgba(245,244,241,.56) 52%, rgba(245,244,241,.24) 63%, rgba(245,244,241,.08) 74%, rgba(245,244,241,.02) 86%),
+    linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 26%, rgba(25,28,34,.08) 100%);
 }
 .hero-real__layout {
   position:relative;
@@ -110,27 +110,27 @@
   color:#fff;
 }
 .hero-real__button:hover {
-  background:#144f38;
+  background:var(--color-action-hover);
   transform:translateY(-2px);
 }
 .hero-real__secondary {
-  border:1px solid rgba(16,24,21,.24);
+  border:1px solid rgba(36,41,51,.24);
   background:rgba(255,255,255,.55);
   color:var(--hero-ink);
   backdrop-filter:blur(10px);
 }
 .hero-real__secondary:hover {
   background:rgba(255,255,255,.82);
-  border-color:rgba(16,24,21,.45);
+  border-color:rgba(36,41,51,.45);
   transform:translateY(-2px);
 }
 .hero-real__button:focus-visible,
 .hero-real__secondary:focus-visible {
-  outline:3px solid #fff;
+  outline:3px solid var(--color-focus);
   outline-offset:4px;
 }
 .hero-real__availability {
-  color:#5b6862;
+  color:var(--color-muted);
   font-size:13px;
   line-height:1.45;
   margin:0;
@@ -144,7 +144,7 @@
   flex-direction:column;
   align-items:flex-end;
   gap:9px;
-  color:#24322d;
+  color:var(--color-text);
   font-size:10px;
   font-weight:700;
   letter-spacing:.12em;
@@ -158,8 +158,8 @@
 }
 .hero-real__foot {
   position:relative;
-  border-top:1px solid rgba(16,24,21,.12);
-  background:rgba(245,246,242,.82);
+  border-top:1px solid rgba(36,41,51,.12);
+  background:rgba(245,244,241,.82);
   backdrop-filter:blur(8px);
 }
 .hero-real__foot-inner {
@@ -168,7 +168,7 @@
   justify-content:space-between;
   gap:22px;
   padding-block:13px;
-  color:#44514b;
+  color:var(--color-muted);
   font-size:10px;
   line-height:1.45;
   font-weight:700;
@@ -176,7 +176,7 @@
 }
 .hero-real__foot-inner span:last-child {
   text-align:right;
-  color:#5f6c66;
+  color:var(--color-muted);
   letter-spacing:.02em;
   font-weight:500;
 }
@@ -192,8 +192,8 @@
   .hero-real__scene {background-position:74% center;}
   .hero-real__shade {
     background:
-      linear-gradient(180deg, rgba(245,246,242,.93) 0%, rgba(245,246,242,.89) 34%, rgba(245,246,242,.64) 54%, rgba(245,246,242,.30) 72%, rgba(245,246,242,.10) 100%),
-      linear-gradient(90deg, rgba(245,246,242,.92) 0%, rgba(245,246,242,.48) 36%, rgba(245,246,242,.18) 62%, rgba(245,246,242,.05) 100%);
+      linear-gradient(180deg, rgba(245,244,241,.93) 0%, rgba(245,244,241,.89) 34%, rgba(245,244,241,.64) 54%, rgba(245,244,241,.30) 72%, rgba(245,244,241,.10) 100%),
+      linear-gradient(90deg, rgba(245,244,241,.92) 0%, rgba(245,244,241,.48) 36%, rgba(245,244,241,.18) 62%, rgba(245,244,241,.05) 100%);
   }
   .hero-real__visual-marker {display:none}
 }
@@ -215,3 +215,6 @@
   .hero-real__button,
   .hero-real__secondary {transition:none}
 }
+/* Small copy crosses the photograph: use primary ink rather than muted text. */
+.hero-real__availability,.hero-real__foot-inner,.hero-real__foot-inner span:last-child {color:var(--color-text)}
+.hero-real__availability {background:rgba(245,244,241,.92)}

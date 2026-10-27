@@ -41,7 +41,7 @@ const jsonLd = value => JSON.stringify(value).replace(/</g, '\\u003c');
 const pageHead = ({title, description, canonical, ogType='website', image='', schema=null}) =>
   '<!doctype html><html lang="en"><head>' +
   '<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
-  '<meta name="theme-color" content="#f9f8f3">' +
+  '<meta name="theme-color" content="#f5f4f1">' +
   '<title>' + esc(title) + ' · YourMove</title>' +
   '<meta name="description" content="' + esc(description) + '">' +
   '<link rel="canonical" href="' + esc(canonical) + '">' +

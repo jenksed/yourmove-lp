@@ -1,12 +1,12 @@
 /* How it works — editorial workflow story.
    Scoped to this page; header, footer and shared brand tokens remain unchanged. */
 body[data-page="how"] {
-  --hw-ink: #101715;
-  --hw-paper: #f9f8f3;
-  --hw-forest: #143b2b;
-  --hw-green: #075b40;
-  --hw-sage: #b5e4b8;
-  --hw-cobalt: #2456bd;
+  --hw-ink:var(--color-text);
+  --hw-paper:var(--color-bg);
+  --hw-forest:var(--color-dark);
+  --hw-green:var(--color-action);
+  --hw-sage:var(--color-dark-action);
+  --hw-cobalt:var(--color-action);
   color: var(--hw-ink);
 }
 body[data-page="how"] main { overflow: clip; }
@@ -419,3 +419,45 @@ body[data-page="how"] .hw-ending-side small { display:block; color:#d2e4d5; font
   body[data-page="how"] .hw-button { transition:none; }
   body[data-page="how"] .hw-button:hover { transform:none; }
 }
+
+/* Quiet Ink workflow illustration: available/selected work stays informational. */
+body[data-page="how"] .hw-button--green:hover {background:var(--color-action-hover)}
+body[data-page="how"] .hw-button--light {background:var(--color-action);color:var(--color-on-action);border:1px solid var(--color-border-strong)}
+body[data-page="how"] .hw-button--light:hover {background:var(--color-action-hover)}
+body[data-page="how"] .hw-button:focus-visible,body[data-page="how"] .hw-text-link:focus-visible {outline-color:var(--color-focus)}
+body[data-page="how"] .hw-hero:before {background:radial-gradient(ellipse at 92% 40%,#8792a026,transparent 48%),linear-gradient(115deg,#0000002b,transparent 60%)}
+body[data-page="how"] .hw-hero .hw-rail,body[data-page="how"] .hw-hero-foot,body[data-page="how"] .hw-hero-notice {color:var(--color-dark-muted);border-color:var(--color-border-strong)}
+body[data-page="how"] .hw-hero-copy>p {color:var(--color-dark-text)}
+body[data-page="how"] .hw-preview {background:var(--color-surface);color:var(--color-text);box-shadow:18px 20px 0 #191c2252}
+body[data-page="how"] .hw-preview-top,body[data-page="how"] .hw-preview-row,body[data-page="how"] .hw-progress,body[data-page="how"] .hw-progress a,body[data-page="how"] .hw-chapter .hw-rail,body[data-page="how"] .hw-chapter-note,body[data-page="how"] .hw-mock,body[data-page="how"] .hw-mock-head,body[data-page="how"] .hw-job-grid,body[data-page="how"] .hw-form,body[data-page="how"] .hw-field-value,body[data-page="how"] .hw-honest-item {border-color:var(--color-border)}
+body[data-page="how"] .hw-preview-top>span:last-child,body[data-page="how"] .hw-preview-row>span:last-child,body[data-page="how"] .hw-preview-kicker,body[data-page="how"] .hw-preview-sub,body[data-page="how"] .hw-preview-footer span:last-child,body[data-page="how"] .hw-intro-aside p,body[data-page="how"] .hw-intro-aside small,body[data-page="how"] .hw-chapter .hw-rail,body[data-page="how"] .hw-chapter-copy>p,body[data-page="how"] .hw-chapter-note,body[data-page="how"] .hw-mock-head span:last-child,body[data-page="how"] .hw-job-meta,body[data-page="how"] .hw-job-grid small,body[data-page="how"] .hw-mock-bottom,body[data-page="how"] .hw-mock-bottom span:last-child,body[data-page="how"] .hw-kit-card small,body[data-page="how"] .hw-kit-card p,body[data-page="how"] .hw-form-note,body[data-page="how"] .hw-field-status,body[data-page="how"] .hw-handoff-steps span,body[data-page="how"] .hw-closeout-card p,body[data-page="how"] .hw-honest-item p {color:var(--color-muted)}
+body[data-page="how"] .hw-preview h2,body[data-page="how"] .hw-progress a,body[data-page="how"] .hw-mock,body[data-page="how"] .hw-field-label,body[data-page="how"] .hw-field-value {color:var(--color-text)}
+body[data-page="how"] .hw-preview-footer,body[data-page="how"] .hw-chapter--sage,body[data-page="how"] .hw-job-grid,body[data-page="how"] .hw-kit-card:nth-child(4),body[data-page="how"] .hw-form-footer {background:var(--color-surface-muted);color:var(--color-text)}
+body[data-page="how"] .hw-chapter--dark .hw-rail,body[data-page="how"] .hw-chapter--dark .hw-chapter-note {color:var(--color-dark-muted);border-color:var(--color-border-strong)}
+body[data-page="how"] .hw-chapter--dark .hw-chapter-copy>p,body[data-page="how"] .hw-kit-top {color:var(--color-dark-text)}
+body[data-page="how"] .hw-mock {box-shadow:15px 17px 0 var(--color-surface-muted)}
+body[data-page="how"] .hw-job-grid>div,body[data-page="how"] .hw-kit-card:nth-child(3),body[data-page="how"] .hw-field-value {background:var(--color-bg)}
+body[data-page="how"] .hw-kit-card {background:var(--color-surface);color:var(--color-text);border-color:var(--color-border-strong)}
+body[data-page="how"] .hw-kit-icon {color:var(--color-action);border-color:var(--color-border-strong)}
+body[data-page="how"] .hw-kit-tag {color:var(--color-action);background:var(--color-action-soft)}
+body[data-page="how"] .hw-form {box-shadow:15px 17px 0 var(--color-border)}
+body[data-page="how"] .hw-form-head {background:var(--color-dark-surface)}
+body[data-page="how"] .hw-form-head span:last-child {color:var(--color-dark-muted)}
+body[data-page="how"] .hw-field-status--open,body[data-page="how"] .hw-field-value--empty {color:var(--color-attention)}
+body[data-page="how"] .hw-field-value--empty {background:var(--color-attention-soft);border-color:var(--color-attention)}
+body[data-page="how"] .hw-handoff-steps b,body[data-page="how"] .hw-closeout-arrow,body[data-page="how"] .hw-closeout-card small,body[data-page="how"] .hw-closeout-card .hw-check {color:var(--color-action)}
+body[data-page="how"] .hw-handoff-steps i {color:var(--color-border-strong)}
+body[data-page="how"] .hw-closeout-card {border-color:var(--color-border)}
+body[data-page="how"] .hw-closeout-card--saved {background:var(--color-dark-surface);border-color:var(--color-dark-surface)}
+body[data-page="how"] .hw-closeout-card--saved small,body[data-page="how"] .hw-closeout-card--saved .hw-check {color:var(--color-dark-action)}
+body[data-page="how"] .hw-closeout-card--saved p {color:var(--color-dark-muted)}
+body[data-page="how"] .hw-honest-list {border-color:var(--color-text)}
+body[data-page="how"] .hw-ending {background:var(--color-dark-surface)}
+body[data-page="how"] .hw-ending .hw-rail {color:var(--color-dark-muted);border-color:var(--color-border-strong)}
+body[data-page="how"] .hw-ending h2 span {color:var(--color-dark-muted)}
+body[data-page="how"] .hw-ending-side p,body[data-page="how"] .hw-ending-side small {color:var(--color-dark-text)}
+body[data-page="how"] .hw-hero :focus-visible,body[data-page="how"] .hw-chapter--dark :focus-visible,body[data-page="how"] .hw-ending :focus-visible {outline-color:var(--color-dark-action)}
+body[data-page="how"] .hw-handoff-steps i {color:var(--color-muted)}
+body[data-page="how"] .hw-chapter {background:var(--color-surface)}
+body[data-page="how"] .hw-chapter--dark {background:var(--color-dark)}
+body[data-page="how"] .hw-chapter--sage {background:var(--color-surface-muted)}

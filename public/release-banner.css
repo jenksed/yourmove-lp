@@ -102,3 +102,12 @@
 @media (prefers-reduced-motion: reduce) {
   .announcement.ym-release-announcement * { scroll-behavior: auto; }
 }
+
+/* A release is information, not a completed product action. */
+.announcement.ym-release-announcement {background:var(--color-dark);color:var(--color-dark-text);border-color:var(--color-dark-border)}
+.ym-release-dot {background:var(--color-dark-muted);box-shadow:0 0 0 4px #b0b8c51c}
+.ym-release-kicker,.ym-release-date {color:var(--color-dark-action)}
+.ym-release-countdown {color:var(--color-dark-text);border-color:var(--color-border-strong);background:var(--color-dark-surface)}
+.announcement.ym-release-announcement .ym-release-link {color:var(--color-dark-text)}
+.announcement.ym-release-announcement .ym-release-link:hover {color:var(--color-dark-action)}
+.announcement.ym-release-announcement .ym-release-link:focus-visible {outline-color:var(--color-dark-action)}

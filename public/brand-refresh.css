@@ -4,13 +4,13 @@
 :root {
   --font: "Jost", "Avenir Next", "Century Gothic", system-ui, sans-serif;
   --display: "Jost", "Avenir Next", "Century Gothic", system-ui, sans-serif;
-  --paper: #f9f8f3;
-  --ink: #101715;
-  --green: #075b40;
-  --line: #dce2d9;
-  --ym-paper: #f9f8f3;
-  --ym-forest: #085c41;
-  --ym-ink: #111a17;
+  --paper:var(--color-bg);
+  --ink:var(--color-text);
+  --green:var(--color-action);
+  --line:var(--color-border);
+  --ym-paper:var(--color-bg);
+  --ym-forest:var(--color-action);
+  --ym-ink:var(--color-text);
 }
 html{scroll-padding-top:22px}
 body{font-family:var(--font);font-weight:400;letter-spacing:0;line-height:1.5;background:var(--paper)}
@@ -115,3 +115,119 @@ a,button{font-family:var(--font)}
 .ym2-keeps .ym2-rail{border-color:#a4b9a8;color:#456953}
 .ym2-keeps .ym2-rail .ym2-sq{background:#086241}
 .ym2-keeps-list,.ym2-keeps-list span{border-color:#a9c0b0;color:#254534}
+
+/* Wave 1 / Quiet Ink: effective shared shell and editorial chapters.
+   Keep the existing composition; green is reserved for confirmed outcomes. */
+a {color:var(--color-action)}
+a:hover {text-decoration-color:currentColor}
+:focus-visible {outline-color:var(--color-focus)}
+::selection {background:var(--color-action-soft);color:var(--color-text)}
+.under-link,.ym2-plain-link {color:var(--color-action);border-color:currentColor}
+.under-link:hover,.ym2-plain-link:hover {color:var(--color-action-hover)}
+.btn-green,.btn-blue,.btn-dark,.site-nav>.nav-cta {background:var(--color-action);color:var(--color-on-action)}
+.btn-green:hover,.btn-blue:hover,.btn-dark:hover,.site-nav>.nav-cta:hover {background:var(--color-action-hover);color:var(--color-on-action)}
+.btn-white:hover {background:var(--color-action-soft)}
+.announcement {background:var(--color-dark);color:var(--color-dark-text)}
+.announcement a {color:var(--color-dark-action)}
+.announcement-pin {background:var(--color-dark-muted)}
+.header,.site-nav {background:var(--color-bg)}
+.nav-annotation {color:var(--color-muted);border-color:var(--color-border)}
+.site-nav>a {color:var(--color-text)}
+.site-nav>a:hover,.site-nav>a[aria-current="page"] {color:var(--color-action)}
+.menu-button {color:var(--color-text);border-color:var(--color-border-strong)}
+.site-nav>a:not(.nav-cta) {border-color:var(--color-border)}
+.footer {background:var(--color-dark);color:var(--color-dark-text)}
+.footer-main p,.footer-col strong,.footer-bottom {color:var(--color-dark-muted)}
+.footer-col>a {color:var(--color-dark-text)}
+.footer-col>a:hover {color:var(--color-dark-action)}
+.footer-bottom {border-color:var(--color-dark-border)}
+.footer a:focus-visible,.announcement a:focus-visible {outline-color:var(--color-dark-action)}
+.footer-support-callout {background:var(--color-dark-surface);border-color:var(--color-dark-border)}
+.footer .footer-support-callout__eyebrow,.footer .footer-support-callout__note {color:var(--color-dark-muted)}
+.footer .footer-support-callout__title {color:var(--color-dark-text)}
+.footer-support-callout>a {color:var(--color-dark-text);border-color:var(--color-border-strong)}
+.footer-support-callout>a:hover {background:var(--color-action-soft);color:var(--color-text)}
+body[data-page="home"] .footer .footer-support-callout__eyebrow {color:var(--color-text)}
+
+.ym2-proof,.ym2-agency {background:var(--color-bg);color:var(--color-text)}
+.ym2-rail {color:var(--color-muted);border-color:var(--color-border-strong)}
+.ym2-sq {background:var(--color-action)}
+.ym2-rail-dark,.ym2-rail-light {color:var(--color-dark-muted);border-color:var(--color-border-strong)}
+.ym2-rail-dark .ym2-sq,.ym2-rail-light .ym2-sq {background:var(--color-dark-action)}
+.ym2-agency h2 span,.ym-agency-number {color:var(--color-action)}
+.ym-agency-commitments,.ym-agency-commitments>div {border-color:var(--color-border)}
+.ym-agency-commitments>div>div>span {color:var(--color-muted)}
+.ym-agency-redesign .ym2-plain-link {color:var(--color-action)}
+/* A single restrained cobalt chapter between graphite process and warm agency. */
+.ym-keeps-redesign {background:var(--color-action)}
+.ym-keeps-redesign h2 span,.ym-keeps-item-no,.ym-keeps-overline,.ym-keeps-footline {color:var(--color-dark-text)}
+.ym-founder-redesign,.ym-support-invite {background:var(--color-action-soft);color:var(--color-text)}
+.ym-support-invite__rail {color:var(--color-muted);border-color:var(--color-border-strong)}
+.ym-founder-redesign .ym-support-invite__story,.ym-support-invite__story {border-color:var(--color-action)}
+.ym-support-invite h2 em,.ym-founder-story-label {color:var(--color-action)}
+.ym-founder-redesign .ym-support-invite__story p {color:var(--color-text)}
+.ym-founder-redesign .ym-support-invite__story p+p,.ym-founder-redesign .ym-support-invite__story small {color:var(--color-muted)}
+.ym-founder-redesign .ym-support-invite__link {color:var(--color-action);border-color:currentColor}
+.ym-founder-redesign .ym-support-invite__link:hover {color:var(--color-action-hover)}
+.ym2-finish {background:var(--color-dark-surface)}
+.ym2-finish h2 span {color:var(--color-dark-muted)}
+.ym2-finish-grid small {color:var(--color-dark-muted)}
+.ym2-download-button,.gs-light-button,.gs-dark-button,.gs-green-button {background:var(--color-action);color:var(--color-on-action)}
+.ym2-download-button:hover,.gs-light-button:hover,.gs-dark-button:hover,.gs-green-button:hover {background:var(--color-action-hover);color:var(--color-on-action)}
+.ym2-download-button {border:1px solid var(--color-border-strong)}
+.ym2-repo-link,.gs-source-link,.gs-end-actions>a:nth-child(2) {color:var(--color-dark-action);border-color:currentColor}
+.ym2-finish :focus-visible,.gs-hero :focus-visible,.gs-build :focus-visible,.gs-end :focus-visible {outline-color:var(--color-dark-action)}
+
+body[data-page="start"] {background:var(--color-bg)}
+.gs-hero,.gs-build {background:var(--color-dark);color:var(--color-dark-text)}
+.gs-kicker,.gs-hero-tail,.gs-requirements>span,.gs-gatekeeper {color:var(--color-dark-muted);border-color:var(--color-border-strong)}
+.gs-hero h1 em,.gs-github-glyph,.gs-build-copy h2 em {color:var(--color-dark-action)}
+.gs-hero-side p,.gs-build-copy>p,.gs-requirements ul {color:var(--color-dark-text)}
+.gs-path-release {background:var(--color-surface-muted);color:var(--color-text);border-color:var(--color-border)}
+.gs-path-source {background:var(--color-dark-surface)}
+.gs-path-foot {color:var(--color-muted)}
+.gs-path-source .gs-path-foot {color:var(--color-dark-muted)}
+.gs-requirements {border-color:var(--color-border-strong)}
+.gs-build-doc-link {color:var(--color-dark-action);border-color:currentColor}
+.gs-console {background:var(--color-surface);color:var(--color-text);box-shadow:12px 14px 0 var(--color-dark-surface)}
+.gs-console-bar {background:var(--color-surface-muted)}
+.gs-console-bar i {background:var(--color-muted)}
+.gs-console button,.gs-mini-console button {border-color:var(--color-border-strong);color:var(--color-action)}
+.gs-console button:hover,.gs-mini-console button:hover {background:var(--color-action-soft)}
+.gs-console code span {color:var(--color-action)}
+.gs-console-bottom {border-color:var(--color-border)}
+.gs-console-bottom p,.gs-details-list details p {color:var(--color-muted)}
+.gs-browser {background:var(--color-bg)}
+.gs-mini-console,.gs-details {background:var(--color-surface-muted)}
+.gs-mini-console,.gs-mini-console>div,.gs-mini-console p,.gs-details-list,.gs-details-list details {border-color:var(--color-border-strong)}
+.gs-mini-console>div,.gs-mini-console pre {color:var(--color-text)}
+.gs-mini-console p {color:var(--color-muted)}
+.gs-details-list summary span {color:var(--color-action)}
+.gs-details-list details p a {color:var(--color-action);text-decoration:underline}
+.gs-end {background:var(--color-dark-surface)}
+.gs-end-words span {color:var(--color-dark-muted)}
+
+.dark-subhero,.evidence-answer-bridge,.manifesto-subhero,.rule-banner {background:var(--color-dark);color:var(--color-dark-text)}
+.subhero h1 span {color:var(--color-dark-muted)}
+.dark-subhero .subhero-bottom>span,.manifesto-subhero .subhero-bottom>span {color:var(--color-dark-muted)}
+.evidence-subhero,.evidence-taxonomy {background:var(--color-action-soft)}
+.evidence-subhero h1 span,.evidence-subhero .subhero-bottom>span {color:var(--color-action)}
+.ev-transform {background:var(--color-surface);border-color:var(--color-border);border-top-color:var(--color-action);box-shadow:18px 20px 0 var(--color-surface-muted)}
+.ev-tabs,.ev-tabs button,.tax-row,.evidence-taxonomy .section-topline,.evidence-disclaimer {border-color:var(--color-border-strong)}
+.ev-tabs button[aria-selected="true"] {color:var(--color-on-action)}
+.ev-tabs button:not([aria-selected="true"]):hover {background:var(--color-action-soft)}
+.evidence-taxonomy .section-topline>span:last-child {color:var(--color-muted)}
+.evidence-disclaimer {background:var(--color-surface)}
+.evidence-answer-bridge p {color:var(--color-dark-text)}
+.evidence-answer-bridge :focus-visible,.rule-banner :focus-visible {outline-color:var(--color-dark-action)}
+.manifesto-body {background:var(--color-bg)}
+.fish-tiny {color:var(--color-muted)}
+.review-top h1 span,.review-principles strong {color:var(--color-action)}
+.reference-section>div,.reference-section>div:last-child {border-color:var(--color-border)}
+.reference-section span {color:var(--color-muted)}
+.review-future {background:var(--color-surface-muted);border-color:var(--color-action)}
+/* Preserve action-label contrast when this destination is the current page. */
+.site-nav>.nav-cta[aria-current="page"] {color:var(--color-on-action)}
+.ym-keeps-redesign .ym2-rail {color:var(--color-dark-text);border-color:var(--color-border-strong)}
+.ym-keeps-redesign .ym2-rail .ym2-sq {background:var(--color-dark-text)}
+.fish-tiny {color:var(--color-text)}
