@@ -7,7 +7,7 @@ description: You can know everything about a job and almost nothing about the
 date: 2026-10-29
 published: true
 featured: false
-image: /assets/blog/yourmove-job-application-workspace.png
+image: /assets/blog/magnifying-glass-over-job-applications.png
 image_alt: Editorial illustration of job application forms, hiring platforms,
   and a magnifying glass, branded with the YourMove logo.
 image_caption: Application Census explores the questions and requirements
