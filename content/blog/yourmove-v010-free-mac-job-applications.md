@@ -6,7 +6,7 @@ description: Manage multiple resumes, organize job opportunities, reuse answers,
   release.
 date: 2026-11-05
 published: true
-featured: true
+featured: false
 pull_quote: More than one resume? More than one application?
 image: /assets/blog/yourmove-v010-launch-hero.webp
 image_alt: YourMove launch illustration showing multiple resume versions
