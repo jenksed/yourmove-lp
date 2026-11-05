@@ -13,6 +13,7 @@ image_alt: YourMove launch illustration showing multiple resume versions
   connected to job opportunities, plus reusable application answers.
 image_caption: YourMove helps you organize resumes, opportunities, and
   application work in one free, local-first Mac app.
+social_image: /assets/blog/yourmove-v010-social-preview.png
 ---
 **More than one resume? More than one application?**
 
