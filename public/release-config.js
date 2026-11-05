@@ -14,7 +14,7 @@ window.YOURMOVE_RELEASE = {
     requirements: 'macOS 26+, Apple Silicon. Unnotarized alpha: approve in System Settings → Privacy & Security → Open Anyway. Verify SHA-256.',
     verifiedOn: '2026-11-05',
     releaseUrl: 'https://github.com/jenksed/yourmove-go/releases/tag/v0.1.0',
-    downloadUrl: 'https://github.com/jenksed/yourmove-go/releases/download/v0.1.0/YourMove-0.1.0-macOS-arm64-unnotarized.zip'
+    downloadUrl: 'https://github.com/jenksed/yourmove-go/releases/download/v0.1.0/YourMove-0.1.0-macOS-arm64.dmg'
   },
   enabled: true,
   title: 'Initial release',
