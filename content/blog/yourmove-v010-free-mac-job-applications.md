@@ -1,16 +1,19 @@
 ---
 title: "YourMove Is Here: A Free Mac App for Managing Resumes and Job Applications"
 seo_title: "YourMove v0.1.0: Free Mac App for Job Applications"
-description: "Manage multiple resumes, organize job opportunities, reuse answers, and stay in control of your applications. Meet the first free YourMove Mac release."
+description: Manage multiple resumes, organize job opportunities, reuse answers,
+  and stay in control of your applications. Meet the first free YourMove Mac
+  release.
 date: 2026-11-05
 published: true
 featured: true
+pull_quote: More than one resume? More than one application?
 image: /assets/blog/yourmove-v010-launch-hero.webp
-image_alt: "YourMove launch illustration showing multiple resume versions connected to job opportunities, plus reusable application answers."
-image_caption: "YourMove helps you organize resumes, opportunities, and application work in one free, local-first Mac app."
-pull_quote: "More than one resume? More than one application?"
+image_alt: YourMove launch illustration showing multiple resume versions
+  connected to job opportunities, plus reusable application answers.
+image_caption: YourMove helps you organize resumes, opportunities, and
+  application work in one free, local-first Mac app.
 ---
-
 **More than one resume? More than one application?**
 
 If you're applying for different kinds of jobs, you probably have different versions of your résumé. One emphasizes technical support. Another highlights project work. Maybe a third is tailored to customer success or operations.
