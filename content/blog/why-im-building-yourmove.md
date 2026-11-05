@@ -1,12 +1,12 @@
 ---
-title: "Why I'm building YourMove"
-description: "The job application process kept asking me to repeat work I'd already done. This is why I'm building a different approach."
+title: Why I'm building YourMove
+description: The job application process kept asking me to repeat work I'd
+  already done. This is why I'm building a different approach.
 date: 2026-10-26
 published: true
 featured: true
-pull_quote: "The effort doesn’t carry over. The next application starts from scratch."
+pull_quote: The effort doesn’t carry over. The next application starts from scratch.
 ---
-
 I'm building YourMove because looking for work has a strange way of becoming its own full-time job.
 
 You find a promising position, read the description, and decide it's worth applying. Then another hiring system asks you to upload your résumé, re-enter your work history, and write answers you've already written somewhere else.
