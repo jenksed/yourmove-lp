@@ -5,6 +5,9 @@ description: "Manage multiple resumes, organize job opportunities, reuse answers
 date: 2026-11-05
 published: true
 featured: true
+image: /assets/blog/yourmove-v010-launch-hero.webp
+image_alt: "YourMove launch illustration showing multiple resume versions connected to job opportunities, plus reusable application answers."
+image_caption: "YourMove helps you organize resumes, opportunities, and application work in one free, local-first Mac app."
 pull_quote: "More than one resume? More than one application?"
 ---
 
