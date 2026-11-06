@@ -3,7 +3,7 @@
     {
       "width": 1440,
       "scrollWidth": 1440,
-      "height": 4189,
+      "height": 4004,
       "font": "Jost",
       "keyboard": "PASS",
       "photoContrast": "PASS"
@@ -11,7 +11,7 @@
     {
       "width": 1024,
       "scrollWidth": 1024,
-      "height": 4174,
+      "height": 4060,
       "font": "Jost",
       "keyboard": "PASS",
       "photoContrast": "PASS"
@@ -19,7 +19,7 @@
     {
       "width": 768,
       "scrollWidth": 768,
-      "height": 4773,
+      "height": 4689,
       "font": "Jost",
       "keyboard": "PASS",
       "photoContrast": "PASS"
@@ -27,7 +27,7 @@
     {
       "width": 390,
       "scrollWidth": 390,
-      "height": 5939,
+      "height": 5885,
       "font": "Jost",
       "keyboard": "PASS",
       "photoContrast": "PASS"
@@ -35,7 +35,7 @@
     {
       "width": 320,
       "scrollWidth": 320,
-      "height": 6431,
+      "height": 6396,
       "font": "Jost",
       "keyboard": "PASS",
       "photoContrast": "PASS"
@@ -57,13 +57,13 @@
     {
       "width": 1440,
       "selector": ".home-hero h1",
-      "worst": 13.26,
+      "worst": 12.0,
       "required": 3
     },
     {
       "width": 1440,
       "selector": ".home-hero h1",
-      "worst": 13.26,
+      "worst": 12.11,
       "required": 3
     },
     {
@@ -75,31 +75,31 @@
     {
       "width": 1440,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 12.46,
       "required": 4.5
     },
     {
       "width": 1440,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 12.46,
       "required": 4.5
     },
     {
       "width": 1440,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 12.56,
       "required": 4.5
     },
     {
       "width": 1440,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 12.92,
       "required": 4.5
     },
     {
       "width": 1440,
       "selector": ".home-hero__content>p",
-      "worst": 5.18,
+      "worst": 5.14,
       "required": 4.5
     },
     {
@@ -129,7 +129,7 @@
     {
       "width": 1440,
       "selector": ".home-hero a",
-      "worst": 6.12,
+      "worst": 6.02,
       "required": 4.5
     },
     {
@@ -146,50 +146,62 @@
     },
     {
       "width": 1440,
+      "selector": ".home-hero a",
+      "worst": 6.12,
+      "required": 4.5
+    },
+    {
+      "width": 1440,
+      "selector": ".home-hero a",
+      "worst": 6.12,
+      "required": 4.5
+    },
+    {
+      "width": 1440,
       "selector": ".home-hero__caption",
-      "worst": 4.78,
+      "worst": 4.69,
       "required": 4.5
     },
     {
       "width": 1024,
       "selector": ".home-hero h1",
-      "worst": 13.26,
+      "worst": 12.0,
       "required": 3
     },
     {
       "width": 1024,
       "selector": ".home-hero h1",
-      "worst": 13.26,
+      "worst": 12.11,
       "required": 3
     },
     {
       "width": 1024,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 12.32,
       "required": 4.5
     },
     {
       "width": 1024,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 12.35,
       "required": 4.5
     },
     {
       "width": 1024,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 12.42,
       "required": 4.5
     },
     {
       "width": 1024,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 12.42,
       "required": 4.5
     },
     {
       "width": 1024,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 13.01,
       "required": 4.5
     },
     {
@@ -225,7 +237,7 @@
     {
       "width": 1024,
       "selector": ".home-hero a",
-      "worst": 6.12,
+      "worst": 6.06,
       "required": 4.5
     },
     {
@@ -242,6 +254,18 @@
     },
     {
       "width": 1024,
+      "selector": ".home-hero a",
+      "worst": 6.12,
+      "required": 4.5
+    },
+    {
+      "width": 1024,
+      "selector": ".home-hero a",
+      "worst": 6.12,
+      "required": 4.5
+    },
+    {
+      "width": 1024,
       "selector": ".home-hero__caption",
       "worst": 4.78,
       "required": 4.5
@@ -249,13 +273,13 @@
     {
       "width": 768,
       "selector": ".home-hero h1",
-      "worst": 13.26,
+      "worst": 11.89,
       "required": 3
     },
     {
       "width": 768,
       "selector": ".home-hero h1",
-      "worst": 13.26,
+      "worst": 12.0,
       "required": 3
     },
     {
@@ -267,43 +291,43 @@
     {
       "width": 768,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 12.22,
       "required": 4.5
     },
     {
       "width": 768,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 12.22,
       "required": 4.5
     },
     {
       "width": 768,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 12.43,
       "required": 4.5
     },
     {
       "width": 768,
       "selector": ".home-hero__content>p",
-      "worst": 5.18,
+      "worst": 4.94,
       "required": 4.5
     },
     {
       "width": 768,
       "selector": ".home-hero__content>p",
-      "worst": 6.12,
+      "worst": 5.84,
       "required": 4.5
     },
     {
       "width": 768,
       "selector": ".home-hero__content>p",
-      "worst": 5.18,
+      "worst": 4.94,
       "required": 4.5
     },
     {
       "width": 768,
       "selector": ".home-hero__content>p",
-      "worst": 5.18,
+      "worst": 4.95,
       "required": 4.5
     },
     {
@@ -315,7 +339,19 @@
     {
       "width": 768,
       "selector": ".home-hero a",
+      "worst": 5.75,
+      "required": 4.5
+    },
+    {
+      "width": 768,
+      "selector": ".home-hero a",
       "worst": 6.12,
+      "required": 4.5
+    },
+    {
+      "width": 768,
+      "selector": ".home-hero a",
+      "worst": 5.84,
       "required": 4.5
     },
     {
@@ -339,19 +375,43 @@
     {
       "width": 390,
       "selector": ".home-hero h1",
-      "worst": 13.26,
+      "worst": 11.89,
       "required": 3
     },
     {
       "width": 390,
       "selector": ".home-hero h1",
-      "worst": 13.26,
+      "worst": 11.97,
       "required": 3
     },
     {
       "width": 390,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 12.11,
+      "required": 4.5
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero__content>p",
+      "worst": 12.22,
+      "required": 4.5
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero__content>p",
+      "worst": 12.21,
+      "required": 4.5
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero__content>p",
+      "worst": 12.22,
+      "required": 4.5
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero__content>p",
+      "worst": 12.21,
       "required": 4.5
     },
     {
@@ -363,31 +423,7 @@
     {
       "width": 390,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
-      "required": 4.5
-    },
-    {
-      "width": 390,
-      "selector": ".home-hero__content>p",
-      "worst": 13.26,
-      "required": 4.5
-    },
-    {
-      "width": 390,
-      "selector": ".home-hero__content>p",
-      "worst": 13.26,
-      "required": 4.5
-    },
-    {
-      "width": 390,
-      "selector": ".home-hero__content>p",
-      "worst": 13.26,
-      "required": 4.5
-    },
-    {
-      "width": 390,
-      "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 12.57,
       "required": 4.5
     },
     {
@@ -411,7 +447,7 @@
     {
       "width": 390,
       "selector": ".home-hero__content>p",
-      "worst": 5.18,
+      "worst": 5.01,
       "required": 4.5
     },
     {
@@ -423,6 +459,18 @@
     {
       "width": 390,
       "selector": ".home-hero a",
+      "worst": 5.91,
+      "required": 4.5
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero a",
+      "worst": 6.12,
+      "required": 4.5
+    },
+    {
+      "width": 390,
+      "selector": ".home-hero a",
       "worst": 6.12,
       "required": 4.5
     },
@@ -447,19 +495,19 @@
     {
       "width": 320,
       "selector": ".home-hero h1",
-      "worst": 13.26,
+      "worst": 11.89,
       "required": 3
     },
     {
       "width": 320,
       "selector": ".home-hero h1",
-      "worst": 13.26,
+      "worst": 11.89,
       "required": 3
     },
     {
       "width": 320,
       "selector": ".home-hero h1",
-      "worst": 13.26,
+      "worst": 12.08,
       "required": 3
     },
     {
@@ -471,7 +519,19 @@
     {
       "width": 320,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 12.21,
+      "required": 4.5
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero__content>p",
+      "worst": 12.22,
+      "required": 4.5
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero__content>p",
+      "worst": 12.21,
       "required": 4.5
     },
     {
@@ -483,7 +543,13 @@
     {
       "width": 320,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 12.32,
+      "required": 4.5
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero__content>p",
+      "worst": 12.32,
       "required": 4.5
     },
     {
@@ -495,37 +561,19 @@
     {
       "width": 320,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 5.04,
       "required": 4.5
     },
     {
       "width": 320,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
+      "worst": 5.95,
       "required": 4.5
     },
     {
       "width": 320,
       "selector": ".home-hero__content>p",
-      "worst": 13.26,
-      "required": 4.5
-    },
-    {
-      "width": 320,
-      "selector": ".home-hero__content>p",
-      "worst": 5.18,
-      "required": 4.5
-    },
-    {
-      "width": 320,
-      "selector": ".home-hero__content>p",
-      "worst": 6.12,
-      "required": 4.5
-    },
-    {
-      "width": 320,
-      "selector": ".home-hero__content>p",
-      "worst": 5.18,
+      "worst": 5.04,
       "required": 4.5
     },
     {
@@ -543,7 +591,19 @@
     {
       "width": 320,
       "selector": ".home-hero a",
-      "worst": 6.12,
+      "worst": 5.92,
+      "required": 4.5
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero a",
+      "worst": 5.92,
+      "required": 4.5
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero a",
+      "worst": 5.95,
       "required": 4.5
     },
     {
@@ -562,6 +622,12 @@
       "width": 320,
       "selector": ".home-hero__caption",
       "worst": 4.78,
+      "required": 4.5
+    },
+    {
+      "width": 320,
+      "selector": ".home-hero__caption",
+      "worst": 5.14,
       "required": 4.5
     }
   ],

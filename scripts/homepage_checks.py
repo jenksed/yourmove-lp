@@ -90,7 +90,7 @@ with sync_playwright() as p:
             assert worst >= required, (width, r['selector'], worst, required)
         style.evaluate('(el)=>el.remove()')
         # The product shortcut lands on controls with the changing form immediately following.
-        page.locator('.home-hero a[href="#experience"]').click()
+        page.locator('.home-hero a[href="#experience"][data-analytics-placement="hero"]').click()
         blank = page.locator('[data-compare-state="blank"]')
         saved = page.locator('[data-compare-state="saved"]')
         answer = page.locator('[data-demo-answer]')
@@ -140,7 +140,7 @@ with sync_playwright() as p:
     pg = touch.new_page();pg.goto(args.url+'/')
     pg.locator('.menu-button').tap();assert pg.locator('.site-nav').is_visible()
     pg.locator('.menu-button').tap();assert not pg.locator('.site-nav').is_visible()
-    pg.locator('.home-hero a[href="#experience"]').tap()
+    pg.locator('.home-hero a[href="#experience"][data-analytics-placement="hero"]').tap()
     pg.locator('[data-compare-state="saved"]').tap()
     assert pg.locator('[data-demo-answer]').input_value()
     pg.locator('[data-demo-answer]').tap();pg.keyboard.type(' Touch edit.')
