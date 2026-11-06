@@ -63,3 +63,21 @@
  .start-help {padding-block:50px 60px}
 }
 .availability-section a {color:var(--color-dark-action)}
+
+/* Published Mac alpha: concise installation path before source-build options. */
+.start-install {display:grid;grid-template-columns:1.1fr 1fr;gap:9%;padding-block:58px 46px}
+.start-install h2 {font-size:clamp(32px,3.1vw,45px);max-width:15ch}
+.start-install__intro p:last-child {max-width:46ch}
+.start-install__steps {margin:0;padding-left:24px}
+.start-install__steps li {padding:0 0 13px 6px;margin-bottom:13px;border-bottom:1px solid var(--color-border)}
+.start-install__steps li::marker {font-weight:600}
+.start-install__steps p {font-size:16px;margin:5px 0 0}
+.start-install>a {grid-column:2;justify-self:start}
+.release-next-steps {display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:16px}
+.availability-section .release-security {font-size:15px;line-height:1.55;margin-top:13px;color:var(--color-dark-text)}
+.availability-section .release-security strong,.availability-section .release-requirements strong {color:var(--color-dark-text)}
+@media(max-width:760px) {
+ .start-install {grid-template-columns:1fr;gap:20px;padding-block:46px 36px}
+ .start-install>a {grid-column:1}
+ .release-next-steps {gap:13px}
+}

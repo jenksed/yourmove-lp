@@ -85,8 +85,10 @@ with sync_playwright() as p:
                 assert page.locator('.home-hero').count()==1
                 assert page.locator('h1#hero-title').is_visible()
                 assert page.locator('.home-hero .home-button').get_attribute('href') == '/get-started/'
-                assert 'hero-background-warm.webp' in page.locator('.home-hero__scene').evaluate('(node) => getComputedStyle(node).backgroundImage')
-                assert page.locator('.home-hero__scene').get_attribute('aria-hidden')=='true'
+                assert page.locator('.home-hero__scene').count()==0
+                assert page.locator('.home-hero__visual img').get_attribute('src').startswith('data:image/png;base64,')
+                assert page.locator('.home-hero__visual img').is_visible()
+                assert 'Actual YourMove interface' in page.locator('.home-hero__caption').inner_text()
                 assert page.locator('.home-records__list > div').count()==4
                 assert page.locator('.home-founder a').get_attribute('href') == '/support/'
                 assert page.locator('.home-next .home-button').get_attribute('href') == '/get-started/'

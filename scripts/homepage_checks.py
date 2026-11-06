@@ -90,7 +90,7 @@ with sync_playwright() as p:
             assert worst >= required, (width, r['selector'], worst, required)
         style.evaluate('(el)=>el.remove()')
         # The product shortcut lands on controls with the changing form immediately following.
-        page.locator('.home-hero a[href="#experience"]').click()
+        page.locator('.home-hero a[href="#experience"][data-analytics-placement="hero"]').click()
         blank = page.locator('[data-compare-state="blank"]')
         saved = page.locator('[data-compare-state="saved"]')
         answer = page.locator('[data-demo-answer]')
@@ -133,14 +133,14 @@ with sync_playwright() as p:
         page.goto(args.url+'/')
         page.locator(selector).click();page.wait_for_url(args.url+destination)
     page.goto(args.url+'/')
-    assert page.locator('.home-next__action a[target="_blank"]').get_attribute('href') == 'https://github.com/jenksed/yourmove-go'
+    assert page.locator('.home-next__action a[target="_blank"][href="https://github.com/jenksed/yourmove-go"]').get_attribute('href') == 'https://github.com/jenksed/yourmove-go'
     report['interactions'].append('real primary, evidence, first-application and founder destinations; GitHub remains source')
     # Actual touch events at the mobile breakpoint, including the demo shortcut.
     touch = browser.new_context(has_touch=True, is_mobile=True, viewport={'width':390, 'height':844})
     pg = touch.new_page();pg.goto(args.url+'/')
     pg.locator('.menu-button').tap();assert pg.locator('.site-nav').is_visible()
     pg.locator('.menu-button').tap();assert not pg.locator('.site-nav').is_visible()
-    pg.locator('.home-hero a[href="#experience"]').tap()
+    pg.locator('.home-hero a[href="#experience"][data-analytics-placement="hero"]').tap()
     pg.locator('[data-compare-state="saved"]').tap()
     assert pg.locator('[data-demo-answer]').input_value()
     pg.locator('[data-demo-answer]').tap();pg.keyboard.type(' Touch edit.')

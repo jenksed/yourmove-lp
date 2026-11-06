@@ -11,10 +11,11 @@ window.YOURMOVE_RELEASE = {
     qualified: true,
     version: 'v0.1.0',
     platform: 'macOS arm64',
-    requirements: 'macOS 26+, Apple Silicon. Unnotarized alpha: approve in System Settings → Privacy & Security → Open Anyway. Verify SHA-256.',
+    requirements: 'Apple Silicon (M1 or newer) · macOS 26 or later. Chrome/Chromium is required only for assisted employer-form filling.',
     verifiedOn: '2026-11-05',
     releaseUrl: 'https://github.com/jenksed/yourmove-go/releases/tag/v0.1.0',
-    downloadUrl: 'https://github.com/jenksed/yourmove-go/releases/download/v0.1.0/YourMove-0.1.0-macOS-arm64.dmg'
+    downloadUrl: 'https://github.com/jenksed/yourmove-go/releases/download/v0.1.0/YourMove-0.1.0-macOS-arm64-installer-r2.dmg',
+    checksumUrl: 'https://github.com/jenksed/yourmove-go/releases/download/v0.1.0/YourMove-0.1.0-macOS-arm64-installer-r2.dmg.sha256'
   },
   enabled: true,
   title: 'Initial release',
