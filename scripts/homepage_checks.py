@@ -133,7 +133,7 @@ with sync_playwright() as p:
         page.goto(args.url+'/')
         page.locator(selector).click();page.wait_for_url(args.url+destination)
     page.goto(args.url+'/')
-    assert page.locator('.home-next__action a[target="_blank"]').get_attribute('href') == 'https://github.com/jenksed/yourmove-go'
+    assert page.locator('.home-next__action a[target="_blank"][href="https://github.com/jenksed/yourmove-go"]').get_attribute('href') == 'https://github.com/jenksed/yourmove-go'
     report['interactions'].append('real primary, evidence, first-application and founder destinations; GitHub remains source')
     # Actual touch events at the mobile breakpoint, including the demo shortcut.
     touch = browser.new_context(has_touch=True, is_mobile=True, viewport={'width':390, 'height':844})
