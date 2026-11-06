@@ -34,7 +34,7 @@ export function releaseState(config) {
   return p;
 }
 export function renderAvailability(config) {
-  const p = config.published;
+  const p = releaseState(config);
   const planned = config.enabled === true && /^\d{4}-\d{2}-\d{2}$/.test(config.date || '') ? `<p>Initial launch is planned for <time datetime="${escape(config.date)}">${escape(config.dateLabel || config.date)}</time>. A published release and its requirements determine availability.</p>` : '';
   const label = p && /\.dmg$/i.test(p.downloadUrl) ? 'Download for Mac (.dmg)' : p ? `Download YourMove ${escape(p.version)}` : '';
   return `<section class="availability-section" aria-labelledby="availability-title" data-analytics-section="release_availability"><div class="shell availability-grid">
