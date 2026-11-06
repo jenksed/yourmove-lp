@@ -6,15 +6,17 @@ import path from 'node:path';
 import vm from 'node:vm';
 import {releaseState, renderAvailability, syncAvailability} from './sync-availability.mjs';
 const pending = {enabled:true,date:'2026-11-06',dateLabel:'November 6',published:null};
-const published = {...pending,published:{qualified:true,version:'v0.0.0-qa',platform:'Apple Silicon Mac',requirements:'QA fixture only — not a published release.',verifiedOn:'2026-11-06',releaseUrl:'https://github.com/jenksed/yourmove-go/releases/tag/v0.0.0-qa',downloadUrl:'https://github.com/jenksed/yourmove-go/releases/download/v0.0.0-qa/YourMove-QA.zip'}};
+const published = {...pending,published:{qualified:true,version:'v0.0.0-qa',platform:'Apple Silicon Mac',requirements:'QA fixture only — not a published release.',verifiedOn:'2026-11-06',releaseUrl:'https://github.com/jenksed/yourmove-go/releases/tag/v0.0.0-qa',downloadUrl:'https://github.com/jenksed/yourmove-go/releases/download/v0.0.0-qa/YourMove-QA.zip',checksumUrl:'https://github.com/jenksed/yourmove-go/releases/download/v0.0.0-qa/YourMove-QA.zip.sha256'}};
 assert.equal(releaseState(pending),null);
 for (const date of ['2026-11-05','2026-11-06','2026-11-07']) {
   const html = renderAvailability({...pending,date});
   assert.match(html,/Not yet published/);assert.doesNotMatch(html,/data-analytics-cta="download_release"/);
 }
 assert.match(renderAvailability(published),/data-analytics-cta="download_release"/);
+assert.match(renderAvailability(published),/data-analytics-cta="installer_checksum"/);
+assert.match(renderAvailability(published),/\/docs\/availability\//);
 assert.doesNotMatch(renderAvailability(published),/Not yet published|planned for/);
-for (const override of [{qualified:false},{requirements:''},{downloadUrl:'https://example.com/app.zip'}, {releaseUrl:'https://github.com/jenksed/yourmove-go/releases/tag/other'}, {downloadUrl:published.published.downloadUrl+'?redirect=bad'}, {version:'v9.9.9'}, {version:'<script>'}]) {
+for (const override of [{qualified:false},{requirements:''},{downloadUrl:'https://example.com/app.zip'}, {releaseUrl:'https://github.com/jenksed/yourmove-go/releases/tag/other'}, {downloadUrl:published.published.downloadUrl+'?redirect=bad'}, {version:'v9.9.9'}, {version:'<script>'}, {checksumUrl:'https://example.com/foreign.sha256'}]) {
   assert.throws(()=>renderAvailability({...published,published:{...published.published,...override}}));
 }
 const root = fs.mkdtempSync(path.join(os.tmpdir(),'yourmove-wave5-release-'));
