@@ -68,6 +68,14 @@
       "destination": "/docs/troubleshooting/index.html"
     },
     {
+      "source": "/docs/releases",
+      "destination": "/docs/releases/index.html"
+    },
+    {
+      "source": "/docs/releases/",
+      "destination": "/docs/releases/index.html"
+    },
+    {
       "source": "/docs/availability",
       "destination": "/docs/availability/index.html"
     },
