@@ -145,7 +145,7 @@ body[data-page="docs"] .doc-site-header .nav-annotation{display:none}
 .doc-article-block h2{font-size:clamp(34px,4vw,55px);line-height:1.07;margin:11px 0 19px}
 .doc-article-block p{font-size:17px;color:#4b5c50;line-height:1.6;margin:0 0 18px}
 .doc-article-block p:last-child{margin-bottom:0}
-.doc-article-block p a,.doc-avail-grid p a{color:#075b40;text-decoration:underline;text-underline-offset:3px}
+.doc-article-block p a:not(.doc-solid-link),.doc-avail-grid p a:not(.doc-solid-link){color:#075b40;text-decoration:underline;text-underline-offset:3px}
 .doc-step-index{font:750 11px/1.2 var(--font);letter-spacing:.1em;color:#087a50}
 .doc-note{padding:20px 24px;border-left:4px solid #26835a;background:#e9f0e6;margin:26px 0;border-radius:0 6px 6px 0}
 .doc-note strong{font-size:15px}
@@ -307,15 +307,16 @@ body[data-page="docs"],.doc-guide-section {background:var(--color-bg);color:var(
 .doc-mini-progress>span {background:var(--color-border)}
 .doc-mini-progress>span:first-child,.doc-mini-progress[data-progress="2"]>span:nth-child(2),.doc-mini-progress[data-progress="3"]>span:nth-child(2),.doc-mini-progress[data-progress="3"]>span:nth-child(3) {background:var(--color-action)}
 .doc-stage-explainer,.doc-guide-card-large,.doc-note,.doc-note-emphasis,.doc-search-panel>p {background:var(--color-action-soft)}
-.doc-stage-link,.doc-note a,.doc-article-block p a,.doc-avail-grid p a,.doc-symptom-answer a {color:var(--color-action);border-color:currentColor}
+.doc-stage-link,.doc-note a,.doc-article-block p a:not(.doc-solid-link),.doc-avail-grid p a:not(.doc-solid-link),.doc-symptom-answer a {color:var(--color-action);border-color:currentColor}
 .doc-stage-link:hover,.doc-article-sidebar a:hover {color:var(--color-action-hover)}
 .doc-guide-card-dark,.doc-article-next {background:var(--color-dark-surface);color:var(--color-dark-text)}
 .doc-guide-card-dark .doc-guide-index,.doc-article-next .doc-micro {color:var(--color-dark-action)}
 .doc-guide-card-dark p,.doc-article-next p {color:var(--color-dark-muted)}
 .doc-guide-card-dark .doc-guide-bottom {border-color:var(--color-border-strong)}
 .doc-boundary a,.doc-article-next a {color:var(--color-dark-action);border-color:currentColor}
-.doc-solid-link {background:var(--color-action);color:var(--color-on-action)}
-.doc-solid-link:hover {background:var(--color-action-hover)}
+/* Solid CTAs must not inherit the inline-link foreground from prose paragraphs. */
+.doc-solid-link {background:var(--color-action);color:var(--color-on-action);text-decoration:none}
+.doc-solid-link:hover,.doc-solid-link:focus-visible {background:var(--color-action-hover);color:var(--color-on-action);text-decoration:none}
 .doc-footer {background:var(--color-dark);color:var(--color-dark-text)}
 .doc-footer a {color:var(--color-dark-text)}
 .doc-footer p,.doc-footer .doc-micro,.doc-footer-base {color:var(--color-dark-muted)}
