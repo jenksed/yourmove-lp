@@ -118,6 +118,18 @@ with sync_playwright() as pw:
                         value = el.evaluate(CONTRAST_JS)
                         assert value['ratio'] >= 4.5, (route, width, selector, value)
                         report['contrast'].append({'route': route, 'width': width, 'selector': selector, **value})
+                        if selector == '.doc-solid-link':
+                            # The prose-link rule must never recolor a solid CTA.
+                            assert value['color'] == 'rgb(255, 255, 255)', (route, width, 'solid CTA default', value)
+                            if width == 1440:
+                                el.hover()
+                                hovered = el.evaluate(CONTRAST_JS)
+                                assert hovered['color'] == 'rgb(255, 255, 255)' and hovered['ratio'] >= 4.5, (route, 'solid CTA hover', hovered)
+                                page.mouse.move(0, 0)
+                                page.keyboard.press('Tab')
+                                el.focus()
+                                focused = el.evaluate(CONTRAST_JS)
+                                assert focused['color'] == 'rgb(255, 255, 255)' and focused['ratio'] >= 4.5, (route, 'solid CTA focus', focused)
         print('PASS', route, flush=True)
 
     page.goto(args.url + '/', wait_until='networkidle')
