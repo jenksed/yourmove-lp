@@ -1,28 +1,22 @@
-/* YourMove release announcement — edit this file for every launch.
- * enabled: false immediately restores the evergreen announcement site-wide.
- * date: scheduled release DATE only (YYYY-MM-DD); no unannounced clock time.
- * On the scheduled date, the bar says "planned for today"; the next day it disappears.
- * To reuse it, change the title, date, label, and link. No HTML edits.
- */
+/* YourMove release announcement. Published release details are verified facts. */
 window.YOURMOVE_RELEASE = {
-  // v0.1.0 Mac technical alpha published as a GitHub prerelease; clean
-  // install reported complete by the release owner on 2026-11-05.
   published: {
     qualified: true,
-    version: 'v0.1.0',
+    version: 'v0.2.0',
     platform: 'macOS arm64',
-    requirements: 'Apple Silicon (M1 or newer) · macOS 26 or later. Chrome/Chromium is required only for assisted employer-form filling.',
-    verifiedOn: '2026-11-05',
-    releaseUrl: 'https://github.com/jenksed/yourmove-go/releases/tag/v0.1.0',
-    downloadUrl: 'https://github.com/jenksed/yourmove-go/releases/download/v0.1.0/YourMove-0.1.0-macOS-arm64-installer-r2.dmg',
-    checksumUrl: 'https://github.com/jenksed/yourmove-go/releases/download/v0.1.0/YourMove-0.1.0-macOS-arm64-installer-r2.dmg.sha256'
+    requirements: 'Apple Silicon Mac · macOS 26 or later. Chrome/Chromium is required only for assisted employer-form filling.',
+    verifiedOn: '2026-11-13',
+    releaseUrl: 'https://github.com/jenksed/yourmove-go/releases/tag/v0.2.0',
+    downloadUrl: 'https://github.com/jenksed/yourmove-go/releases/download/v0.2.0/YourMove-0.2.0-macOS-arm64.dmg',
+    checksumUrl: 'https://github.com/jenksed/yourmove-go/releases/download/v0.2.0/YourMove-0.2.0-macOS-arm64.dmg.sha256'
   },
-  enabled: true,
-  title: 'Initial release',
-  date: '2026-11-06',
-  dateLabel: 'November 6',
+  // Published releases display the persistent static announcement, not a countdown.
+  enabled: false,
+  title: 'YourMove v0.2.0',
+  date: '2026-11-13',
+  dateLabel: 'November 13',
   timeZone: 'America/Detroit',
-  campaign: 'initial_release_2026',
-  linkText: 'Release details',
-  linkHref: '/get-started/'
+  campaign: 'v020_macos_technical_alpha',
+  linkText: 'Release notes',
+  linkHref: '/docs/releases/'
 };

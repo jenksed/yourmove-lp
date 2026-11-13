@@ -6,10 +6,10 @@
       window.YourMoveAnalytics.track(event,props);
     }
   };
-  const pages={"/docs/":"home","/docs/first-application/":"first_application","/docs/troubleshooting/":"troubleshooting","/docs/availability/":"availability"};
+  const pages={"/docs/":"home","/docs/first-application/":"first_application","/docs/troubleshooting/":"troubleshooting","/docs/availability/":"availability","/docs/releases/":"releases"};
   const path="/"+location.pathname.split("/").filter(Boolean).join("/")+"/";
   const page=pages[path];
-  if(page)analytics("ym_docs_article_viewed",{article_id:page,topic:page==="troubleshooting"?"recovery":page==="availability"?"distribution":"onboarding",version_scope:"preview"});
+  if(page)analytics("ym_docs_article_viewed",{article_id:page,topic:page==="troubleshooting"?"recovery":page==="availability"?"distribution":"onboarding",version_scope:"v0.2.0"});
   const journey=document.querySelector("[data-doc-journey]");
   if(journey){
     const choices=[...journey.querySelectorAll("[data-doc-state]")];
@@ -65,6 +65,7 @@
       {title:"Inspect and fill an employer application",kind:"First application",href:"/docs/first-application/#form",tags:"browser inspect fill prepare transfer review employer"},
       {title:"Submit the application yourself",kind:"First application",href:"/docs/first-application/#finish",tags:"job submit finish employer final say confirmation review autosubmit automatically"},
       {title:"Record a completed application",kind:"First application",href:"/docs/first-application/#record",tags:"history completed outcome local record submitted status"},
+      {title:"YourMove v0.2.0 release notes",kind:"Release notes",href:"/docs/releases/",tags:"release notes changelog version v0.2.0 latest new changes improvements November Windows upgrade migration alpha"},
       {title:"Find official releases and system requirements",kind:"Availability",href:"/docs/availability/",tags:"today ready now use supported download install mac macos windows linux arm64 releases compatibility availability"}
     ];
     const stop=new Set(["yourmove","app","need","want","please","help","with","using","trying","try","a","an","and","are","at","can","cant","didnt","do","does","doesnt","for","how","i","im","in","is","isnt","it","me","my","not","of","on","or","the","to","was","what","where","why","will","wont","you"]);
