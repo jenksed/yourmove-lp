@@ -167,7 +167,7 @@ const feed='<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel>
     '<description>' + xmlEsc(p.description) + '</description></item>').join('') +
   '</channel></rss>';
 fs.writeFileSync(path.join(root,'public/feed.xml'),feed);
-const staticPaths=['/','/blog/','/how-it-works/','/get-started/','/support/','/evidence/','/manifesto/','/review/','/docs/'];
+const staticPaths=['/','/blog/','/how-it-works/','/get-started/','/support/','/evidence/','/manifesto/','/review/','/docs/','/docs/releases/'];
 const sitemap='<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' +
   [...staticPaths.map(p=>origin+p),...posts.map(p=>urlFor(p.slug))]
