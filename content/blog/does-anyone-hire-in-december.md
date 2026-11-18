@@ -1,10 +1,20 @@
 ---
-title: "Everyone Says Nobody Hires in December. Does Anybody Actually Know That?"
-seo_title: "Does Anyone Hire in December? What the Data Says"
-description: "Does hiring really stop in December? We checked BLS hiring estimates and Indeed's January search trends to see whether waiting makes sense."
+title: Everyone Says Nobody Hires in December. Does Anybody Actually Know That?
+seo_title: Does Anyone Hire in December? What the Data Says
+description: Does hiring really stop in December? We checked BLS hiring
+  estimates and Indeed's January search trends to see whether waiting makes
+  sense.
 date: 2026-11-17
 published: true
 featured: false
+image: /assets/blog/yourmove-holiday-office-scene.png
+image_alt: An empty hiring office decorated for Christmas, with a Santa hat on a
+  chair, stacked job applications, and a snowy window.
+image_caption: Does hiring really stop in December? Despite the holiday
+  slowdown, millions of Americans still get hired. YourMove examines the actual
+  hiring data, seasonal job-market trends, and why waiting until January might
+  not be the best strategy.
+social_image: /assets/blog/YourMove_%20Holiday%20Hiring%20Truths.png
 ---
 Every year, right around Thanksgiving, job seekers get another piece of advice they didn't ask for.
 
@@ -198,3 +208,4 @@ I'd be curious to know, too.
 
 - [Bureau of Labor Statistics — Job Openings and Labor Turnover Survey, January 2026 release](https://www.bls.gov/news.release/archives/jolts_03132026.htm)
 - [Indeed Hiring Lab — February 2026 U.S. Labor Market Update](https://hiringlab.indeed.com/2026/02/19/february-2026-labor-market-update-new-year-same-resolutions/)
+
