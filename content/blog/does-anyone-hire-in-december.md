@@ -14,7 +14,7 @@ image_caption: Does hiring really stop in December? Despite the holiday
   slowdown, millions of Americans still get hired. YourMove examines the actual
   hiring data, seasonal job-market trends, and why waiting until January might
   not be the best strategy.
-social_image: YourMove_%20Holiday%20Hiring%20Truths.png
+social_image: /assets/blog/YourMove_%20Holiday%20Hiring%20Truths.png
 ---
 Every year, right around Thanksgiving, job seekers get another piece of advice they didn't ask for: "Don't bother applying in December. Nobody hires during the holidays."
 
