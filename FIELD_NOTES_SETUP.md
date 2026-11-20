@@ -21,7 +21,7 @@ This branch adds a single Quiet Ink signup card that appears in context on the h
 - One form, no name collection, no popups, no email gating. Kit stores addresses and handles consent and unsubscribe.
 - The site does not track submitted addresses through its own analytics. On-site impressions/CTA behavior and Kit-confirmed subscribers are different measurements.
 - The HTML form sends the browser directly to Kit over HTTPS; it does not use client-side fetch. This avoids browser CORS assumptions and avoids a backend proxy.
-- Before production launch, publish/review YourMove's own email-subscriber privacy notice and verify that the signup wording matches how the list will be used.
+- Before production launch, review and publish the scoped notice at `/email-updates/privacy/` (included in this branch) and verify that the signup wording matches how the list will be used.
 
 ## Known limits
 

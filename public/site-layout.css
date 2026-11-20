@@ -141,3 +141,6 @@ body[data-page="docs"] .footer-doc-context {display:block;margin-top:28px;max-wi
  .ym-notes__fields {flex-direction:column}
  .ym-notes__submit {width:100%;white-space:normal}
 }
+
+.ym-notes__disclosure a {color:var(--color-action);text-decoration:underline;text-underline-offset:3px}
+.ym-notes__disclosure a:hover {color:var(--color-action-hover)}

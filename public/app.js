@@ -175,10 +175,13 @@
       submit.type = 'submit';
       fields.append(email, submit);
       const details = make('p', 'ym-notes__details',
-        'Confirm by email. Occasional product updates; unsubscribe anytime. Delivered through Kit.');
+        'Signup opens in a new tab; check your inbox to confirm. Occasional updates; unsubscribe anytime.');
       details.id = 'field-notes-details';
       const disclosure = make('p', 'ym-notes__disclosure',
-        'Your email is used for Field Notes and YourMove updates, not to access the app.');
+        'Your address goes to Kit for Field Notes and YourMove updates, not app access. ');
+      const privacyLink = make('a', '', 'Email privacy');
+      privacyLink.href = '/email-updates/privacy/';
+      disclosure.append(privacyLink);
       form.append(label, fields, details);
       action.append(form, disclosure);
       frame.append(words, action);
