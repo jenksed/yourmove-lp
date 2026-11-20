@@ -101,4 +101,97 @@
       document.dispatchEvent(new CustomEvent('ym:copy-command',{detail:{group:btn.closest('.gs-console')?'mac_build':'browser_run',result:'failure'}}));}
     setTimeout(()=>btn.textContent=original,1800);
   }));
+
+  // A direct Kit form post keeps subscription handling and email delivery outside
+  // this static site. Paste the exact action URL from Kit's HTML form embed.
+  // Leave blank until the form and confirmation email have been tested.
+  const kitFormAction = '';
+  const kitFormURL = (() => {
+    try {
+      const url = new URL(kitFormAction);
+      return url.protocol === 'https:' &&
+        ['app.kit.com', 'app.convertkit.com'].includes(url.hostname) &&
+        /^\/forms\/[0-9]+\/subscriptions\/?$/.test(url.pathname) &&
+        !url.search && !url.hash ? url.href : '';
+    } catch { return ''; }
+  })();
+  if (kitFormURL) {
+    const placements = [
+      {selector:'.home-next', mode:'beforebegin', name:'home',
+        kicker:'FIELD NOTES / YOURMOVE', title:'The application is more than a form.',
+        copy:'Short, useful notes on ATS systems, application questions, and what really happens when you hit Submit.'},
+      {selector:'.ym-journal-companion', mode:'beforebegin', name:'journal',
+        kicker:'FROM THE JOURNAL', title:'Keep the useful stuff coming.',
+        copy:'Practical explanations of applying, hiring technology, and the parts that deserve a closer look.'},
+      {selector:'.ym-article-end', mode:'beforebegin', name:'article',
+        kicker:'YOURMOVE FIELD NOTES', title:'One less job-search mystery.',
+        copy:'Get occasional notes on application forms, automation, and how to stay in control of what you submit.'},
+      {selector:'.doc-last', mode:'beforebegin', name:'docs',
+        kicker:'BEYOND THE HELP CENTER', title:'Understand the process behind the form.',
+        copy:'Field Notes covers application systems and practical job-search questions beyond the YourMove product guides.'},
+      {selector:'.doc-article', mode:'beforeend', name:'docs-article',
+        kicker:'YOURMOVE FIELD NOTES', title:'There is more to the application.',
+        copy:'Useful explanations of employer forms, ATS systems, and applying without handing over the final decision.'},
+      {selector:'.start-help', mode:'beforebegin', name:'get-started',
+        kicker:'FOLLOW THE WORK', title:'New explanations. Occasional product updates.',
+        copy:'Receive Field Notes about job applications and YourMove. Downloading the app never requires an email address.'}
+    ];
+    const placement = placements.find(item => document.querySelector(item.selector));
+    if (placement) {
+      const make = (tag, className, value) => {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        if (value) node.textContent = value;
+        return node;
+      };
+      const section = make('section', 'ym-notes ym-notes--' + placement.name);
+      section.id = 'field-notes';
+      section.setAttribute('aria-labelledby', 'field-notes-title');
+      const frame = make('div', 'ym-notes__frame');
+      const words = make('div', 'ym-notes__words');
+      const kicker = make('p', 'ym-notes__kicker', placement.kicker);
+      const title = make('h2', 'ym-notes__title', placement.title);
+      title.id = 'field-notes-title';
+      const description = make('p', 'ym-notes__description', placement.copy);
+      words.append(kicker, title, description);
+      const action = make('div', 'ym-notes__action');
+      const form = make('form', 'ym-notes__form');
+      form.method = 'post';
+      form.action = kitFormURL;
+      form.target = '_blank';
+      form.setAttribute('rel', 'noopener');
+      const label = make('label', 'ym-notes__label', 'Email address');
+      label.htmlFor = 'field-notes-email';
+      const fields = make('div', 'ym-notes__fields');
+      const email = make('input', 'ym-notes__input');
+      email.id = 'field-notes-email';
+      email.name = 'email_address';
+      email.type = 'email';
+      email.required = true;
+      email.autocomplete = 'email';
+      email.placeholder = 'you@example.com';
+      email.setAttribute('aria-describedby', 'field-notes-details');
+      const submit = make('button', 'ym-notes__submit', 'Get Field Notes');
+      submit.type = 'submit';
+      fields.append(email, submit);
+      const details = make('p', 'ym-notes__details',
+        'Confirm by email. Occasional product updates; unsubscribe anytime. Delivered through Kit.');
+      details.id = 'field-notes-details';
+      const disclosure = make('p', 'ym-notes__disclosure',
+        'Your email is used for Field Notes and YourMove updates, not to access the app.');
+      form.append(label, fields, details);
+      action.append(form, disclosure);
+      frame.append(words, action);
+      section.append(frame);
+      document.querySelector(placement.selector).insertAdjacentElement(placement.mode, section);
+      // Footer link is available only when the subscription endpoint is configured.
+      const journalLink = document.querySelector('.footer-col[aria-label="Product"] a[href="/blog/"]');
+      if (journalLink) {
+        const link = make('a', '', 'Field Notes');
+        link.href = '/blog/#field-notes';
+        journalLink.insertAdjacentElement('afterend', link);
+      }
+    }
+  }
+
 })();
