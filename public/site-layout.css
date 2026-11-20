@@ -97,3 +97,50 @@ body[data-page="docs"] .footer-doc-context {display:block;margin-top:28px;max-wi
   :root { --page-entry-space: 40px; }
   .doc-hero-grid { padding-top: 34px; }
 }
+
+
+/* Field Notes: editorial, inline, and deliberately secondary to product CTAs.
+   Only mounted by app.js once a valid Kit form endpoint is configured. */
+.ym-notes {max-width:1550px;padding:44px clamp(24px,5.2vw,90px) 64px;margin:0 auto;color:var(--color-text)}
+.ym-notes__frame {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:clamp(28px,5vw,84px);align-items:center;background:var(--color-surface);border-top:3px solid var(--color-text);border-bottom:1px solid var(--color-border);padding:clamp(28px,4.5vw,60px)}
+.ym-notes__words,.ym-notes__action {min-width:0}
+.ym-notes__kicker {font-size:12px;font-weight:700;letter-spacing:.12em;line-height:1.4;color:var(--color-action);margin:0 0 20px}
+.ym-notes__title,.ym-blog .ym-notes__title {font:600 clamp(29px,3vw,44px)/1.14 Jost,var(--font);letter-spacing:-.04em;color:var(--color-text);margin:0 0 18px;max-width:22ch;text-wrap:balance}
+.ym-notes__description {font-size:18px;line-height:1.55;color:var(--color-muted);max-width:46ch;margin:0}
+.ym-notes__form {margin:0}
+.ym-notes__label {display:block;font-size:14px;font-weight:600;color:var(--color-text);margin:0 0 10px}
+.ym-notes__fields {display:flex;gap:10px;align-items:stretch;min-width:0}
+.ym-notes__input {width:100%;min-width:0;min-height:52px;padding:12px 15px;border:1px solid var(--color-border-strong);border-radius:0;background:var(--color-surface);color:var(--color-text);font:inherit;font-size:16px}
+.ym-notes__input::placeholder {color:var(--color-muted);opacity:1}
+.ym-notes__input:focus-visible {outline:3px solid var(--color-focus);outline-offset:2px}
+.ym-notes__submit {min-height:52px;padding:12px 20px;border:1px solid var(--color-action);border-radius:0;background:var(--color-action);color:var(--color-on-action);font:600 15px/1.25 Jost,var(--font);white-space:nowrap;cursor:pointer;transition:background-color .15s,border-color .15s}
+.ym-notes__submit:hover {background:var(--color-action-hover);border-color:var(--color-action-hover)}
+.ym-notes__submit:focus-visible {outline:3px solid var(--color-focus);outline-offset:3px}
+.ym-notes__details,.ym-notes__disclosure {font-size:13px;line-height:1.5;color:var(--color-muted);margin:12px 0 0}
+.ym-notes__disclosure {margin-top:6px}
+/* Narrower editorial and documentation columns should not feel like a banner. */
+.ym-notes--journal {max-width:none;padding:8px 0 50px}
+.ym-notes--article,.ym-notes--docs-article {width:100%;max-width:none;padding:36px 0}
+.ym-notes--article .ym-notes__frame,.ym-notes--docs-article .ym-notes__frame {display:block;padding:28px 0;border-top:2px solid var(--color-border-strong);border-bottom:1px solid var(--color-border);background:transparent}
+.ym-notes--article .ym-notes__title,.ym-notes--docs-article .ym-notes__title {font-size:clamp(27px,3vw,34px);max-width:none}
+.ym-notes--article .ym-notes__description,.ym-notes--docs-article .ym-notes__description {font-size:16px;max-width:60ch}
+.ym-notes--article .ym-notes__action,.ym-notes--docs-article .ym-notes__action {margin-top:22px}
+.ym-notes--docs-article .ym-notes__frame {padding:26px 0}
+.ym-notes--home {padding-block:24px 44px}
+.ym-notes--get-started {padding-block:24px 38px}
+@media(max-width:800px) {
+ .ym-notes__frame {grid-template-columns:1fr;gap:24px}
+ .ym-notes__title {max-width:32ch}
+}
+@media(max-width:540px) {
+ .ym-notes {padding:30px 20px 46px}
+ .ym-notes__frame {padding:26px 22px}
+ .ym-notes--journal,.ym-notes--article,.ym-notes--docs-article {padding:24px 0 36px}
+ .ym-notes__title,.ym-blog .ym-notes__title {font-size:30px}
+ .ym-notes__description {font-size:16px}
+ .ym-notes__fields {flex-direction:column}
+ .ym-notes__submit {width:100%;white-space:normal}
+}
+
+.ym-notes__disclosure a {color:var(--color-action);text-decoration:underline;text-underline-offset:3px}
+.ym-notes__disclosure a:hover {color:var(--color-action-hover)}
