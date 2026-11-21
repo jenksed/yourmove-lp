@@ -131,6 +131,13 @@
     if (copy) capture('ym_install_command_copy_clicked', { command_group: copy.closest('.gs-console') ? 'mac_build' : 'browser_run' });
   });
 
+  document.addEventListener('ym:product-stage-changed', (ev) => {
+    const stage = ev.detail?.stage;
+    if (['opportunities','questions','apply'].includes(stage)) {
+      capture('ym_product_stage_selected', { stage });
+    }
+  });
+
   document.addEventListener('ym:comparison-changed', (ev) => {
     const mode=ev.detail?.mode;
     if(mode!=='starting_over'&&mode!=='with_yourmove')return;
@@ -227,7 +234,7 @@
   const sectionTimes=new WeakMap();
   const seenFeatures=new Set();
   const featureLabels={
-    experience:'less_repetition',workflow:'workflow',career_records:'career_evidence',
+    experience:'less_repetition',workflow:'workflow',compare:'less_repetition',career_records:'career_evidence',
     control:'applicant_control',final_cta:'getting_started',
     release_availability:'release_availability',installation_paths:'installation',mac_build:'source_build',
     browser_run:'browser_setup',installation_faq:'installation_objections'

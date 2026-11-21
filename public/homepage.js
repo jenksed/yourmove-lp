@@ -56,7 +56,7 @@
   });
   // Put the comparison controls and changing fields in view on the demo shortcut.
   // The ordinary section link remains useful without JavaScript.
-  document.querySelector('.home-hero a[href="#experience"]').addEventListener('click', event => {
+  document.querySelector('.home-hero a[href="#experience"]')?.addEventListener('click', event => {
     event.preventDefault();
     demo.querySelector('.application-demo__toolbar').scrollIntoView({block: 'start'});
     choices[0].focus({preventScroll: true});
