@@ -16,6 +16,13 @@ const esc = v => String(v ?? '').replace(/[&<>"']/g, ch => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
 })[ch]);
 const md = new MarkdownIt({ html: false, linkify: true, typographer: true, breaks: false });
+// Product captures and editorial illustrations load lazily; reading works without JavaScript.
+const defaultImageRender = md.renderer.rules.image || ((tokens, idx, options, env, self) => self.renderToken(tokens, idx, options));
+md.renderer.rules.image = (tokens, idx, options, env, self) => {
+  tokens[idx].attrSet('loading', 'lazy');
+  tokens[idx].attrSet('decoding', 'async');
+  return defaultImageRender(tokens, idx, options, env, self);
+};
 const dateISO = input => {
   const value = input instanceof Date ? input.toISOString().slice(0, 10) : String(input ?? '').slice(0, 10);
   return /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(Date.parse(value)) ? value : null;
@@ -83,18 +90,21 @@ const posts = fs.readdirSync(contentDir).filter(f => f.endsWith('.md')).map(file
     imageAlt:typeof data.image_alt==='string' ? data.image_alt.trim() : '',
     imageCaption:typeof data.image_caption==='string' ? data.image_caption.trim() : '',
     featured:data.featured === true,
-    pullQuote:typeof data.pull_quote==='string' ? data.pull_quote.trim() : '', body:item.content
+    pullQuote:typeof data.pull_quote==='string' ? data.pull_quote.trim() : '', body:item.content,
+    minutes:Math.max(1, Math.round(item.content.split(/\s+/).filter(Boolean).length / 200))
   };
 }).filter(Boolean).sort((a,b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
 const pubDate = post => '<time datetime="' + esc(post.date) + '">' + esc(dateDisplay(post.date)) + '</time>';
+const readTime = post => '<span>' + esc(String(post.minutes)) + ' min read</span>';
 // An explicit editorial choice wins; new articles otherwise remain in date order.
 const lead = posts.find(post => post.featured) || posts[0];
-const byline = post => '<p class="ym-post-meta">Joshua Jenks <span aria-hidden="true">·</span> ' + pubDate(post) + '</p>';
+const leadByline = post => '<p class="ym-post-meta"><span>By Joshua Jenks</span><span aria-hidden="true">·</span>' + pubDate(post) + '<span aria-hidden="true">·</span>' + readTime(post) + '</p>';
+const rowByline = post => '<p class="ym-post-meta">' + pubDate(post) + '<span aria-hidden="true">·</span>' + readTime(post) + '</p>';
 const postLink = post => '/blog/' + esc(post.slug) + '/';
 const story = post =>
   '<article class="ym-story">' +
-  (post.image ? '<a class="ym-story-image" href="' + postLink(post) + '" tabindex="-1" aria-hidden="true"><img src="' + esc(post.image) + '" alt="" loading="lazy"></a>' : '') +
-  '<div class="ym-story-copy">' + byline(post) + '<h3><a href="' + postLink(post) + '">' + esc(post.title) + '</a></h3>' +
+  (post.image ? '<a class="ym-story-image" href="' + postLink(post) + '" tabindex="-1" aria-hidden="true"><img src="' + esc(post.image) + '" alt="" loading="lazy" decoding="async"></a>' : '') +
+  '<div class="ym-story-copy">' + rowByline(post) + '<h3><a href="' + postLink(post) + '">' + esc(post.title) + '</a></h3>' +
   '<p>' + esc(post.description) + '</p></div></article>';
 const index = pageHead({
   title:'The Journal — Building YourMove',
@@ -104,14 +114,14 @@ const index = pageHead({
     description:"Stories about building YourMove, an open-source job application tool."}
 }) +
   '<main id="main" class="ym-blog"><div class="ym-journal-shell">' +
-  '<header class="ym-journal-masthead"><h1>The Journal.</h1><div><p>Looking for work.<br> Building something useful along the way.</p>' +
+  '<header class="ym-journal-masthead"><div class="ym-journal-titleblock"><p class="ym-journal-kicker">Notes on job hunting and building software</p><h1>The Journal.</h1></div><div class="ym-journal-intro"><p>Looking for work.<br> Building something useful along the way.</p>' +
   '<p class="ym-journal-credit">Writing by Joshua Jenks <span aria-hidden="true">·</span> <a href="/feed.xml">RSS</a></p></div></header>' +
-  (lead ? '<section id="stories" class="ym-lead-story" aria-labelledby="lead-story-title"><div>' +
-    '<p class="ym-reading-note">' + (lead.featured ? 'A place to begin' : 'Latest story') + '</p>' +
+  (lead ? '<section id="stories" class="ym-lead-story" aria-labelledby="lead-story-title"><div class="ym-lead-copy">' +
+    '<p class="ym-reading-note">' + (lead.featured ? 'Featured story' : 'Latest story') + '</p>' +
     '<h2 id="lead-story-title"><a href="' + postLink(lead) + '">' + esc(lead.title) + '</a></h2>' +
-    '<p class="ym-lead-summary">' + esc(lead.description) + '</p>' + byline(lead) +
-    '<a class="ym-read-link" href="' + postLink(lead) + '">Read the story</a></div>' +
-    (lead.image ? '<a class="ym-lead-image" href="' + postLink(lead) + '" tabindex="-1" aria-hidden="true"><img src="' + esc(lead.image) + '" alt=""></a>' :
+    '<p class="ym-lead-summary">' + esc(lead.description) + '</p>' + leadByline(lead) +
+    '<a class="ym-read-link" href="' + postLink(lead) + '">Read the story <span aria-hidden="true">→</span></a></div>' +
+    (lead.image ? '<a class="ym-lead-image" href="' + postLink(lead) + '" tabindex="-1" aria-hidden="true"><img src="' + esc(lead.image) + '" alt="" decoding="async"></a>' :
       lead.pullQuote ? '<blockquote><p>“' + esc(lead.pullQuote) + '”</p><cite>From “' + esc(lead.title) + '”</cite></blockquote>' : '') +
     '</section>' : '<p>No articles published yet.</p>') +
   (posts.length > 1 ? '<section class="ym-story-list" aria-labelledby="more-stories-title"><h2 id="more-stories-title">More from the Journal</h2>' +
@@ -142,8 +152,9 @@ for(const post of posts){
   }) +
     '<main id="main" class="ym-blog"><article class="ym-article" aria-labelledby="article-title">' +
     '<header class="ym-blog-article-head"><a class="ym-blog-back" href="/blog/">Back to the Journal</a>' +
+    '<p class="ym-article-kicker">The YourMove Journal</p>' +
     '<h1 id="article-title">' + esc(post.title) + '</h1><p class="ym-blog-deck">' + esc(post.description) + '</p>' +
-    '<div class="ym-article-meta"><span>By Joshua Jenks</span>' + pubDate(post) + '</div></header>' +
+    '<div class="ym-article-meta"><span>By Joshua Jenks</span>' + pubDate(post) + readTime(post) + '</div></header>' +
     cover + '<div class="ym-blog-article"><div class="ym-prose">' + md.render(post.body) + '</div>' +
     '<footer class="ym-article-end"><div class="ym-article-actions"><a href="/blog/">Back to the Journal</a>' +
     '<button type="button" hidden data-copy-article data-url="' + esc(url) + '">Copy article link</button></div>' +

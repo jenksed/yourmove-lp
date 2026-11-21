@@ -4,7 +4,7 @@ seo_title: "YourMove v0.3.0: A More Useful Job Application Workspace"
 description: "YourMove v0.3.0 improves opportunities, saved writing, posting status, and applicant-controlled form filling. Here's why we focused on the experience."
 date: 2026-11-20
 published: false
-featured: false
+featured: true
 pull_quote: "The job search doesn't end when you save a posting. The work needs to be worth coming back to."
 ---
 
@@ -24,23 +24,35 @@ That's not an attempt to invent a new productivity framework. It's a practical d
 
 The lists are more compact, too. If you're importing several postings, the results are clearer about what was added, what was already there, and what needs another try. A failed import shouldn't mean guessing whether the rest made it in.
 
-[SCREENSHOT SLOT: Published v0.3.0 Opportunities view with synthetic Focus, Saved for Later, and History records.]
+![Actual YourMove v0.3.0 Opportunities workspace showing Focus, Saved for Later, and History lists with synthetic example data.](/assets/product/v030-opportunities.webp)
+
+*The v0.3.0 Opportunities workspace, with synthetic example data. Focus holds today's work; Saved for Later and History keep everything else within reach.*
+
+Previously, every opportunity competed in a single list. The new shape keeps the old information — the saved posting, the chosen résumé, the next step — but stops asking finished and parked work to shout as loudly as today's applications.
+
+![The earlier YourMove Opportunities view, showing a single undifferentiated list with synthetic example data.](/assets/product/yourmove-opportunities.png)
+
+*The earlier Opportunities view, with synthetic example data. v0.3.0 separates Focus, Saved for Later, and History.*
 
 ## You've already written something good. You should be able to use it.
 
 A pretty decent answer to one employer's question shouldn't vanish into the ether after you hit Save. But copying old writing blindly isn't much better. A question may sound similar and still deserve a different answer.
 
-The updated **Questions** workspace puts editing first and makes **Previous Writing** easier to consult nearby. You can look at what you've already written, decide whether it's relevant, and adapt it for this application. If you try to leave with unsaved changes, YourMove warns you rather than silently throwing away your work.
+The updated **Questions** workspace puts editing first and keeps **Previous Writing** nearby. You can look at what you've already written, decide whether it's relevant, and adapt it for this application. If you try to leave with unsaved changes, YourMove warns you rather than silently throwing away your work.
+
+![Actual YourMove v0.3.0 Questions editor with an application-specific draft beside previously saved writing, using synthetic example data.](/assets/product/v030-questions.webp)
+
+*The v0.3.0 Questions editor, with synthetic example data. Previous writing stays beside the draft you're composing, and unsaved edits trigger a warning before you move on.*
 
 This isn't about letting AI manufacture five versions of the same generic paragraph. It's about keeping useful work available while preserving the applicant's right to change it.
-
-[SCREENSHOT SLOT: Published v0.3.0 Questions editor showing synthetic Previous Writing and an application-specific draft.]
 
 ## A closed job posting doesn't erase what you did
 
 Employer websites change. A posting might close. Its availability might be uncertain. Neither situation should silently rewrite the history of what *you* prepared or submitted.
 
 v0.3.0 makes those distinctions clearer. It can report when a posting is confirmed closed, or when availability can't be established. Your saved materials remain meaningful, and a previously recorded application stays part of your history.
+
+> The job search doesn't end when you save a posting. The work needs to be worth coming back to.
 
 The **Apply** experience is also more candid about the work that remains yours. If a cover letter needs to be attached manually, the app should say so. If a control can't be handled safely, that shouldn't become a cheerful but misleading “done.”
 
@@ -56,7 +68,9 @@ And YourMove never presses the final employer **Submit** button for you. You ins
 
 That's not an accidental missing feature. I don't want software inventing an employer receipt, quietly overwriting a sensitive answer, or confusing “I filled some fields” with “you applied.”
 
-[SCREENSHOT SLOT: Published v0.3.0 Apply view showing an explicit authorization or manual-attachment state, using a controlled synthetic employer form.]
+![Actual YourMove v0.3.0 Apply workspace explaining that automatic filling is unavailable on this controlled synthetic employer form and listing the saved materials to attach manually.](/assets/product/v030-apply.webp)
+
+*The v0.3.0 Apply view on a controlled synthetic employer form. When filling is unavailable, the app says so and lists what to attach manually — it never presses the employer's Submit button for you.*
 
 ## Why spend a release on this instead of adding more features?
 
