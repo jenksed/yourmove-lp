@@ -107,10 +107,10 @@
   .exhale-hero h1{animation:exhale-arrive .65s .07s both}
   .exhale-hero__lead,.exhale-hero .exhale-actions,.exhale-hero__requirements{animation:exhale-arrive .7s .12s both}
   .exhale-hero__visual{animation:exhale-arrive .8s .20s both}
-  .exhale-animated [data-exhale-reveal]{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
-  .exhale-animated [data-exhale-reveal].exhale-in-view{opacity:1;transform:none}
-  .exhale-animated .exhale-feature:nth-child(2){transition-delay:.09s}
-  .exhale-animated .exhale-feature:nth-child(3){transition-delay:.18s}
+  /* Reveal on entry, but never hide content while waiting for an observer. */
+  .exhale-animated [data-exhale-reveal].exhale-in-view{animation:exhale-arrive .62s both}
+  .exhale-animated .exhale-feature:nth-child(2){animation-delay:.09s}
+  .exhale-animated .exhale-feature:nth-child(3){animation-delay:.18s}
   .exhale-panel.exhale-panel--entered{animation:exhale-panel-in .35s both}
   @keyframes exhale-arrive{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
   @keyframes exhale-panel-in{from{opacity:.65;transform:translateY(9px)}to{opacity:1;transform:none}}
