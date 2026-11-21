@@ -153,9 +153,11 @@
  .exhale-final__requirements{margin-bottom:44px}
 }
 @media(max-width:420px){
- .exhale-hero{padding-top:30px}
- .exhale-hero h1{font-size:clamp(2.78rem,10.1vw,3.9rem);letter-spacing:-.058em}
- .exhale-hero__lead{font-size:16px}
+ .exhale-hero{padding-top:14px}
+ .exhale-hero h1{font-size:clamp(2.5rem,10.4vw,3.9rem);line-height:.96;letter-spacing:-.055em;margin:15px auto 12px}
+ .exhale-hero__lead{font-size:15px;line-height:1.45}
+ .exhale-hero .exhale-actions{margin-top:17px}
+ .exhale-hero__requirements{margin-top:9px;margin-bottom:15px;font-size:11.5px;line-height:1.45}
  .exhale-hero__eyebrow{font-size:10.5px;padding:9px 11px}
  .exhale-actions{flex-direction:column;align-items:stretch}
  .exhale-btn,.exhale-actions .exhale-link{width:100%}
