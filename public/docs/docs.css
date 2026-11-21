@@ -23,8 +23,10 @@ body[data-page="docs"] .doc-site-header .nav-annotation{display:none}
 .doc-search label{font-size:11px;font-weight:750;letter-spacing:.07em}
 .doc-search-control{min-height:62px;display:flex;align-items:center;gap:14px;background:#fff;color:#182c1e;border-radius:7px;border:1px solid #b7c9b7;padding:0 17px;box-shadow:0 14px 24px #05180d2c}
 .doc-search-control svg{width:22px;height:22px;flex:none;fill:none;stroke:#47735b;stroke-width:1.8}
-.doc-search-control input{flex:1;min-width:0;height:60px;outline:0;border:0;background:transparent;color:#132419;font-size:15px}
+.doc-search-control input{flex:1;min-width:0;height:60px;outline:0;border:0;background:transparent;color:#132419;font-size:16px}
 .doc-search-control:focus-within{outline:3px solid #90d4a2;outline-offset:3px}
+.doc-search-hint{font-size:12.5px;line-height:1.5;color:#bcd6c2;margin:10px 0 0;max-width:46ch}
+.doc-search-hint + noscript .doc-search-hint,.doc-search noscript .doc-search-hint{color:#bcd6c2}
 .doc-search-control input::placeholder{color:#738778}
 .doc-key{font-size:13px;font-weight:700;color:#718375;border:1px solid #ced7ca;border-radius:3px;padding:1px 7px}
 .doc-guide-section{padding:32px 0 100px;background:#f9f8f3}
@@ -247,7 +249,7 @@ body[data-page="docs"] .doc-site-header .nav-annotation{display:none}
  .doc-support{padding:24px}.doc-availability-layout{padding-top:36px;padding-bottom:60px}.doc-avail-grid{margin:43px 0 0}
  .doc-avail-requirements{padding:22px}
 }
-@media(prefers-reduced-motion:reduce){.doc-choice,.doc-guide-card,.doc-symptoms summary b{transition:none}}
+@media(prefers-reduced-motion:reduce){.doc-choice,.doc-guide-card,.doc-symptoms summary b{transition:none!important}.doc-guide-card:hover{transform:none;box-shadow:none}.doc-choice:hover{transform:none}html{scroll-behavior:auto}}
 
 
 /* Help-center answer discovery: answers stay beside the search that found them. */
@@ -258,7 +260,7 @@ body[data-page="docs"] .doc-site-header .nav-annotation{display:none}
 .doc-search-panel{margin-top:13px;background:#fffefa;color:#14271b;border:1px solid #acc9b1;border-radius:8px;box-shadow:0 12px 27px #061b1129;overflow:hidden}
 .doc-search-panel[hidden]{display:none}
 .doc-search-panel>p{margin:0;padding:13px 17px;font-size:13px;line-height:1.45;color:#46624e;background:#e9f2e7;border-bottom:1px solid #d3e1d1}
-.doc-search-panel ul{padding:5px 0;margin:0;list-style:none;max-height:295px;overflow-y:auto}
+.doc-search-panel ul{padding:5px 0;margin:0;list-style:none;max-height:295px;overflow-y:auto;overscroll-behavior:contain}
 .doc-search-panel li+li{border-top:1px solid #e5ebe2}
 .doc-search-panel li a{display:flex;flex-direction:column;gap:3px;padding:11px 17px;color:#133d2a}
 .doc-search-panel li a:hover,.doc-search-panel li a:focus-visible{background:#edf5eb}
@@ -270,10 +272,21 @@ body[data-page="docs"] .doc-site-header .nav-annotation{display:none}
 @media(max-width:640px){
  .doc-popular a{font-size:12px;padding:7px 10px}
  .doc-search-panel ul{max-height:245px}
+ .doc-search-control input{font-size:16px}
+ .doc-search-hint{font-size:12px}
 }
 
 .doc-symptom-answer .doc-resolution{margin-top:18px;padding:13px 16px;background:#eaf2e7;border-left:3px solid #207553;color:#254934}
 .doc-symptom-answer .doc-resolution strong{font-weight:750}
+/* v0.3.0 experience pass: focus, anchor offset, overflow, and no-JS clarity. */
+.doc-choice:focus-visible,.doc-guide-card:focus-visible{outline:3px solid #62ae77;outline-offset:3px}
+.doc-symptoms details,.doc-article-block,.doc-avail-grid>div{scroll-margin-top:24px}
+.doc-article-block code,.doc-avail-grid code{overflow-wrap:anywhere;word-break:break-word}
+.doc-article-block,.doc-avail-grid p,.doc-symptom-answer p{overflow-wrap:break-word}
+.doc-search-panel li a:focus-visible{outline-offset:-3px}
+.doc-symptoms summary:focus{outline:none}
+.doc-symptoms summary:focus-visible{outline:3px solid #62ae77;outline-offset:2px;border-radius:4px}
+.doc-no-results a{color:#075b40}
 
 /* Quiet Ink: documentation selection is informational, never transfer success. */
 body[data-page="docs"],.doc-guide-section {background:var(--color-bg);color:var(--color-text)}
