@@ -8,6 +8,7 @@
 .exhale-hero__inner{position:relative;z-index:1}
 .exhale-eyebrow{display:inline-flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:9px;padding:10px 17px;border:1px solid #b5d0c0;border-radius:50px;background:#edf5ef;color:#295945;font-size:12px;font-weight:650;line-height:1.45;letter-spacing:.01em;margin:0}
 .exhale-status-dot{height:7px;width:7px;flex:none;background:#0fb56d;border-radius:50%}
+.exhale-hero__eyebrow{text-transform:uppercase;letter-spacing:.09em}
 .exhale-eyebrow__divider{opacity:.45}
 .exhale-hero h1{font-size:clamp(3.55rem,8.1vw,8.65rem);font-weight:800;line-height:.975;letter-spacing:-.072em;color:var(--ex-ink);max-width:1300px;margin:30px auto 22px}
 .exhale-hero h1 span{color:var(--ex-green)}
