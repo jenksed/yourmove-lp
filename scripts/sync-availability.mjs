@@ -26,7 +26,7 @@ export function releaseState(config) {
     const checksum = new URL(p.checksumUrl);
     const prefix = '/jenksed/yourmove-go/releases/download/' + tag + '/';
     if (checksum.origin !== release.origin || !checksum.pathname.startsWith(prefix) ||
-        !checksum.pathname.endsWith('.sha256') || checksum.search || checksum.hash ||
+        !(checksum.pathname.endsWith('.sha256') || checksum.pathname.endsWith('/SHA256SUMS-' + tag + '.txt')) || checksum.search || checksum.hash ||
         checksum.username || checksum.password || /%2f/i.test(checksum.pathname)) {
       throw new Error('Checksum must belong to the same official GitHub release.');
     }
